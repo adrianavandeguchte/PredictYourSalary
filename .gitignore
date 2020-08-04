@@ -120,3 +120,4 @@ config.py
 
 # Mac dotunderscore files
 ._*
+notebooks/.DS_Store
