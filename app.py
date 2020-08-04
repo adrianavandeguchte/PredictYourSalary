@@ -33,9 +33,25 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
+# about page to render about.html
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+# methodology page to render methodology.html
+@app.route("/methodology")
+def methodology():
+    return render_template("methodology.html")
+
+# tools of the trade page to render tools.html
+@app.route("/tools")
+def tools():
+    return render_template("tools.html")
+
+
 # api route to obtain the name and overall ranking of each state
 @app.route("/salary_data1")
-def rank():
+def all_salary_data1():
     session = Session(engine)
 
     # query to obtain state name and rank
@@ -66,6 +82,77 @@ def rank():
         data_list.append(data_list_dict)
     
     return jsonify(data_list)
+
+
+
+
+
+# import re
+# import time
+# import nltk
+# import pickle
+# from ast import literal_eval as le
+# # load category model
+# filename = 'Question_Classification_LinearSVM_model.pkl'
+# tuned_category_model = pickle.load(open(filename, 'rb'))
+# # load topic model
+# topic_filename = 'Question_Classification_LinearSVM_topic_model.pkl'
+# tuned_topic_model = pickle.load(open(filename, 'rb'))
+# # load vectorizer
+# vector_filename = 'Question_Classification_vectorizer.pkl'
+# vectorizer = pickle.load(open(vector_filename, 'rb'))
+# # load categories and class names
+# categories, topics = {},{}
+# with open('category_labels.txt','r') as f:
+#     categories = le(f.read())
+# with open('topic_labels.txt','r') as f:
+#     topics = le(f.read())
+
+# @app.route('/prediction.html')
+# def go_to_prediction():
+# 	return render_template('prediction.html')
+
+# @app.route('/prediction', methods=['POST','GET'])
+# def predict(category_model = tuned_category_model,
+#             topic_model = tuned_topic_model,
+#             vectorizer = vectorizer,
+#             categories = categories,
+#             topics = topics):
+
+# 	#get question from the html form
+# 	text = request.form['question']
+
+# 	#convert text to lowercase
+# 	text = text.lower()
+
+# 	#form feature vectors
+# 	features = vectorizer.transform([text])
+
+# 	#predict result category
+# 	print('Using best category model : {}'.format(category_model))
+# 	pred = category_model.predict(features)
+
+# 	category = lookup(categories, pred[0])
+# 	print('Category : {}'.format(category))
+
+# 	#predict result topic
+# 	print('\n\nUsing best topic model : {}'.format(topic_model))
+# 	pred = topic_model.predict(features)
+
+# 	topic = lookup(topics, pred[0])
+# 	print('Topic : {}'.format(topic))
+  
+#   #show results on the HTML page
+# 	return render_template('prediction.html', prediction_string='Predictions :', category='Category : {}'.format(category), topic='Topic : {}'.format(topic))
+
+# if __name__ == '__main__':
+# 	app.run()
+
+
+
+
+
+
 
 # dynamic state page
 # api route to obtain detailed information for each state, depending on which state is passed into the  url
