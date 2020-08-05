@@ -249,11 +249,48 @@ def salary_visuals_data(filter_choice):
 
 
 # tools of the trade page to render tools.html
-@app.route("/salary_visuals_data_by_country/<filter_choice>/<country>")
-def salary_visuals_data_by_country(filter_choice, country):
+@app.route("/salary_visuals_data/<filter_choice>/<country>")
+def salary_visuals_data(filter_choice, country):
     session = Session(engine)
-    # filter(salary_data2.country == country).\
 
+    # query to obtain salaries of each chosen filter
+    if (filter_choice == "job_title"):
+        visuals_data = session.query(salary_data2.title, func.avg(salary_data2.salary)).\
+            filter(salary_data2.country == country).\
+            group_by(salary_data2.title).all()
+    elif (filter_choice == "gender"):
+        visuals_data = session.query(salary_data2.gender, func.avg(salary_data2.salary)).\
+            filter(salary_data2.country == country).\
+            group_by(salary_data2.gender).all()
+    elif (filter_choice == "education"):
+        visuals_data = session.query(salary_data2.education, func.avg(salary_data2.salary)).\
+            filter(salary_data2.country == country).\
+            group_by(salary_data2.education).all()
+    
+    session.close()
+
+    # adds data into a dictionary to be jsonified
+    data_list = []
+    if (filter_choice == "job_title"):
+        for title, salary in visuals_data:
+            data_list_dict = {}
+            data_list_dict["title"] = title
+            data_list_dict["salary"] = salary
+            data_list.append(data_list_dict)
+    elif (filter_choice == "gender"):
+        for gender, salary in visuals_data:
+            data_list_dict = {}
+            data_list_dict["gender"] = gender
+            data_list_dict["salary"] = salary
+            data_list.append(data_list_dict)
+    elif (filter_choice == "education"):
+        for education, salary in visuals_data:
+            data_list_dict = {}
+            data_list_dict["education"] = education
+            data_list_dict["salary"] = salary
+            data_list.append(data_list_dict)
+
+    return jsonify(data_list)
 
     return jsonify(data_list)
 
@@ -291,39 +328,6 @@ def all_salary_data1():
     
     return jsonify(data_list)
 
-# api route to obtain the name data from salary_data2
-# @app.route("/salary_data2")
-# def all_salary_data2():
-#     session = Session(engine)
-
-#     all_data = session.query(salary_data2.age, salary_data2.gender, salary_data2.country,\
-#                              salary_data2.education, salary_data2.title, salary_data2.size,\
-#                              salary_data2.data_prof_size, salary_data2.mach_learn_presence,\
-#                              salary_data2.udacity, salary_data2.coursera, salary_data2.edx,\
-#                              salary_data2.datacamp, salary_data2.dataquest, salary_data2.kaggle,\
-#                              salary_data2.fastai, salary_data2.udemy, salary_data2.linkedin,\
-#                              salary_data2.university, salary_data2.plat_none, salary_data2.plat_other,\
-#                              salary_data2.prime_tool, salary_data2.length_coding, salary_data2.jupyter,\
-#                              salary_data2.rstudio, salary_data2.pycharm, salary_data2.atom,\
-#                              salary_data2.matlab, salary_data2.vsc, salary_data2.spyder,\
-#                              salary_data2.vim_emacs, salary_data2['"notepad++"'], salary_data2.sublime,\
-#                              salary_data2.env_none, salary_data2.env_other, salary_data2.python,\
-#                              salary_data2.r, salary_data2.sql, salary_data2.c, salary_data2['"c++"'],\
-#                              salary_data2.java, salary_data2.javascript, salary_data2.typescript,\
-#                              salary_data2.bash, salary_data2.lan_matlab, salary_data2.lan_none,\
-#                              salary_data2.lan_other, salary_data2.first_program, salary_data2.years_mach_learn).all()
-
-#     session.close()
-
-#     # adds data into a dictionary to be jsonified
-#     data_list = []
-#     for age, gender in all_data:
-#         data_list_dict = {}
-#         data_list_dict["age"] = age
-#         data_list_dict["gender"] = gender
-#         data_list.append(data_list_dict)
-    
-#     return jsonify(data_list)
 
 # import re
 # import time
@@ -383,69 +387,7 @@ def go_to_prediction():
 #   #show results on the HTML page
 # 	return render_template('prediction.html', prediction_string='Predictions :', category='Category : {}'.format(category), topic='Topic : {}'.format(topic))
 
-# if __name__ == '__main__':
-# 	app.run()
 
-
-
-
-
-
-
-# dynamic state page
-# api route to obtain detailed information for each state, depending on which state is passed into the  url
-# @app.route("/<state>")
-# def dynamic(state):
-#     # Create a session
-#     session = Session(engine)
-
-#     # query to obtain overall data of the state, such as amount of each type of attraction
-#     travel_num = session.query(combined_table.state, combined_table.abbr).\
-#         filter(combined_table.state == state).all()
-#     session.close()
-
-#     # query to obtain all the amusement parks in the state
-#     amusement_query = session.query(amusement_table.amusementpark_name).\
-#         filter(amusement_table.state == state).all()
-#     session.close()
-
-#     # query to obtain all the aquariums in the state
-#     aquarium_query = session.query(aquarium_table.aquarium_name).\
-#         filter(aquarium_table.state == state).all()
-#     session.close()
-
-#      # add all data into a list to be jsonified
-#     start_list = []
-#     # start_list_dict = {}
-#     for state, abbr in travel_num:
-#         start_list_dict = {}
-#         start_list_dict["state"] = state
-#         start_list_dict["abbreviation"] = abbr
-#         start_list.append(start_list_dict)
-    
-#     amusement_list = []
-#     aquarium_list = []
-
-#     attraction_dict = {}
-
-#     # for each type of attraction, if the state contains any of that type, add it to a list and then a dictionary,
-#     if amusement_query:
-#         for amusement in amusement_query:
-#             for item in amusement:
-#                 amusement_list.append(item)
-#             attraction_dict["amusement_park_list"] = amusement_list
-    
-#     if beach_query:
-#         for beach in beach_query:
-#             for item in beach:
-#                 beach_list.append(item)
-#             attraction_dict["beach_list"] = beach_list
-
-#     # add the dictionary to the same list that was previously used
-#     start_list.append(attraction_dict)
-
-#     # return the jsonified verision of the list when 
-#     return jsonify(start_list)
 
 if __name__ == "__main__":
     app.run(debug=True)
