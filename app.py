@@ -49,7 +49,7 @@ def tools():
 def tools_data(tool_category):
     session = Session(engine)
 
-    # query to obtain state name and rank
+    # query to obtain totals of each type within chosen tool category
     if (tool_category == "course_platform"):
         tool_data = session.query(func.sum(salary_data2.udacity), func.sum(salary_data2.coursera), func.sum(salary_data2.edx),\
             func.sum(salary_data2.datacamp), func.sum(salary_data2.dataquest), func.sum(salary_data2.kaggle),\
@@ -192,6 +192,72 @@ def tools_data(tool_category):
     return jsonify(data_list)
 
 
+# salary_visuals page to render salary_visuals.html
+@app.route("/salary_visuals")
+def salary_visuals():
+    return render_template("salary_visuals.html")
+
+
+@app.route("/salary_visuals_data/<filter_choice>")
+def salary_visuals_data(filter_choice):
+    session = Session(engine)
+
+    # query to obtain salaries of each chosen filter
+    if (filter_choice == "job_title"):
+        visuals_data = session.query(salary_data2.title, func.avg(salary_data2.salary)).\
+            group_by(salary_data2.title).all()
+    elif (filter_choice == "gender"):
+        visuals_data = session.query(salary_data2.gender, func.avg(salary_data2.salary)).\
+            group_by(salary_data2.gender).all()
+    elif (filter_choice == "education"):
+        visuals_data = session.query(salary_data2.education, func.avg(salary_data2.salary)).\
+            group_by(salary_data2.education).all()
+    elif (filter_choice == "country"):
+        visuals_data = session.query(salary_data2.country, func.avg(salary_data2.salary)).\
+            group_by(salary_data2.country).all()
+    
+    session.close()
+
+    # adds data into a dictionary to be jsonified
+    data_list = []
+    if (filter_choice == "job_title"):
+        for title, salary in visuals_data:
+            data_list_dict = {}
+            data_list_dict["title"] = title
+            data_list_dict["salary"] = salary
+            data_list.append(data_list_dict)
+    elif (filter_choice == "gender"):
+        for gender, salary in visuals_data:
+            data_list_dict = {}
+            data_list_dict["gender"] = gender
+            data_list_dict["salary"] = salary
+            data_list.append(data_list_dict)
+    elif (filter_choice == "education"):
+        for education, salary in visuals_data:
+            data_list_dict = {}
+            data_list_dict["education"] = education
+            data_list_dict["salary"] = salary
+            data_list.append(data_list_dict)
+    if (filter_choice == "country"):
+        for country, salary in visuals_data:
+            data_list_dict = {}
+            data_list_dict["country"] = country
+            data_list_dict["salary"] = salary
+            data_list.append(data_list_dict)
+
+    return jsonify(data_list)
+
+
+# tools of the trade page to render tools.html
+@app.route("/salary_visuals_data_by_country/<filter_choice>/<country>")
+def salary_visuals_data_by_country(filter_choice, country):
+    session = Session(engine)
+    # filter(salary_data2.country == country).\
+
+
+    return jsonify(data_list)
+
+
 # api route to obtain the name data from salary_data1
 @app.route("/salary_data1")
 def all_salary_data1():
@@ -280,9 +346,9 @@ def all_salary_data1():
 # with open('topic_labels.txt','r') as f:
 #     topics = le(f.read())
 
-# @app.route('/prediction.html')
-# def go_to_prediction():
-# 	return render_template('prediction.html')
+@app.route('/prediction.html')
+def go_to_prediction():
+	return render_template('prediction.html')
 
 # @app.route('/prediction', methods=['POST','GET'])
 # def predict(category_model = tuned_category_model,
