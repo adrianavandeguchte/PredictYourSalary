@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Editors
 .vscode/
 
@@ -121,3 +122,6 @@ config.py
 # Mac dotunderscore files
 ._*
 notebooks/.DS_Store
+=======
+config.py
+>>>>>>> origin/data_cleaning2
