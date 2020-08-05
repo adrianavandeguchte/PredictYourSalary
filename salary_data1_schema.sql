@@ -1,7 +1,6 @@
 CREATE TABLE salary_data1 (
 	id INTEGER PRIMARY KEY,
 	salaryusd INTEGER,
-	country TEXT,
 	primarydatabase TEXT,
 	yearswiththisdatabase INTEGER,
 	employmentstatus TEXT,
@@ -16,5 +15,6 @@ CREATE TABLE salary_data1 (
 	hoursworkedperweek INTEGER,
 	telecommutedaysperweek TEXT,
 	employmentsector TEXT,
-	region TEXT
+	region TEXT,
+	averagesalaryusdbins TEXT
 );

@@ -108,29 +108,29 @@ def all_salary_data1():
 # with open('topic_labels.txt','r') as f:
 #     topics = le(f.read())
 
-# @app.route('/prediction.html')
-# def go_to_prediction():
-# 	return render_template('prediction.html')
+@app.route('/prediction.html')
+def go_to_prediction():
+	return render_template('prediction.html')
 
-# @app.route('/prediction', methods=['POST','GET'])
-# def predict(category_model = tuned_category_model,
-#             topic_model = tuned_topic_model,
-#             vectorizer = vectorizer,
-#             categories = categories,
-#             topics = topics):
+@app.route('/prediction', methods=['POST','GET'])
+def predict(category_model = tuned_category_model,
+            topic_model = tuned_topic_model,
+            vectorizer = vectorizer,
+            categories = categories,
+            topics = topics):
 
-# 	#get question from the html form
-# 	text = request.form['question']
+	#get question from the html form
+	text = request.form['question']
 
-# 	#convert text to lowercase
-# 	text = text.lower()
+	#convert text to lowercase
+	text = text.lower()
 
-# 	#form feature vectors
-# 	features = vectorizer.transform([text])
+	#form feature vectors
+	features = vectorizer.transform([text])
 
-# 	#predict result category
-# 	print('Using best category model : {}'.format(category_model))
-# 	pred = category_model.predict(features)
+	#predict result category
+	print('Using best category model : {}'.format(category_model))
+	pred = category_model.predict(features)
 
 # 	category = lookup(categories, pred[0])
 # 	print('Category : {}'.format(category))
