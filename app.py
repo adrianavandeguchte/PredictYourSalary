@@ -452,63 +452,51 @@ def all_salary_data1():
     return jsonify(data_list)
 
 
-# import re
-# import time
-# import nltk
-# import pickle
-# from ast import literal_eval as le
-# # load category model
-# filename = 'Question_Classification_LinearSVM_model.pkl'
-# tuned_category_model = pickle.load(open(filename, 'rb'))
-# # load topic model
-# topic_filename = 'Question_Classification_LinearSVM_topic_model.pkl'
-# tuned_topic_model = pickle.load(open(filename, 'rb'))
-# # load vectorizer
-# vector_filename = 'Question_Classification_vectorizer.pkl'
-# vectorizer = pickle.load(open(vector_filename, 'rb'))
-# # load categories and class names
-# categories, topics = {},{}
-# with open('category_labels.txt','r') as f:
-#     categories = le(f.read())
-# with open('topic_labels.txt','r') as f:
-#     topics = le(f.read())
-
 @app.route('/prediction.html')
 def go_to_prediction():
 	return render_template('prediction.html')
 
-# @app.route('/prediction', methods=['POST','GET'])
-# def predict(category_model = tuned_category_model,
-#             topic_model = tuned_topic_model,
-#             vectorizer = vectorizer,
-#             categories = categories,
-#             topics = topics):
 
-# 	#get question from the html form
-# 	text = request.form['question']
+@app.route('/prediction', methods=['POST','GET'])
+def predict(category_model = tuned_category_model,
+            topic_model = tuned_topic_model,
+            vectorizer = vectorizer,
+            categories = categories,
+            topics = topics):
 
-# 	#convert text to lowercase
-# 	text = text.lower()
+    import joblib
+    salary_model = joblib.load('salary_model_trained.sav')
 
-# 	#form feature vectors
-# 	features = vectorizer.transform([text])
+    from sklearn.preprocessing import StandardScaler
+    X_scaler = joblib.load('X_scaler.sav')
 
-# 	#predict result category
-# 	print('Using best category model : {}'.format(category_model))
-# 	pred = category_model.predict(features)
+	#get question from the html form
+	user_response = request.form['salary_form']
 
-# 	category = lookup(categories, pred[0])
-# 	print('Category : {}'.format(category))
+	#convert text to lowercase
+	user_response = text.lower()
 
-# 	#predict result topic
-# 	print('\n\nUsing best topic model : {}'.format(topic_model))
-# 	pred = topic_model.predict(features)
+    user_response_transformed = X_scaler.transform(user_response)
 
-# 	topic = lookup(topics, pred[0])
-# 	print('Topic : {}'.format(topic))
-  
-#   #show results on the HTML page
-# 	return render_template('prediction.html', prediction_string='Predictions :', category='Category : {}'.format(category), topic='Topic : {}'.format(topic))
+	#predict result category
+	prediction = salary_model.predict(user_response_transformed)
+
+    # #predict result category
+	# print('Using best category model : {}'.format(category_model))
+	# pred = category_model.predict(features)
+
+	# category = lookup(categories, pred[0])
+	# print('Category : {}'.format(category))
+
+	# #predict result topic
+	# print('\n\nUsing best topic model : {}'.format(topic_model))
+	# pred = topic_model.predict(features)
+
+	# topic = lookup(topics, pred[0])
+	# print('Topic : {}'.format(topic))
+
+    #show results on the HTML page
+	return render_template('prediction.html', prediction_string='Predictions: ', category='Category : {}'.format(category), topic='Topic : {}'.format(topic))
 
 
 
