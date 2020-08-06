@@ -1,3 +1,4 @@
+drop table salary_data1 ;
 CREATE TABLE salary_data1 (
 	id INTEGER PRIMARY KEY,
 	salaryusd INTEGER,
@@ -16,9 +17,9 @@ CREATE TABLE salary_data1 (
 	hoursworkedperweek INTEGER,
 	telecommutedaysperweek TEXT,
 	employmentsector TEXT,
-	region TEXT
+	region TEXT,
+	averagesalaryusdbins TEXT
 );
-
 
 
 DROP TABLE public.salary_data2;
@@ -57,7 +58,7 @@ CREATE TABLE public.salary_data2
     vsc bigint,
     spyder bigint,
     vim_emacs bigint,
-    "notepad++" bigint,
+    notepad_plusplus bigint,
     sublime bigint,
     env_none bigint,
     env_other bigint,
@@ -65,7 +66,7 @@ CREATE TABLE public.salary_data2
     r bigint,
     sql bigint,
     c bigint,
-    "c++" bigint,
+    c_plusplus bigint,
     java bigint,
     javascript bigint,
     typescript bigint,
@@ -134,7 +135,8 @@ CREATE TABLE public.salary_data2
     azure_sql bigint,
     google_sql bigint,
     database_none bigint,
-    database_other bigint
+    database_other bigint,
+    region text
 )
 WITH (
     OIDS = FALSE
