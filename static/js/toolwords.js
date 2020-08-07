@@ -68,6 +68,8 @@ function wordCloud(selector) {
 }
 
 //Some sample data - http://en.wikiquote.org/wiki/Opening_lines
+d3.json("")
+
 var words = [
     "THIS IS PLACEHOLDER TEXT. ADD THE WORDS HERE!!!!"
 ]
