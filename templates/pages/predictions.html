@@ -7,79 +7,120 @@
     <title>Document</title>
     <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../static/css/stylesheet.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+
 </head>
 
 <body>
 
-    <form>
-
-        <div class="col-xs-6 col-md-6">
+        <div class="col-xs-6 col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p>Enter Your Information for Job Preference:</p>
+                    <p>Enter Job Information to Predict the Salary:</p>
                     <div class="panel-body1">
                         <div>
-                            <form action="/" method='post'> Acerage: <input type="number" name="ac" min="0"
-                                    required><br> List Price: <input type="number" name="lp" min="0" required><br>
-                                Number of full bathrooms: <input type="number" name="fb" min="0" required><br> Number of
-                                half bathrooms: <input type="number" name="hb" min="0" required><br> Number of bedrooms:
-                                <input type="number" name="bd" min="0" required><br> Total number of rooms: <input
-                                    type="number" name="rooms" min="0" required><br> Is there a basement? <select
-                                    name="bmnt" required>
-                                    <option style="display:none;" disabled selected value></option>
-                                    <option value="0">No</option>
-                                    <option value="1">Yes</option>
-                                </select><br> Are there exterior features? (i.e. deck, patio) <select name="ext"
-                                    required>
-                                    <option style="display:none;" disabled selected value></option>
-                                    <option value="0">No</option>
-                                    <option value="1">Yes</option>
-                                </select><br> Is there air conditioning? <select name="cool" required>
-                                    <option style="display:none;" disabled selected value></option>
-                                    <option value="0">No</option>
-                                    <option value="1">Yes</option>
-                                </select><br> Is the heating system forced hot air? <select name="heat" required>
-                                    <option style="display:none;" disabled selected value></option>
-                                    <option value="0">No</option>
-                                    <option value="1">Yes</option>
-                                </select><br> Is the water supply privately or publicly owned? <select name="water"
-                                    required>
-                                    <option style="display:none;" disabled selected value></option>
-                                    <option value="0">Private Owned</option>
-                                    <option value="1">Public Owned</option>
-                                </select><br> Is the septic or sewer privately or publicly owned? <select name="sewer"
-                                    required>
-                                    <option style="display:none;" disabled selected value></option>
-                                    <option value="0">Private Owned</option>
-                                    <option value="1">Public Owned</option>
-                                </select><br> Is it in a 55 year old and up community? <select name="fha" required>
-                                    <option style="display:none;" disabled selected value></option>
-                                    <option value="0">No</option>
-                                    <option value="1">Yes</option>
-                                </select><br> Land assessment value: <input type="number" name="la" min="0"
-                                    required><br> Building assessment value: <input type="number" name="ba" min="0"
-                                    required><br> Tax amount: <input type="number" name="ta" min="0" required><br>
-                                <input type="submit" value="Submit"> </form>
+                            <form action="/" method='post'>
+                                1. Country: 
+                                    <select id="selCountry"></select>
+                                <br>
+                                2. Region:
+                                <!-- this should autofill based on what country they select -->
+                                <br>
+                                3. Highest Level of Education:
+                                    <select name="education" required>
+                                        <option style="display:none;" disabled selected value></option>
+                                        <option value="None (no degree completed)">No Degree</option>
+                                        <option value="Associates (2 years)">Associates</option>
+                                        <option value="Bachelors (4 years)">Bachelors</option>
+                                        <option value="Masters">Masters</option>
+                                    </select>
+                                <br>
+                                4. Is Education Computer Related:
+                                    <input type="radio" id="yes" name="comp_ed" value="Yes">
+                                        <label for="yes">Yes</label>
+                                    <input type="radio" id="no" name="comp_ed" value="No">
+                                        <label for="no">No</label>
+                                <br>
+                                5. Primary Database:
+                                    <select name="primary_db" required>
+                                        <option style="display:none;" disabled selected value></option>
+                                        <option value="Amazon RDS (any flavor)">Amazon RDS</option>
+                                        <option value="Azure SQL DB">Azure SQL</option>
+                                        <option value="Cassandra">Cassandra</option>
+                                        <option value="DB2">DB2</option>
+                                        <option value="Elasticsearch">Elasticsearch</option>
+                                        <option value="Microsoft Access">Microsoft Access</option>
+                                        <option value="Microsoft SQL Server">Microsoft SQL Server</option>
+                                        <option value="MongoDB">MongoDB</option>
+                                        <option value="MySQL/MariaDB">MySQL/MariaDB</option>
+                                        <option value="Oracle">Oracle</option>
+                                        <option value="PostgreSQL">PostgreSQL</option>
+                                        <option value="SAP">SAP</option>
+                                        <option value="SQLite">SQLite</option>
+                                        <option value="Teradata">Teradata</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                <br>
+                                6. Years with this Database:
+                                    <input type="number" name="years_db" min="0" max="50" required>
+                                <br>
+                                7. Years with this Type of Job:
+                                    <input type="number" name="years_job" min="0" max="50" required>
+                                <br>
+                                8. Employment Sector:
+                                    <select name="employ_sector" required>
+                                        <option style="display:none;" disabled selected value></option>
+                                        <option value="Private business">Private</option>
+                                        <option value="Government">Government</option>
+                                        <option value="Non-profit">Non-profit</option>
+                                        <option value="Education (K-12, college, university)">Education</option>
+                                    </select>
+                                <br>
+                                9. Amount of Other People on Your Team:
+                                    <select name="OtherPeople" required>
+                                        <option style="display:none;" disabled selected value></option>
+                                        <option value="None">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="More than 5">6+</option>
+                                    </select>
+                                <br>
+                                10. Employment Status:
+                                <input type="radio" id="employee" name="employ_status" value="Full time employee">
+                                    <label for="employee">Employee</label>
+                                <input type="radio" id="freelancer" name="employ_status" value="Independent Consultant/Freelancer">
+                                    <label for="freelancer">Consultant/Freelancer</label>
+                                <br>
+                                11. Amount of Telecommute Days per Week:
+                                    <select name="telecommutedaysperweek" required>
+                                        <option style="display:none;" disabled selected value></option>
+                                        <option value="None, or less than 1 day per week">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5 or more">5+</option>
+                                    </select>
+                                <br>
+                                12. Are You a Manager:
+                                    <input type="radio" id="yes" name="manager" value="Full time employee">
+                                        <label for="yes">Yes</label>
+                                    <input type="radio" id="no" name="manager" value="Independent Consultant/Freelancer">
+                                        <label for="no">No</label>
+                                <br>
+                                <input type="submit" value="Submit">
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        'yearswiththisdatabase', --> number box, integer, max 50
-        'country', --> dropdown, string
-        'primarydatabase', --> dropdown, string
-        'employmentstatus', --> dropdown, string
-        'region', --> drowdown, string
-        'yearswiththistypeofjob', --> number box, integer, max 50
-        'educationiscomputerrelated', --> radio button, yes or no
-        'otherpeopleonyourteam', --> drop down, 0-5+, strings
-        'telecommutedaysperweek', --> down down, 0-5+, strings
-        'employmentsector', --> dropdown --> strings
-        'managestaff', --> radio button, yes or no
-        'education' --> drop down, string
-    </form>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <script src="../../static/js/model.js"></script>
 </body>
 
 </html>

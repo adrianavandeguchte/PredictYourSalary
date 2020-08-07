@@ -457,46 +457,46 @@ def go_to_prediction():
 	return render_template('prediction.html')
 
 
-@app.route('/prediction', methods=['POST','GET'])
-def predict(category_model = tuned_category_model,
-            topic_model = tuned_topic_model,
-            vectorizer = vectorizer,
-            categories = categories,
-            topics = topics):
+# @app.route('/prediction', methods=['POST','GET'])
+# def predict(category_model = tuned_category_model,
+#             topic_model = tuned_topic_model,
+#             vectorizer = vectorizer,
+#             categories = categories,
+#             topics = topics):
 
-    import joblib
-    salary_model = joblib.load('salary_model_trained.sav')
+#     import joblib
+#     salary_model = joblib.load('salary_model_trained.sav')
 
-    from sklearn.preprocessing import StandardScaler
-    X_scaler = joblib.load('X_scaler.sav')
+#     from sklearn.preprocessing import StandardScaler
+#     X_scaler = joblib.load('X_scaler.sav')
 
-	#get question from the html form
-	user_response = request.form['salary_form']
+# 	#get question from the html form
+# 	user_response = request.form['salary_form']
 
-	#convert text to lowercase
-	user_response = text.lower()
+# 	#convert text to lowercase
+# 	user_response = text.lower()
 
-    user_response_transformed = X_scaler.transform(user_response)
+#     user_response_transformed = X_scaler.transform(user_response)
 
-	#predict result category
-	prediction = salary_model.predict(user_response_transformed)
+# 	#predict result category
+# 	prediction = salary_model.predict(user_response_transformed)
 
-    # #predict result category
-	# print('Using best category model : {}'.format(category_model))
-	# pred = category_model.predict(features)
+#     # #predict result category
+# 	# print('Using best category model : {}'.format(category_model))
+# 	# pred = category_model.predict(features)
 
-	# category = lookup(categories, pred[0])
-	# print('Category : {}'.format(category))
+# 	# category = lookup(categories, pred[0])
+# 	# print('Category : {}'.format(category))
 
-	# #predict result topic
-	# print('\n\nUsing best topic model : {}'.format(topic_model))
-	# pred = topic_model.predict(features)
+# 	# #predict result topic
+# 	# print('\n\nUsing best topic model : {}'.format(topic_model))
+# 	# pred = topic_model.predict(features)
 
-	# topic = lookup(topics, pred[0])
-	# print('Topic : {}'.format(topic))
+# 	# topic = lookup(topics, pred[0])
+# 	# print('Topic : {}'.format(topic))
 
-    #show results on the HTML page
-	return render_template('prediction.html', prediction_string='Predictions: ', category='Category : {}'.format(category), topic='Topic : {}'.format(topic))
+#     #show results on the HTML page
+# 	return render_template('prediction.html', prediction_string='Predictions: ', category='Category : {}'.format(category), topic='Topic : {}'.format(topic))
 
 
 
