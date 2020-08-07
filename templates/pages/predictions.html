@@ -21,10 +21,13 @@
                         <div>
                             <form action="/" method='post'>
                                 1. Country: 
-                                    <select id="selCountry"></select>
+                                    <select id="selCountry" name="country" required>
+                                    </select>
                                 <br>
                                 2. Region:
                                 <!-- this should autofill based on what country they select -->
+                                    <select id="selRegion" name="region" required>
+                                    </select>
                                 <br>
                                 3. Highest Level of Education:
                                     <select name="education" required>
@@ -77,7 +80,7 @@
                                     </select>
                                 <br>
                                 9. Amount of Other People on Your Team:
-                                    <select name="OtherPeople" required>
+                                    <select name="other_people" required>
                                         <option style="display:none;" disabled selected value></option>
                                         <option value="None">0</option>
                                         <option value="1">1</option>
@@ -95,7 +98,7 @@
                                     <label for="freelancer">Consultant/Freelancer</label>
                                 <br>
                                 11. Amount of Telecommute Days per Week:
-                                    <select name="telecommutedaysperweek" required>
+                                    <select name="telecommute" required>
                                         <option style="display:none;" disabled selected value></option>
                                         <option value="None, or less than 1 day per week">0</option>
                                         <option value="1">1</option>
@@ -113,6 +116,8 @@
                                 <br>
                                 <input type="submit" value="Submit">
                             </form>
+                            <br>
+                            {{ prediction_string }}
                         </div>
                     </div>
                 </div>
