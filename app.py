@@ -46,7 +46,7 @@ def tools():
 
 # tools of the trade page to render tools.html
 @app.route("/demographics")
-def tools():
+def demographics():
     return render_template("demog.html")
 
 # tools of the trade page to render tools.html
