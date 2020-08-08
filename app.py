@@ -49,6 +49,10 @@ def tools():
 def demographics():
     return render_template("demog.html")
 
+@app.route("/audit")
+def audit():
+    return render_template("audit.html")
+
 # tools of the trade page to render tools.html
 @app.route("/tools_data/<tool_category>")
 def tools_data(tool_category):
