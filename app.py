@@ -40,6 +40,14 @@ def about():
 def methodology():
     return render_template("methodology.html")
 
+@app.route("/demographics")
+def demographics():
+    return render_template("demog.html")
+
+@app.route("/audit")
+def audit():
+    return render_template("audit.html")
+
 # tools of the trade page to render tools.html
 @app.route("/tools")
 def tools():
@@ -99,7 +107,8 @@ def tools_data():
         course_platform_dict["university"] = university
         course_platform_dict["none"] = plat_none
         course_platform_dict["other"] = plat_other
-        data_list.append(course_platform_dict)
+        course_platform_dict_with_name = {"course_platforms":course_platform_dict}
+        data_list.append(course_platform_dict_with_name)
     for jupyter, rstudio, pycharm, atom, matlab, vsc, spyder, vim_emacs, notepad, sublime, env_none, env_other in text_editor_data:
         text_editor_dict = {}
         text_editor_dict["jupyter"] = jupyter
@@ -114,7 +123,8 @@ def tools_data():
         text_editor_dict["sublime"] = sublime
         text_editor_dict["none"] = env_none
         text_editor_dict["other"] = env_other
-        data_list.append(text_editor_dict)
+        text_editor_dict_with_name = {"text_editors":text_editor_dict}
+        data_list.append(text_editor_dict_with_name)
     for python, r, sql, c, c_plusplus, java, javascript, typescript, bash, lan_matlab, lan_none, lan_other in language_data:
         language_dict = {}
         language_dict["python"] = python
@@ -129,7 +139,8 @@ def tools_data():
         language_dict["matlab_language"] = lan_matlab
         language_dict["none"] = lan_none
         language_dict["other"] = lan_other
-        data_list.append(language_dict)
+        language_dict_with_name = {"languages":language_dict}
+        data_list.append(language_dict_with_name)
     for ggplot, matplotlib, altair, shiny, d3, plotly, bokeh, seaborn, geoplotlib, leaflet, vis_none, vis_other in library_data:
         library_dict = {}
         library_dict["ggplot"] = ggplot
@@ -144,7 +155,8 @@ def tools_data():
         library_dict["leaflet"] = leaflet
         library_dict["none"] = vis_none
         library_dict["other"] = vis_other
-        data_list.append(library_dict)
+        library_dict_with_name = {"libraries":library_dict}
+        data_list.append(library_dict_with_name)
     for regression, tree_forest, gradient_boost, bayesian, evolutionary, dnn, cnn, gan, rnn, bert, mach_none, mach_other in ml_model_data:
         ml_model_dict = {}
         ml_model_dict["regression"] = regression
@@ -159,7 +171,8 @@ def tools_data():
         ml_model_dict["bert"] = bert
         ml_model_dict["none"] = mach_none
         ml_model_dict["other"] = mach_other
-        data_list.append(ml_model_dict)
+        ml_model_dict_with_name = {"ml_models":ml_model_dict}
+        data_list.append(ml_model_dict_with_name)
     for mysql, postgres, sql_lite, sqlserver, oracle, micro_aces, aws_data, aws_dynamo, azure_sql, google_sql, database_none, database_other in database_data:
         database_dict = {}
         database_dict["mysql"] = mysql
@@ -174,7 +187,8 @@ def tools_data():
         database_dict["google_sql"] = google_sql
         database_dict["none"] = database_none
         database_dict["other"] = database_other
-        data_list.append(database_dict)
+        database_dict_with_name = {"databases":database_dict}
+        data_list.append(database_dict_with_name)
 
     return jsonify(data_list)
 
@@ -190,11 +204,11 @@ def recommendations_data():
     session = Session(engine)
 
     recommendation_data = session.query(salary_data2.first_program).all()
+    
     data_list = []
     for item in recommendation_data:
-        data_dict = {}
-        data_dict["recommended_first_language"] = item.first_program
-        data_list.append(data_dict)
+        if (item.first_program != 0):
+            data_list.append(item.first_program)
 
     return jsonify(data_list)
 
