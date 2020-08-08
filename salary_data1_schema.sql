@@ -16,5 +16,6 @@ CREATE TABLE salary_data1 (
 	hoursworkedperweek INTEGER,
 	telecommutedaysperweek TEXT,
 	employmentsector TEXT,
-	region TEXT
+	region TEXT,
+	averagesalaryusdbins TEXT
 );

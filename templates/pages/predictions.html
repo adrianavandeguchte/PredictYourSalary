@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/stylesheet.css">
+</head>
+
+<body>
+
+    <form>
+
+        <div class="col-xs-6 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>Enter Your Information for Job Preference:</p>
+                    <div class="panel-body1">
+                        <div>
+                            <form action="/" method='post'> Acerage: <input type="number" name="ac" min="0"
+                                    required><br> List Price: <input type="number" name="lp" min="0" required><br>
+                                Number of full bathrooms: <input type="number" name="fb" min="0" required><br> Number of
+                                half bathrooms: <input type="number" name="hb" min="0" required><br> Number of bedrooms:
+                                <input type="number" name="bd" min="0" required><br> Total number of rooms: <input
+                                    type="number" name="rooms" min="0" required><br> Is there a basement? <select
+                                    name="bmnt" required>
+                                    <option style="display:none;" disabled selected value></option>
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select><br> Are there exterior features? (i.e. deck, patio) <select name="ext"
+                                    required>
+                                    <option style="display:none;" disabled selected value></option>
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select><br> Is there air conditioning? <select name="cool" required>
+                                    <option style="display:none;" disabled selected value></option>
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select><br> Is the heating system forced hot air? <select name="heat" required>
+                                    <option style="display:none;" disabled selected value></option>
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select><br> Is the water supply privately or publicly owned? <select name="water"
+                                    required>
+                                    <option style="display:none;" disabled selected value></option>
+                                    <option value="0">Private Owned</option>
+                                    <option value="1">Public Owned</option>
+                                </select><br> Is the septic or sewer privately or publicly owned? <select name="sewer"
+                                    required>
+                                    <option style="display:none;" disabled selected value></option>
+                                    <option value="0">Private Owned</option>
+                                    <option value="1">Public Owned</option>
+                                </select><br> Is it in a 55 year old and up community? <select name="fha" required>
+                                    <option style="display:none;" disabled selected value></option>
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select><br> Land assessment value: <input type="number" name="la" min="0"
+                                    required><br> Building assessment value: <input type="number" name="ba" min="0"
+                                    required><br> Tax amount: <input type="number" name="ta" min="0" required><br>
+                                <input type="submit" value="Submit"> </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        'yearswiththisdatabase', --> number box, integer, max 50
+        'country', --> dropdown, string
+        'primarydatabase', --> dropdown, string
+        'employmentstatus', --> dropdown, string
+        'region', --> drowdown, string
+        'yearswiththistypeofjob', --> number box, integer, max 50
+        'educationiscomputerrelated', --> radio button, yes or no
+        'otherpeopleonyourteam', --> drop down, 0-5+, strings
+        'telecommutedaysperweek', --> down down, 0-5+, strings
+        'employmentsector', --> dropdown --> strings
+        'managestaff', --> radio button, yes or no
+        'education' --> drop down, string
+    </form>
+
+</body>
+
+</html>
