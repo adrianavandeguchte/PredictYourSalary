@@ -68,10 +68,10 @@ function wordCloud(selector) {
 }
 
 //Some sample data - http://en.wikiquote.org/wiki/Opening_lines
-d3.json("")
+// d3.json("")
 
 var words = [
-    "THIS IS PLACEHOLDER TEXT. ADD THE WORDS HERE!!!!"
+    "THIS IS PLACEHOLDER TEXT. ADD THE WORDS HERE!!!! BLAH BLAH BLAH. MORE TEXT. ADDITIONAL TEST. BLAH BLAH BLAH."
 ]
 
 //Prepare one of the sample sentences by removing punctuation,
