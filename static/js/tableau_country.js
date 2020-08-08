@@ -1,8 +1,8 @@
 function initializeViz() {
   // JS object that points at empty div in the html
-  var placeholderDiv = document.getElementById("tableauViz");
+  var countryDiv = document.getElementById("tableauCountry");
   // URL of the viz to be embedded
-  var url = "http://public.tableau.com/views/placeholder";
+  var url = "https://public.tableau.com/profile/shrilekha.vijayakanthan8354#!/vizhome/TechSalaryAnalysis2/SalarybyCountry?publish=yes";
   // An object that contains options specifying how to embed the viz
   var options = {
     width: '600px',
@@ -10,4 +10,4 @@ function initializeViz() {
     hideTabs: true,
     hideToolbar: true,
   };
-  viz = new tableau.Viz(placeholderDiv, url, options);
+  viz = new tableau.Viz(countryDiv, url, options);
