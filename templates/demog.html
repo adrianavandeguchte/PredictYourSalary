@@ -5,11 +5,11 @@
     <title>Basic Embed</title>
 
     <script type="text/javascript"
-	    src="https://public.tableau.com/profile/shrilekha.vijayakanthan8354#!/javascripts/api/tableau-2.min.js"></script>
+	    src="https://public.tableau.com/javascripts/api/tableau-2.5.0.min.js"></script>
     <script type="text/javascript">
         function initViz() {
             var containerDiv = document.getElementById("vizContainer"),
-                url = "https://public.tableau.com/profile/shrilekha.vijayakanthan8354#!/vizhome/TechSalaryAnalysis/GenderAnalysiss",
+                url = "https://public.tableau.com/views/bootcamp3_15969017276920/Dashboard3?:language=en&:display_count=y&publish=yes&:origin=viz_share_link&:embed=y",
                 options = {
                     hideTabs: true,
                     onFirstInteractive: function () {
@@ -17,14 +17,20 @@
                     }
                 };
 
+
             var viz = new tableau.Viz(containerDiv, url, options);
+
             // Create a viz object and embed it in the container div.
         }
     </script>
 </head>
 
 <body onload="initViz();">
+
     <div id="vizContainer" style="width:800px; height:700px;"></div>
+
+
+
 </body>
 
 
