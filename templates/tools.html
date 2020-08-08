@@ -9,15 +9,20 @@
   <link rel="stylesheet" href="../static/css/stylesheet.css">
   <!---Scripts--->
   <!-- <script type="text/javascript" src="static/js/d3.v3.min.js"></script> -->
-  <script src='https://d3js.org/d3.v3.min.js'></script>
+  <script src='https://d3js.org/d3.v5.min.js'></script>
+  <script>
+    var d3v5 = window.d3;
+    window.d3 = null;
+  </script>
+  <script src="https://d3js.org/d3.v3.js"></script>
   <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
 
   </head>
 
 	<body>
     <div class="sidebar">
-      <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
-      <a href="#services"><i class="fa fa-fw fa-wrench"></i> Services</a>
+      <img src="https://images.all-free-download.com/images/graphiclarge/orange_rang_small_icon_vector_280741.jpg" onclick="window.open(this.src)">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRp5cq2OOA5RilmjplkbobFFZlf68MJEnn9Ww&usqp=CAU">
       <a href="#clients"><i class="fa fa-fw fa-user"></i> Clients</a>
       <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
     </div>
@@ -35,16 +40,14 @@
 					<div class="row">
 						<div class="col-md-12">
 							<h3>
-								h3. Lorem ipsum dolor sit amet.
+								Where to start?
 							</h3>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-
-							<button type="button" class="btn btn-success">
-								Button
-							</button>
+              <div class="wordCloud">
+              </div>
 						</div>
 					</div>
 					<div class="row">
@@ -61,16 +64,14 @@
 					<div class="row">
 						<div class="col-md-12">
 							<h3>
-								h3. Lorem ipsum dolor sit amet.
+								Industry Favorites
 							</h3>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-
-							<button type="button" class="btn btn-success">
-								Button
-							</button>
+              <div class="bubble">
+              </div>
 						</div>
 					</div>
 					<div class="row">
@@ -111,6 +112,7 @@
 		</div>
     <!-- <script type="text/javascript" src="static/js/toolbubble.js"></script> -->
     <script type="text/javascript" src="static/js/toolwords.js"></script>
+        <script type="text/javascript" src="static/js/test.js"></script>
 	</body>
 
 </html>

@@ -93,7 +93,7 @@ function showNewWords(vis, i) {
 }
 
 //Create a new instance of the word cloud visualisation.
-var myWordCloud = wordCloud('body');
+var myWordCloud = wordCloud('.wordCloud');
 
 //Start cycling through the demo data
 showNewWords(myWordCloud);
