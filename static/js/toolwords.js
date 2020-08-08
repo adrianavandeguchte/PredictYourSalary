@@ -68,20 +68,17 @@ function wordCloud(selector) {
 }
 
 //Some sample data - http://en.wikiquote.org/wiki/Opening_lines
-// d3.json("")
 
-var words = [
-    "THIS IS PLACEHOLDER TEXT. ADD THE WORDS HERE!!!! BLAH BLAH BLAH. MORE TEXT. ADDITIONAL TEST. BLAH BLAH BLAH."
-]
+var words = [{word: "Running", size: "10"}, {word: "Surfing", size: "20"}, {word: "Climbing", size: "50"}, {word: "Kiting", size: "30"}, {word: "Sailing", size: "20"}, {word: "Snowboarding", size: "60"} ]
 
 //Prepare one of the sample sentences by removing punctuation,
 // creating an array of words and computing a random size attribute.
 function getWords(i) {
-    return words[i]
-            .replace(/[!\.,:;\?]/g, '')
-            .split(' ')
+    return words
+            // .replace(/[!\.,:;\?]/g, '')
+            // .split(' ')
             .map(function(d) {
-                return {text: d, size: 10 + Math.random() * 60};
+                return {text: d.word, size:d.size};
             })
 }
 
@@ -92,7 +89,7 @@ function showNewWords(vis, i) {
     i = i || 0;
 
     vis.update(getWords(i ++ % words.length))
-    setTimeout(function() { showNewWords(vis, i + 1)}, 2000)
+    // setTimeout(function() { showNewWords(vis, i + 1)}, 2000)
 }
 
 //Create a new instance of the word cloud visualisation.
