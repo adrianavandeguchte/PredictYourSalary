@@ -45,6 +45,11 @@ def tools():
     return render_template("tools.html")
 
 # tools of the trade page to render tools.html
+@app.route("/demographics")
+def tools():
+    return render_template("demog.html")
+
+# tools of the trade page to render tools.html
 @app.route("/tools_data/<tool_category>")
 def tools_data(tool_category):
     session = Session(engine)
@@ -85,7 +90,7 @@ def tools_data(tool_category):
             func.sum(salary_data2.oracle), func.sum(salary_data2.micro_acess), func.sum(salary_data2.aws_data),\
             func.sum(salary_data2.aws_dynamo), func.sum(salary_data2.azure_sql), func.sum(salary_data2.google_sql),\
             func.sum(salary_data2.database_none), func.sum(salary_data2.database_other)).all()
-    
+
     session.close()
 
     # adds data into a dictionary to be jsonified
@@ -206,9 +211,9 @@ def salary_visuals_data(filter_choice):
     # query to obtain salaries of each chosen filter
     if (filter_choice == "job_title_dataset2"):
         visuals_data = session.query(salary_data2.title, func.count(salary_data2.title), func.avg(salary_data2.salary)).\
-            group_by(salary_data2.title).all()    
+            group_by(salary_data2.title).all()
         session.close()
-        
+
         # adds data into a dictionary to be jsonified
         for title, count, salary in visuals_data:
             data_list_dict = {}
@@ -228,7 +233,7 @@ def salary_visuals_data(filter_choice):
             data_list_dict["count"] = count
             data_list_dict["salary"] = salary
             data_list.append(data_list_dict)
-    
+
     elif (filter_choice == "education_dataset2"):
         visuals_data = session.query(salary_data2.education, func.count(salary_data2.education), func.avg(salary_data2.salary)).\
             group_by(salary_data2.education).all()
@@ -312,7 +317,7 @@ def salary_visuals_data(filter_choice):
             data_list_dict["count"] = count
             data_list_dict["salary"] = salary
             data_list.append(data_list_dict)
-    
+
     elif (filter_choice == "country_region_dataset1"):
         visuals_data = session.query(salary_data1.country.distinct(), salary_data1.region).all()
         session.close()
@@ -322,7 +327,7 @@ def salary_visuals_data(filter_choice):
             data_list_dict["country"] = country
             data_list_dict["region"] = region
             data_list.append(data_list_dict)
-    
+
     return jsonify(data_list)
 
 
@@ -336,9 +341,9 @@ def salary_visuals_data_by_country(filter_choice, country):
     if (filter_choice == "job_title_dataset2"):
         visuals_data = session.query(salary_data2.title, func.count(salary_data2.title), func.avg(salary_data2.salary)).\
             filter(salary_data2.country == country).\
-            group_by(salary_data2.title).all()    
+            group_by(salary_data2.title).all()
         session.close()
-        
+
         # adds data into a dictionary to be jsonified
         for title, count, salary in visuals_data:
             data_list_dict = {}
@@ -359,7 +364,7 @@ def salary_visuals_data_by_country(filter_choice, country):
             data_list_dict["count"] = count
             data_list_dict["salary"] = salary
             data_list.append(data_list_dict)
-    
+
     elif (filter_choice == "education_dataset2"):
         visuals_data = session.query(salary_data2.education, func.count(salary_data2.education), func.avg(salary_data2.salary)).\
             filter(salary_data2.country == country).\
@@ -424,7 +429,7 @@ def salary_visuals_data_by_country(filter_choice, country):
             data_list_dict["count"] = count
             data_list_dict["salary"] = salary
             data_list.append(data_list_dict)
-    
+
     return jsonify(data_list)
 
 
@@ -458,7 +463,7 @@ def all_salary_data1():
         data_list_dict["employment_sector"] = sector
         data_list_dict["region"] = region
         data_list.append(data_list_dict)
-    
+
     return jsonify(data_list)
 
 
