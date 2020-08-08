@@ -127,4 +127,4 @@ function display(data) {
 }
 
 // load data
-d3.csv('nodes-data.csv').then(display);
+d3.json("/tools").then(display);
