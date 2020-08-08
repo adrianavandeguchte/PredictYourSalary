@@ -4,6 +4,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 from flask import Flask, render_template, redirect, jsonify, request
+import pandas as pd
 
 # database setup
 # Configure settings for RDS
@@ -45,42 +46,36 @@ def tools():
     return render_template("tools.html")
 
 # tools of the trade page to render tools.html
-@app.route("/tools_data/<tool_category>")
-def tools_data(tool_category):
+@app.route("/tools_data")
+def tools_data():
     session = Session(engine)
 
-    # query to obtain totals of each type within chosen tool category
-    if (tool_category == "course_platform"):
-        tool_data = session.query(func.sum(salary_data2.udacity), func.sum(salary_data2.coursera), func.sum(salary_data2.edx),\
+    # query to obtain totals of each type within tool category
+    course_platform_data = session.query(func.sum(salary_data2.udacity), func.sum(salary_data2.coursera), func.sum(salary_data2.edx),\
             func.sum(salary_data2.datacamp), func.sum(salary_data2.dataquest), func.sum(salary_data2.kaggle),\
             func.sum(salary_data2.fastai), func.sum(salary_data2.udemy), func.sum(salary_data2.linkedin),\
             func.sum(salary_data2.university), func.sum(salary_data2.plat_none), func.sum(salary_data2.plat_other)).all()
-    elif (tool_category == "text_editor"):
-        tool_data = session.query(func.sum(salary_data2.jupyter),\
+    text_editor_data = session.query(func.sum(salary_data2.jupyter),\
             func.sum(salary_data2.rstudio), func.sum(salary_data2.pycharm), func.sum(salary_data2.atom),\
             func.sum(salary_data2.matlab), func.sum(salary_data2.vsc), func.sum(salary_data2.spyder),\
             func.sum(salary_data2.vim_emacs), func.sum(salary_data2.notepad_plusplus), func.sum(salary_data2.sublime),\
             func.sum(salary_data2.env_none), func.sum(salary_data2.env_other)).all()
-    elif (tool_category == "language"):
-        tool_data = session.query(func.sum(salary_data2.python),\
+    language_data = session.query(func.sum(salary_data2.python),\
             func.sum(salary_data2.r), func.sum(salary_data2.sql), func.sum(salary_data2.c), func.sum(salary_data2.c_plusplus),\
             func.sum(salary_data2.java), func.sum(salary_data2.javascript), func.sum(salary_data2.typescript),\
             func.sum(salary_data2.bash), func.sum(salary_data2.lan_matlab), func.sum(salary_data2.lan_none),\
             func.sum(salary_data2.lan_other)).all()
-    elif (tool_category == "library"):
-        tool_data = session.query(func.sum(salary_data2.ggplot),\
+    library_data = session.query(func.sum(salary_data2.ggplot),\
             func.sum(salary_data2.matplotlib), func.sum(salary_data2.altair), func.sum(salary_data2.shiny),\
             func.sum(salary_data2.d3), func.sum(salary_data2.plotly), func.sum(salary_data2.bokeh),\
             func.sum(salary_data2.seaborn), func.sum(salary_data2.geoplotlib), func.sum(salary_data2.leaflet),\
             func.sum(salary_data2.vis_none), func.sum(salary_data2.vis_other)).all()
-    elif (tool_category == "ml_model"):
-        tool_data = session.query(func.sum(salary_data2.regression),\
+    ml_model_data = session.query(func.sum(salary_data2.regression),\
             func.sum(salary_data2.tree_forest), func.sum(salary_data2.gradient_boost), func.sum(salary_data2.bayesian),\
             func.sum(salary_data2.evolutionary), func.sum(salary_data2.dnn), func.sum(salary_data2.cnn),\
             func.sum(salary_data2.gan), func.sum(salary_data2.rnn), func.sum(salary_data2.bert), func.sum(salary_data2.mach_none),\
             func.sum(salary_data2.mach_other)).all()
-    elif (tool_category == "database"):
-        tool_data = session.query(func.sum(salary_data2.mysql),\
+    database_data = session.query(func.sum(salary_data2.mysql),\
             func.sum(salary_data2.postgres), func.sum(salary_data2.sql_lite), func.sum(salary_data2.sqlserver),\
             func.sum(salary_data2.oracle), func.sum(salary_data2.micro_acess), func.sum(salary_data2.aws_data),\
             func.sum(salary_data2.aws_dynamo), func.sum(salary_data2.azure_sql), func.sum(salary_data2.google_sql),\
@@ -88,105 +83,118 @@ def tools_data(tool_category):
     
     session.close()
 
-    # adds data into a dictionary to be jsonified
+    # adds data into a dictionaries to be jsonified
     data_list = []
-    if (tool_category == "course_platform"):
-        for udacity, coursera, edx, datacamp, dataquest, kaggle, fastai, udemy, linkedin, university, plat_none, plat_other in tool_data:
-            data_list_dict = {}
-            data_list_dict["udacity"] = udacity
-            data_list_dict["coursera"] = coursera
-            data_list_dict["edx"] = edx
-            data_list_dict["datacamp"] = datacamp
-            data_list_dict["dataquest"] = dataquest
-            data_list_dict["kaggle"] = kaggle
-            data_list_dict["fastai"] = fastai
-            data_list_dict["udemy"] = udemy
-            data_list_dict["linkedin"] = linkedin
-            data_list_dict["university"] = university
-            data_list_dict["none"] = plat_none
-            data_list_dict["other"] = plat_other
-            data_list.append(data_list_dict)
-    elif (tool_category == "text_editor"):
-        for jupyter, rstudio, pycharm, atom, matlab, vsc, spyder, vim_emacs, notepad, sublime, env_none, env_other in tool_data:
-            data_list_dict = {}
-            data_list_dict["jupyter"] = jupyter
-            data_list_dict["rstudio"] = rstudio
-            data_list_dict["pycharm"] = pycharm
-            data_list_dict["atom"] = atom
-            data_list_dict["matlab"] = matlab
-            data_list_dict["vsc"] = vsc
-            data_list_dict["spyder"] = spyder
-            data_list_dict["vim_emacs"] = vim_emacs
-            data_list_dict["notepad++"] = notepad
-            data_list_dict["sublime"] = sublime
-            data_list_dict["none"] = env_none
-            data_list_dict["other"] = env_other
-            data_list.append(data_list_dict)
-    elif (tool_category == "language"):
-        for python, r, sql, c, c_plusplus, java, javascript, typescript, bash, lan_matlab, lan_none, lan_other in tool_data:
-            data_list_dict = {}
-            data_list_dict["python"] = python
-            data_list_dict["r"] = r
-            data_list_dict["sql"] = sql
-            data_list_dict["c"] = c
-            data_list_dict["c++"] = c_plusplus
-            data_list_dict["java"] = java
-            data_list_dict["javascript"] = javascript
-            data_list_dict["typescript"] = typescript
-            data_list_dict["bash"] = bash
-            data_list_dict["matlab_language"] = lan_matlab
-            data_list_dict["none"] = lan_none
-            data_list_dict["other"] = lan_other
-            data_list.append(data_list_dict)
-    elif (tool_category == "library"):
-        for ggplot, matplotlib, altair, shiny, d3, plotly, bokeh, seaborn, geoplotlib, leaflet, vis_none, vis_other in tool_data:
-            data_list_dict = {}
-            data_list_dict["ggplot"] = ggplot
-            data_list_dict["matplotlib"] = matplotlib
-            data_list_dict["altair"] = altair
-            data_list_dict["shiny"] = shiny
-            data_list_dict["d3"] = d3
-            data_list_dict["plotly"] = plotly
-            data_list_dict["bokeh"] = bokeh
-            data_list_dict["seaborn"] = seaborn
-            data_list_dict["geoplotlib"] = geoplotlib
-            data_list_dict["leaflet"] = leaflet
-            data_list_dict["none"] = vis_none
-            data_list_dict["other"] = vis_other
-            data_list.append(data_list_dict)
-    elif (tool_category == "ml_model"):
-        for regression, tree_forest, gradient_boost, bayesian, evolutionary, dnn, cnn, gan, rnn, bert, mach_none, mach_other in tool_data:
-            data_list_dict = {}
-            data_list_dict["regression"] = regression
-            data_list_dict["tree_forest"] = tree_forest
-            data_list_dict["gradient_boost"] = gradient_boost
-            data_list_dict["bayesian"] = bayesian
-            data_list_dict["evolutionary"] = evolutionary
-            data_list_dict["dnn"] = dnn
-            data_list_dict["cnn"] = cnn
-            data_list_dict["gan"] = gan
-            data_list_dict["rnn"] = rnn
-            data_list_dict["bert"] = bert
-            data_list_dict["none"] = mach_none
-            data_list_dict["other"] = mach_other
-            data_list.append(data_list_dict)
-    elif (tool_category == "database"):
-        for mysql, postgres, sql_lite, sqlserver, oracle, micro_aces, aws_data, aws_dynamo, azure_sql, google_sql, database_none, database_other in tool_data:
-            data_list_dict = {}
-            data_list_dict["mysql"] = mysql
-            data_list_dict["postgres"] = postgres
-            data_list_dict["sql_lite"] = sql_lite
-            data_list_dict["sqlserver"] = sqlserver
-            data_list_dict["oracle"] = oracle
-            data_list_dict["micro_aces"] = micro_aces
-            data_list_dict["micro_aces"] = micro_aces
-            data_list_dict["aws_data"] = aws_data
-            data_list_dict["aws_dynamo"] = aws_dynamo
-            data_list_dict["azure_sql"] = azure_sql
-            data_list_dict["google_sql"] = google_sql
-            data_list_dict["none"] = database_none
-            data_list_dict["other"] = database_other
-            data_list.append(data_list_dict)
+    for udacity, coursera, edx, datacamp, dataquest, kaggle, fastai, udemy, linkedin, university, plat_none, plat_other in course_platform_data:
+        course_platform_dict = {}
+        course_platform_dict["udacity"] = udacity
+        course_platform_dict["coursera"] = coursera
+        course_platform_dict["edx"] = edx
+        course_platform_dict["datacamp"] = datacamp
+        course_platform_dict["dataquest"] = dataquest
+        course_platform_dict["kaggle"] = kaggle
+        course_platform_dict["fastai"] = fastai
+        course_platform_dict["udemy"] = udemy
+        course_platform_dict["linkedin"] = linkedin
+        course_platform_dict["university"] = university
+        course_platform_dict["none"] = plat_none
+        course_platform_dict["other"] = plat_other
+        data_list.append(course_platform_dict)
+    for jupyter, rstudio, pycharm, atom, matlab, vsc, spyder, vim_emacs, notepad, sublime, env_none, env_other in text_editor_data:
+        text_editor_dict = {}
+        text_editor_dict["jupyter"] = jupyter
+        text_editor_dict["rstudio"] = rstudio
+        text_editor_dict["pycharm"] = pycharm
+        text_editor_dict["atom"] = atom
+        text_editor_dict["matlab"] = matlab
+        text_editor_dict["vsc"] = vsc
+        text_editor_dict["spyder"] = spyder
+        text_editor_dict["vim_emacs"] = vim_emacs
+        text_editor_dict["notepad++"] = notepad
+        text_editor_dict["sublime"] = sublime
+        text_editor_dict["none"] = env_none
+        text_editor_dict["other"] = env_other
+        data_list.append(text_editor_dict)
+    for python, r, sql, c, c_plusplus, java, javascript, typescript, bash, lan_matlab, lan_none, lan_other in language_data:
+        language_dict = {}
+        language_dict["python"] = python
+        language_dict["r"] = r
+        language_dict["sql"] = sql
+        language_dict["c"] = c
+        language_dict["c++"] = c_plusplus
+        language_dict["java"] = java
+        language_dict["javascript"] = javascript
+        language_dict["typescript"] = typescript
+        language_dict["bash"] = bash
+        language_dict["matlab_language"] = lan_matlab
+        language_dict["none"] = lan_none
+        language_dict["other"] = lan_other
+        data_list.append(language_dict)
+    for ggplot, matplotlib, altair, shiny, d3, plotly, bokeh, seaborn, geoplotlib, leaflet, vis_none, vis_other in library_data:
+        library_dict = {}
+        library_dict["ggplot"] = ggplot
+        library_dict["matplotlib"] = matplotlib
+        library_dict["altair"] = altair
+        library_dict["shiny"] = shiny
+        library_dict["d3"] = d3
+        library_dict["plotly"] = plotly
+        library_dict["bokeh"] = bokeh
+        library_dict["seaborn"] = seaborn
+        library_dict["geoplotlib"] = geoplotlib
+        library_dict["leaflet"] = leaflet
+        library_dict["none"] = vis_none
+        library_dict["other"] = vis_other
+        data_list.append(library_dict)
+    for regression, tree_forest, gradient_boost, bayesian, evolutionary, dnn, cnn, gan, rnn, bert, mach_none, mach_other in ml_model_data:
+        ml_model_dict = {}
+        ml_model_dict["regression"] = regression
+        ml_model_dict["tree_forest"] = tree_forest
+        ml_model_dict["gradient_boost"] = gradient_boost
+        ml_model_dict["bayesian"] = bayesian
+        ml_model_dict["evolutionary"] = evolutionary
+        ml_model_dict["dnn"] = dnn
+        ml_model_dict["cnn"] = cnn
+        ml_model_dict["gan"] = gan
+        ml_model_dict["rnn"] = rnn
+        ml_model_dict["bert"] = bert
+        ml_model_dict["none"] = mach_none
+        ml_model_dict["other"] = mach_other
+        data_list.append(ml_model_dict)
+    for mysql, postgres, sql_lite, sqlserver, oracle, micro_aces, aws_data, aws_dynamo, azure_sql, google_sql, database_none, database_other in database_data:
+        database_dict = {}
+        database_dict["mysql"] = mysql
+        database_dict["postgres"] = postgres
+        database_dict["sql_lite"] = sql_lite
+        database_dict["sqlserver"] = sqlserver
+        database_dict["oracle"] = oracle
+        database_dict["micro_aces"] = micro_aces
+        database_dict["aws_data"] = aws_data
+        database_dict["aws_dynamo"] = aws_dynamo
+        database_dict["azure_sql"] = azure_sql
+        database_dict["google_sql"] = google_sql
+        database_dict["none"] = database_none
+        database_dict["other"] = database_other
+        data_list.append(database_dict)
+
+    return jsonify(data_list)
+
+
+# salary_visuals page to render salary_visuals.html
+@app.route("/recommendations")
+def recommendations():
+    return render_template("recommendations.html")
+
+
+@app.route("/recommendations_data")
+def recommendations_data():
+    session = Session(engine)
+
+    recommendation_data = session.query(salary_data2.first_program).all()
+    data_list = []
+    for item in recommendation_data:
+        data_dict = {}
+        data_dict["recommended_first_language"] = item.first_program
+        data_list.append(data_dict)
 
     return jsonify(data_list)
 
@@ -462,45 +470,63 @@ def all_salary_data1():
     return jsonify(data_list)
 
 
-@app.route('/predictions')
+@app.route('/predictions', methods=['GET','POST'])
 def go_to_prediction():
-	return render_template('predictions.html')
+	# return render_template('predictions.html')
 
+    import joblib
+    from sklearn.preprocessing import StandardScaler
 
-# @app.route('/predictions', methods=['POST','GET'])
-# def predict():
+    # import csv to df
+    X_encoded = pd.read_csv("exported_data/X_encoded_df.csv")
+    X_encoded_empty = X_encoded[0:0]
 
-#     import joblib
-#     salary_model = joblib.load('salary_model_trained.sav')
+    if request.method == 'POST':
+        salary_model = joblib.load('notebooks/salary_model_trained.sav')
 
-#     from sklearn.preprocessing import StandardScaler
-#     X_scaler = joblib.load('X_scaler.sav')
+        X_scaler = joblib.load('notebooks/X_scaler.sav')
+        y_scaler = joblib.load('notebooks/y_scaler.sav')
 
-# 	#get question from the html form
-#     user_response = request.form.to_dict(flat=False)
+        #get question from the html form
+        years_db = request.form['years_db']
+        years_job = request.form['years_job']
+        country = request.form['country']
+        region = request.form['region']
+        comp_ed = request.form['comp_ed']
+        primary_db = request.form['primary_db']
+        employ_sector = request.form['employ_sector']
+        telecommute = request.form['telecommute']
+        manager = request.form['manager']
+        title = request.form["title"]
 
-#     user_response_list = [[user_response['country'][0],
-#                     user_response['region'][0],
-#                     user_response['education'][0],
-#                     user_response['comp_ed'][0],
-#                     user_response['primary_db'][0],
-#                     user_response['years_db'][0],
-#                     user_response['years_job'][0],
-#                     user_response['employ_sector'][0],
-#                     user_response['other_people'][0],
-#                     user_response['employ_status'][0],
-#                     user_response['telecommute'][0],
-#                     user_response['manager'][0]]]
+        yearswiththisdatabase_header = "yearswiththisdatabase"
+        yearswiththistypeofjob_header = "yearswiththistypeofjob"
+        country_header = "country_" + country
+        primarydatabase_header = "primarydatabase_" + primary_db
+        employmentsector_header = "employmentsector_" + employ_sector
+        region_header = "region_" + region
+        telecommutedaysperweek_header = "telecommutedaysperweek_" + telecommute
+        managestaff_header = "managestaff_" + manager
+        educationiscomputerrelated_header = "educationiscomputerrelated_" + comp_ed
+        jobtitle = "jobtitle_" + title
 
-#     user_response_transformed = X_scaler.transform(user_response_list[0])
+        user_response_row = {yearswiththisdatabase_header:years_db, yearswiththistypeofjob_header:years_job, country_header:1, primarydatabase_header:1, employmentsector_header:1, region_header:1, telecommutedaysperweek_header:1, managestaff_header:1, educationiscomputerrelated_header:1, jobtitle:1}
+        combined_df = X_encoded_empty.append(user_response_row, ignore_index=True)
+        combined_df = combined_df.fillna(0)
+        del combined_df["Unnamed: 0"]
+        del combined_df["index"]
 
-#     prediction = salary_model.predict(user_response_transformed)
+        user_response_transformed = X_scaler.transform(combined_df)
+        prediction = salary_model.predict(user_response_transformed)
+        prediction_untransformed = y_scaler.inverse_transform(prediction)
 
-#     prediction_string = 'Salary Prediction: $' + prediction
+        print("PREDICTION")
+        print(prediction_untransformed)
 
-#     #show results on the HTML page
-#     return render_template('prediction.html', salary_prediction= prediction_string)
+        return render_template('predictions.html', salary_prediction=prediction_untransformed)
 
+    else:
+        return render_template("predictions.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
