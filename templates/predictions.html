@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../../static/css/stylesheet.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
 
@@ -21,11 +21,10 @@
                         <div>
                             <form action="/" method='post'>
                                 1. Country: 
-                                    <select id="selCountry" name="country" required>
+                                    <select id="selCountry" name="country" onchange="optionChanged(this.value)" required>
                                     </select>
                                 <br>
                                 2. Region:
-                                <!-- this should autofill based on what country they select -->
                                     <select id="selRegion" name="region" required>
                                     </select>
                                 <br>
@@ -125,7 +124,7 @@
         </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-    <script src="../../static/js/model.js"></script>
+    <script src="../static/js/model.js"></script>
 </body>
 
 </html>

@@ -3,7 +3,7 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
-from flask import Flask, render_template, redirect, jsonify
+from flask import Flask, render_template, redirect, jsonify, request
 
 # database setup
 # Configure settings for RDS
@@ -313,6 +313,16 @@ def salary_visuals_data(filter_choice):
             data_list_dict["salary"] = salary
             data_list.append(data_list_dict)
     
+    elif (filter_choice == "country_region_dataset1"):
+        visuals_data = session.query(salary_data1.country.distinct(), salary_data1.region).all()
+        session.close()
+
+        for country, region in visuals_data:
+            data_list_dict = {}
+            data_list_dict["country"] = country
+            data_list_dict["region"] = region
+            data_list.append(data_list_dict)
+    
     return jsonify(data_list)
 
 
@@ -452,44 +462,44 @@ def all_salary_data1():
     return jsonify(data_list)
 
 
-@app.route('/prediction.html')
+@app.route('/predictions')
 def go_to_prediction():
-	return render_template('prediction.html')
+	return render_template('predictions.html')
 
 
-@app.route('/prediction', methods=['POST','GET'])
-def predict():
+# @app.route('/predictions', methods=['POST','GET'])
+# def predict():
 
-    import joblib
-    salary_model = joblib.load('salary_model_trained.sav')
+#     import joblib
+#     salary_model = joblib.load('salary_model_trained.sav')
 
-    from sklearn.preprocessing import StandardScaler
-    X_scaler = joblib.load('X_scaler.sav')
+#     from sklearn.preprocessing import StandardScaler
+#     X_scaler = joblib.load('X_scaler.sav')
 
-	#get question from the html form
-    user_response = request.form.to_dict(flat=False)
+# 	#get question from the html form
+#     user_response = request.form.to_dict(flat=False)
 
-    user_response_list = [[user_response['country'][0],
-                    user_response['region'][0],
-                    user_response['education'][0],
-                    user_response['comp_ed'][0],
-                    user_response['primary_db'][0],
-                    user_response['years_db'][0],
-                    user_response['years_job'][0],
-                    user_response['employ_sector'][0],
-                    user_response['other_people'][0],
-                    user_response['employ_status'][0],
-                    user_response['telecommute'][0],
-                    user_response['manager'][0]]]
+#     user_response_list = [[user_response['country'][0],
+#                     user_response['region'][0],
+#                     user_response['education'][0],
+#                     user_response['comp_ed'][0],
+#                     user_response['primary_db'][0],
+#                     user_response['years_db'][0],
+#                     user_response['years_job'][0],
+#                     user_response['employ_sector'][0],
+#                     user_response['other_people'][0],
+#                     user_response['employ_status'][0],
+#                     user_response['telecommute'][0],
+#                     user_response['manager'][0]]]
 
-    user_response_transformed = X_scaler.transform(user_response_list[0])
+#     user_response_transformed = X_scaler.transform(user_response_list[0])
 
-    prediction = salary_model.predict(user_response_transformed)
+#     prediction = salary_model.predict(user_response_transformed)
 
-    prediction_string = 'Salary Prediction: $' + prediction
+#     prediction_string = 'Salary Prediction: $' + prediction
 
-    #show results on the HTML page
-    return render_template('prediction.html', salary_prediction= prediction_string)
+#     #show results on the HTML page
+#     return render_template('prediction.html', salary_prediction= prediction_string)
 
 
 if __name__ == "__main__":
