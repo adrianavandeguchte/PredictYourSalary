@@ -2,7 +2,7 @@
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func
+from sqlalchemy import create_engine, func, cast, Integer
 from flask import Flask, render_template, redirect, jsonify, request
 import pandas as pd
 
@@ -59,7 +59,7 @@ def tools_data():
     session = Session(engine)
 
     # query to obtain totals of each type within tool category
-    course_platform_data = session.query(func.sum(salary_data2.udacity), func.sum(salary_data2.coursera), func.sum(salary_data2.edx),\
+    course_platform_data = session.query(cast(func.sum(salary_data2.udacity), Integer), func.sum(salary_data2.coursera), func.sum(salary_data2.edx),\
             func.sum(salary_data2.datacamp), func.sum(salary_data2.dataquest), func.sum(salary_data2.kaggle),\
             func.sum(salary_data2.fastai), func.sum(salary_data2.udemy), func.sum(salary_data2.linkedin),\
             func.sum(salary_data2.university), func.sum(salary_data2.plat_none), func.sum(salary_data2.plat_other)).all()
@@ -346,7 +346,7 @@ def recommendations():
 def recommendations_data():
     session = Session(engine)
 
-    recommendation_data = session.query(salary_data2.first_program, func.count(salary_data2.first_program)).\
+    recommendation_data = session.query(salary_data2.first_program, cast(func.count(salary_data2.first_program), Integer)).\
         group_by(salary_data2.first_program).all()
     session.close()
     
