@@ -688,10 +688,12 @@ def go_to_prediction():
         prediction = salary_model.predict(user_response_transformed)
         prediction_untransformed = y_scaler.inverse_transform(prediction)
 
+        prediction_rounded  = round(prediction_untransformed[0], 2)
+        prediction_formatted = "{:,.2f}".format(prediction_rounded)
         print("PREDICTION")
-        print(prediction_untransformed)
+        print(prediction_formatted)
 
-        return render_template('predictions.html', salary_prediction=prediction_untransformed)
+        return render_template('predictions.html', salary_prediction=prediction_formatted)
 
     else:
         return render_template("predictions.html")
