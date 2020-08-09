@@ -193,6 +193,149 @@ def tools_data():
     return jsonify(data_list)
 
 
+@app.route("/tools_data/<jobtitle>")
+def tools_data_by_title(jobtitle):
+    session = Session(engine)
+
+    # query to obtain totals of each type within tool category
+    course_platform_data = session.query(func.sum(salary_data2.udacity), func.sum(salary_data2.coursera), func.sum(salary_data2.edx),\
+            func.sum(salary_data2.datacamp), func.sum(salary_data2.dataquest), func.sum(salary_data2.kaggle),\
+            func.sum(salary_data2.fastai), func.sum(salary_data2.udemy), func.sum(salary_data2.linkedin),\
+            func.sum(salary_data2.university), func.sum(salary_data2.plat_none), func.sum(salary_data2.plat_other)).\
+            filter(salary_data2.title == jobtitle).all()
+    text_editor_data = session.query(func.sum(salary_data2.jupyter),\
+            func.sum(salary_data2.rstudio), func.sum(salary_data2.pycharm), func.sum(salary_data2.atom),\
+            func.sum(salary_data2.matlab), func.sum(salary_data2.vsc), func.sum(salary_data2.spyder),\
+            func.sum(salary_data2.vim_emacs), func.sum(salary_data2.notepad_plusplus), func.sum(salary_data2.sublime),\
+            func.sum(salary_data2.env_none), func.sum(salary_data2.env_other)).\
+            filter(salary_data2.title == jobtitle).all()
+    language_data = session.query(func.sum(salary_data2.python),\
+            func.sum(salary_data2.r), func.sum(salary_data2.sql), func.sum(salary_data2.c), func.sum(salary_data2.c_plusplus),\
+            func.sum(salary_data2.java), func.sum(salary_data2.javascript), func.sum(salary_data2.typescript),\
+            func.sum(salary_data2.bash), func.sum(salary_data2.lan_matlab), func.sum(salary_data2.lan_none),\
+            func.sum(salary_data2.lan_other)).filter(salary_data2.title == jobtitle).all()
+    library_data = session.query(func.sum(salary_data2.ggplot),\
+            func.sum(salary_data2.matplotlib), func.sum(salary_data2.altair), func.sum(salary_data2.shiny),\
+            func.sum(salary_data2.d3), func.sum(salary_data2.plotly), func.sum(salary_data2.bokeh),\
+            func.sum(salary_data2.seaborn), func.sum(salary_data2.geoplotlib), func.sum(salary_data2.leaflet),\
+            func.sum(salary_data2.vis_none), func.sum(salary_data2.vis_other)).\
+            filter(salary_data2.title == jobtitle).all()
+    ml_model_data = session.query(func.sum(salary_data2.regression),\
+            func.sum(salary_data2.tree_forest), func.sum(salary_data2.gradient_boost), func.sum(salary_data2.bayesian),\
+            func.sum(salary_data2.evolutionary), func.sum(salary_data2.dnn), func.sum(salary_data2.cnn),\
+            func.sum(salary_data2.gan), func.sum(salary_data2.rnn), func.sum(salary_data2.bert), func.sum(salary_data2.mach_none),\
+            func.sum(salary_data2.mach_other)).filter(salary_data2.title == jobtitle).all()
+    database_data = session.query(func.sum(salary_data2.mysql),\
+            func.sum(salary_data2.postgres), func.sum(salary_data2.sql_lite), func.sum(salary_data2.sqlserver),\
+            func.sum(salary_data2.oracle), func.sum(salary_data2.micro_acess), func.sum(salary_data2.aws_data),\
+            func.sum(salary_data2.aws_dynamo), func.sum(salary_data2.azure_sql), func.sum(salary_data2.google_sql),\
+            func.sum(salary_data2.database_none), func.sum(salary_data2.database_other)).\
+            filter(salary_data2.title == jobtitle).all()
+    
+    session.close()
+
+    # adds data into a dictionaries to be jsonified
+    data_list = []
+    for udacity, coursera, edx, datacamp, dataquest, kaggle, fastai, udemy, linkedin, university, plat_none, plat_other in course_platform_data:
+        course_platform_dict = {}
+        course_platform_dict["udacity"] = udacity
+        course_platform_dict["coursera"] = coursera
+        course_platform_dict["edx"] = edx
+        course_platform_dict["datacamp"] = datacamp
+        course_platform_dict["dataquest"] = dataquest
+        course_platform_dict["kaggle"] = kaggle
+        course_platform_dict["fastai"] = fastai
+        course_platform_dict["udemy"] = udemy
+        course_platform_dict["linkedin"] = linkedin
+        course_platform_dict["university"] = university
+        course_platform_dict["none"] = plat_none
+        course_platform_dict["other"] = plat_other
+        course_platform_dict_with_name = {"course_platforms":course_platform_dict}
+        data_list.append(course_platform_dict_with_name)
+    for jupyter, rstudio, pycharm, atom, matlab, vsc, spyder, vim_emacs, notepad, sublime, env_none, env_other in text_editor_data:
+        text_editor_dict = {}
+        text_editor_dict["jupyter"] = jupyter
+        text_editor_dict["rstudio"] = rstudio
+        text_editor_dict["pycharm"] = pycharm
+        text_editor_dict["atom"] = atom
+        text_editor_dict["matlab"] = matlab
+        text_editor_dict["vsc"] = vsc
+        text_editor_dict["spyder"] = spyder
+        text_editor_dict["vim_emacs"] = vim_emacs
+        text_editor_dict["notepad++"] = notepad
+        text_editor_dict["sublime"] = sublime
+        text_editor_dict["none"] = env_none
+        text_editor_dict["other"] = env_other
+        text_editor_dict_with_name = {"text_editors":text_editor_dict}
+        data_list.append(text_editor_dict_with_name)
+    for python, r, sql, c, c_plusplus, java, javascript, typescript, bash, lan_matlab, lan_none, lan_other in language_data:
+        language_dict = {}
+        language_dict["python"] = python
+        language_dict["r"] = r
+        language_dict["sql"] = sql
+        language_dict["c"] = c
+        language_dict["c++"] = c_plusplus
+        language_dict["java"] = java
+        language_dict["javascript"] = javascript
+        language_dict["typescript"] = typescript
+        language_dict["bash"] = bash
+        language_dict["matlab_language"] = lan_matlab
+        language_dict["none"] = lan_none
+        language_dict["other"] = lan_other
+        language_dict_with_name = {"languages":language_dict}
+        data_list.append(language_dict_with_name)
+    for ggplot, matplotlib, altair, shiny, d3, plotly, bokeh, seaborn, geoplotlib, leaflet, vis_none, vis_other in library_data:
+        library_dict = {}
+        library_dict["ggplot"] = ggplot
+        library_dict["matplotlib"] = matplotlib
+        library_dict["altair"] = altair
+        library_dict["shiny"] = shiny
+        library_dict["d3"] = d3
+        library_dict["plotly"] = plotly
+        library_dict["bokeh"] = bokeh
+        library_dict["seaborn"] = seaborn
+        library_dict["geoplotlib"] = geoplotlib
+        library_dict["leaflet"] = leaflet
+        library_dict["none"] = vis_none
+        library_dict["other"] = vis_other
+        library_dict_with_name = {"libraries":library_dict}
+        data_list.append(library_dict_with_name)
+    for regression, tree_forest, gradient_boost, bayesian, evolutionary, dnn, cnn, gan, rnn, bert, mach_none, mach_other in ml_model_data:
+        ml_model_dict = {}
+        ml_model_dict["regression"] = regression
+        ml_model_dict["tree_forest"] = tree_forest
+        ml_model_dict["gradient_boost"] = gradient_boost
+        ml_model_dict["bayesian"] = bayesian
+        ml_model_dict["evolutionary"] = evolutionary
+        ml_model_dict["dnn"] = dnn
+        ml_model_dict["cnn"] = cnn
+        ml_model_dict["gan"] = gan
+        ml_model_dict["rnn"] = rnn
+        ml_model_dict["bert"] = bert
+        ml_model_dict["none"] = mach_none
+        ml_model_dict["other"] = mach_other
+        ml_model_dict_with_name = {"ml_models":ml_model_dict}
+        data_list.append(ml_model_dict_with_name)
+    for mysql, postgres, sql_lite, sqlserver, oracle, micro_aces, aws_data, aws_dynamo, azure_sql, google_sql, database_none, database_other in database_data:
+        database_dict = {}
+        database_dict["mysql"] = mysql
+        database_dict["postgres"] = postgres
+        database_dict["sql_lite"] = sql_lite
+        database_dict["sqlserver"] = sqlserver
+        database_dict["oracle"] = oracle
+        database_dict["micro_aces"] = micro_aces
+        database_dict["aws_data"] = aws_data
+        database_dict["aws_dynamo"] = aws_dynamo
+        database_dict["azure_sql"] = azure_sql
+        database_dict["google_sql"] = google_sql
+        database_dict["none"] = database_none
+        database_dict["other"] = database_other
+        database_dict_with_name = {"databases":database_dict}
+        data_list.append(database_dict_with_name)
+
+    return jsonify(data_list)
+
+
 # salary_visuals page to render salary_visuals.html
 @app.route("/recommendations")
 def recommendations():
@@ -203,12 +346,17 @@ def recommendations():
 def recommendations_data():
     session = Session(engine)
 
-    recommendation_data = session.query(salary_data2.first_program).all()
+    recommendation_data = session.query(salary_data2.first_program, func.count(salary_data2.first_program)).\
+        group_by(salary_data2.first_program).all()
+    session.close()
     
     data_list = []
-    for item in recommendation_data:
-        if (item.first_program != 0):
-            data_list.append(item.first_program)
+    for language, count in recommendation_data:
+        if (language != "0"):
+            recommendation_dict = {}
+            recommendation_dict["recommended_first_language"] = language
+            recommendation_dict["count"] = count
+            data_list.append(recommendation_dict)
 
     return jsonify(data_list)
 
@@ -451,12 +599,19 @@ def salary_visuals_data_by_country(filter_choice, country):
 
 
 # api route to obtain the name data from salary_data1
-@app.route("/salary_data1")
-def all_salary_data1():
+@app.route("/salary_data1/<title>")
+def all_salary_data1(title):
     session = Session(engine)
 
     # query to obtain state name and rank
-    all_data = session.query(salary_data1.salaryusd, salary_data1.primarydatabase, salary_data1.yearswiththisdatabase, salary_data1.employmentstatus, salary_data1.jobtitle, salary_data1.managestaff, salary_data1.yearswiththistypeofjob, salary_data1.otherpeopleonyourteam, salary_data1.databaseservers, salary_data1.education, salary_data1.educationiscomputerrelated, salary_data1.certifications, salary_data1.hoursworkedperweek, salary_data1.telecommutedaysperweek, salary_data1.employmentsector, salary_data1.region).all()
+    all_data = session.query(salary_data1.salaryusd, salary_data1.primarydatabase,\
+        salary_data1.yearswiththisdatabase, salary_data1.employmentstatus,\
+            salary_data1.jobtitle, salary_data1.managestaff, salary_data1.yearswiththistypeofjob,\
+            salary_data1.otherpeopleonyourteam, salary_data1.databaseservers,\
+            salary_data1.education, salary_data1.educationiscomputerrelated,\
+            salary_data1.certifications, salary_data1.hoursworkedperweek, salary_data1.telecommutedaysperweek,\
+            salary_data1.employmentsector, salary_data1.region).\
+            filter(salary_data1.jobtitle == title).all()
     session.close()
 
     # adds data into a dictionary to be jsonified
