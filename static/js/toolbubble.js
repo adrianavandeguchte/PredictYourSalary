@@ -1,3 +1,5 @@
+
+
 function bubbleChart() {
   const width = 940;
   const height = 500;
@@ -34,6 +36,8 @@ function bubbleChart() {
   const fillColour = d3v5.scaleOrdinal()
   	.domain(["1", "2", "3", "5", "99"])
   	.range(["#0074D9", "#7FDBFF", "#39CCCC", "#3D9970", "#AAAAAA"]);
+
+
 
   // data manipulation function takes raw data from csv and converts it into an array of node objects
   // each node will store data and visualisation values to draw a bubble
@@ -126,5 +130,8 @@ function display(data) {
   myBubbleChart('.bubble', data);
 }
 
-// load data
-d3v5.csv('../temp/bubble_data.csv').then(display);
+d3.json("/tools_data", function (err, rawData) {
+  console.log(rawData);
+  
+
+});
