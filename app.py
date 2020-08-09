@@ -59,35 +59,35 @@ def tools_data():
     session = Session(engine)
 
     # query to obtain totals of each type within tool category
-    course_platform_data = session.query(cast(func.sum(salary_data2.udacity), Integer), func.sum(salary_data2.coursera), func.sum(salary_data2.edx),\
-            func.sum(salary_data2.datacamp), func.sum(salary_data2.dataquest), func.sum(salary_data2.kaggle),\
-            func.sum(salary_data2.fastai), func.sum(salary_data2.udemy), func.sum(salary_data2.linkedin),\
-            func.sum(salary_data2.university), func.sum(salary_data2.plat_none), func.sum(salary_data2.plat_other)).all()
-    text_editor_data = session.query(func.sum(salary_data2.jupyter),\
-            func.sum(salary_data2.rstudio), func.sum(salary_data2.pycharm), func.sum(salary_data2.atom),\
-            func.sum(salary_data2.matlab), func.sum(salary_data2.vsc), func.sum(salary_data2.spyder),\
-            func.sum(salary_data2.vim_emacs), func.sum(salary_data2.notepad_plusplus), func.sum(salary_data2.sublime),\
-            func.sum(salary_data2.env_none), func.sum(salary_data2.env_other)).all()
-    language_data = session.query(func.sum(salary_data2.python),\
-            func.sum(salary_data2.r), func.sum(salary_data2.sql), func.sum(salary_data2.c), func.sum(salary_data2.c_plusplus),\
-            func.sum(salary_data2.java), func.sum(salary_data2.javascript), func.sum(salary_data2.typescript),\
-            func.sum(salary_data2.bash), func.sum(salary_data2.lan_matlab), func.sum(salary_data2.lan_none),\
-            func.sum(salary_data2.lan_other)).all()
-    library_data = session.query(func.sum(salary_data2.ggplot),\
-            func.sum(salary_data2.matplotlib), func.sum(salary_data2.altair), func.sum(salary_data2.shiny),\
-            func.sum(salary_data2.d3), func.sum(salary_data2.plotly), func.sum(salary_data2.bokeh),\
-            func.sum(salary_data2.seaborn), func.sum(salary_data2.geoplotlib), func.sum(salary_data2.leaflet),\
-            func.sum(salary_data2.vis_none), func.sum(salary_data2.vis_other)).all()
-    ml_model_data = session.query(func.sum(salary_data2.regression),\
-            func.sum(salary_data2.tree_forest), func.sum(salary_data2.gradient_boost), func.sum(salary_data2.bayesian),\
-            func.sum(salary_data2.evolutionary), func.sum(salary_data2.dnn), func.sum(salary_data2.cnn),\
-            func.sum(salary_data2.gan), func.sum(salary_data2.rnn), func.sum(salary_data2.bert), func.sum(salary_data2.mach_none),\
-            func.sum(salary_data2.mach_other)).all()
-    database_data = session.query(func.sum(salary_data2.mysql),\
-            func.sum(salary_data2.postgres), func.sum(salary_data2.sql_lite), func.sum(salary_data2.sqlserver),\
-            func.sum(salary_data2.oracle), func.sum(salary_data2.micro_acess), func.sum(salary_data2.aws_data),\
-            func.sum(salary_data2.aws_dynamo), func.sum(salary_data2.azure_sql), func.sum(salary_data2.google_sql),\
-            func.sum(salary_data2.database_none), func.sum(salary_data2.database_other)).all()
+    course_platform_data = session.query(cast(func.sum(salary_data2.udacity), Integer), cast(func.sum(salary_data2.coursera), Integer), cast(func.sum(salary_data2.edx), Integer),\
+            cast(func.sum(salary_data2.datacamp), Integer), cast(func.sum(salary_data2.dataquest), Integer), cast(func.sum(salary_data2.kaggle), Integer),\
+            cast(func.sum(salary_data2.fastai), Integer), cast(func.sum(salary_data2.udemy), Integer), cast(func.sum(salary_data2.linkedin), Integer),\
+            cast(func.sum(salary_data2.university), Integer), cast(func.sum(salary_data2.plat_none), Integer), cast(func.sum(salary_data2.plat_other), Integer)).all()
+    text_editor_data = session.query(cast(func.sum(salary_data2.jupyter), Integer),\
+            cast(func.sum(salary_data2.rstudio), Integer), cast(func.sum(salary_data2.pycharm), Integer), cast(func.sum(salary_data2.atom), Integer),\
+            cast(func.sum(salary_data2.matlab), Integer), cast(func.sum(salary_data2.vsc), Integer), cast(func.sum(salary_data2.spyder), Integer),\
+            cast(func.sum(salary_data2.vim_emacs), Integer), cast(func.sum(salary_data2.notepad_plusplus), Integer), cast(func.sum(salary_data2.sublime), Integer),\
+            cast(func.sum(salary_data2.env_none), Integer), cast(func.sum(salary_data2.env_other), Integer)).all()
+    language_data = session.query(cast(func.sum(salary_data2.python), Integer),\
+            cast(func.sum(salary_data2.r), Integer), cast(func.sum(salary_data2.sql), Integer), cast(func.sum(salary_data2.c), Integer), cast(func.sum(salary_data2.c_plusplus), Integer),\
+            cast(func.sum(salary_data2.java), Integer), cast(func.sum(salary_data2.javascript), Integer), cast(func.sum(salary_data2.typescript), Integer),\
+            cast(func.sum(salary_data2.bash), Integer), cast(func.sum(salary_data2.lan_matlab), Integer), cast(func.sum(salary_data2.lan_none), Integer),\
+            cast(func.sum(salary_data2.lan_other), Integer)).all()
+    library_data = session.query(cast(func.sum(salary_data2.ggplot), Integer),\
+            cast(func.sum(salary_data2.matplotlib), Integer), cast(func.sum(salary_data2.altair), Integer), cast(func.sum(salary_data2.shiny), Integer),\
+            cast(func.sum(salary_data2.d3), Integer), cast(func.sum(salary_data2.plotly), Integer), cast(func.sum(salary_data2.bokeh), Integer),\
+            cast(func.sum(salary_data2.seaborn), Integer), cast(func.sum(salary_data2.geoplotlib), Integer), cast(func.sum(salary_data2.leaflet), Integer),\
+            cast(func.sum(salary_data2.vis_none), Integer), cast(func.sum(salary_data2.vis_other), Integer)).all()
+    ml_model_data = session.query(cast(func.sum(salary_data2.regression), Integer),\
+            cast(func.sum(salary_data2.tree_forest), Integer), cast(func.sum(salary_data2.gradient_boost), Integer), cast(func.sum(salary_data2.bayesian), Integer),\
+            cast(func.sum(salary_data2.evolutionary), Integer), cast(func.sum(salary_data2.dnn), Integer), cast(func.sum(salary_data2.cnn), Integer),\
+            cast(func.sum(salary_data2.gan), Integer), cast(func.sum(salary_data2.rnn), Integer), cast(func.sum(salary_data2.bert), Integer), cast(func.sum(salary_data2.mach_none), Integer),\
+            cast(func.sum(salary_data2.mach_other), Integer)).all()
+    database_data = session.query(cast(func.sum(salary_data2.mysql), Integer),\
+            cast(func.sum(salary_data2.postgres), Integer), cast(func.sum(salary_data2.sql_lite), Integer), cast(func.sum(salary_data2.sqlserver), Integer),\
+            cast(func.sum(salary_data2.oracle), Integer), cast(func.sum(salary_data2.micro_acess), Integer), cast(func.sum(salary_data2.aws_data), Integer),\
+            cast(func.sum(salary_data2.aws_dynamo), Integer), cast(func.sum(salary_data2.azure_sql), Integer), cast(func.sum(salary_data2.google_sql), Integer),\
+            cast(func.sum(salary_data2.database_none), Integer), cast(func.sum(salary_data2.database_other), Integer)).all()
     
     session.close()
 
@@ -198,38 +198,38 @@ def tools_data_by_title(jobtitle):
     session = Session(engine)
 
     # query to obtain totals of each type within tool category
-    course_platform_data = session.query(func.sum(salary_data2.udacity), func.sum(salary_data2.coursera), func.sum(salary_data2.edx),\
-            func.sum(salary_data2.datacamp), func.sum(salary_data2.dataquest), func.sum(salary_data2.kaggle),\
-            func.sum(salary_data2.fastai), func.sum(salary_data2.udemy), func.sum(salary_data2.linkedin),\
-            func.sum(salary_data2.university), func.sum(salary_data2.plat_none), func.sum(salary_data2.plat_other)).\
+    course_platform_data = session.query(cast(func.sum(salary_data2.udacity), Integer), cast(func.sum(salary_data2.coursera), Integer), cast(func.sum(salary_data2.edx), Integer),\
+            cast(func.sum(salary_data2.datacamp), Integer), cast(func.sum(salary_data2.dataquest), Integer), cast(func.sum(salary_data2.kaggle), Integer),\
+            cast(func.sum(salary_data2.fastai), Integer), cast(func.sum(salary_data2.udemy), Integer), cast(func.sum(salary_data2.linkedin), Integer),\
+            cast(func.sum(salary_data2.university), Integer), cast(func.sum(salary_data2.plat_none), Integer), cast(func.sum(salary_data2.plat_other), Integer)).\
             filter(salary_data2.title == jobtitle).all()
-    text_editor_data = session.query(func.sum(salary_data2.jupyter),\
-            func.sum(salary_data2.rstudio), func.sum(salary_data2.pycharm), func.sum(salary_data2.atom),\
-            func.sum(salary_data2.matlab), func.sum(salary_data2.vsc), func.sum(salary_data2.spyder),\
-            func.sum(salary_data2.vim_emacs), func.sum(salary_data2.notepad_plusplus), func.sum(salary_data2.sublime),\
-            func.sum(salary_data2.env_none), func.sum(salary_data2.env_other)).\
+    text_editor_data = session.query(cast(func.sum(salary_data2.jupyter), Integer),\
+            cast(func.sum(salary_data2.rstudio), Integer), cast(func.sum(salary_data2.pycharm), Integer), cast(func.sum(salary_data2.atom), Integer),\
+            cast(func.sum(salary_data2.matlab), Integer), cast(func.sum(salary_data2.vsc), Integer), cast(func.sum(salary_data2.spyder), Integer),\
+            cast(func.sum(salary_data2.vim_emacs), Integer), cast(func.sum(salary_data2.notepad_plusplus), Integer), cast(func.sum(salary_data2.sublime), Integer),\
+            cast(func.sum(salary_data2.env_none), Integer), cast(func.sum(salary_data2.env_other), Integer)).\
             filter(salary_data2.title == jobtitle).all()
-    language_data = session.query(func.sum(salary_data2.python),\
-            func.sum(salary_data2.r), func.sum(salary_data2.sql), func.sum(salary_data2.c), func.sum(salary_data2.c_plusplus),\
-            func.sum(salary_data2.java), func.sum(salary_data2.javascript), func.sum(salary_data2.typescript),\
-            func.sum(salary_data2.bash), func.sum(salary_data2.lan_matlab), func.sum(salary_data2.lan_none),\
-            func.sum(salary_data2.lan_other)).filter(salary_data2.title == jobtitle).all()
-    library_data = session.query(func.sum(salary_data2.ggplot),\
-            func.sum(salary_data2.matplotlib), func.sum(salary_data2.altair), func.sum(salary_data2.shiny),\
-            func.sum(salary_data2.d3), func.sum(salary_data2.plotly), func.sum(salary_data2.bokeh),\
-            func.sum(salary_data2.seaborn), func.sum(salary_data2.geoplotlib), func.sum(salary_data2.leaflet),\
-            func.sum(salary_data2.vis_none), func.sum(salary_data2.vis_other)).\
+    language_data = session.query(cast(func.sum(salary_data2.python), Integer),\
+            cast(func.sum(salary_data2.r), Integer), cast(func.sum(salary_data2.sql), Integer), cast(func.sum(salary_data2.c), Integer), cast(func.sum(salary_data2.c_plusplus), Integer),\
+            cast(func.sum(salary_data2.java), Integer), cast(func.sum(salary_data2.javascript), Integer), cast(func.sum(salary_data2.typescript), Integer),\
+            cast(func.sum(salary_data2.bash), Integer), cast(func.sum(salary_data2.lan_matlab), Integer), cast(func.sum(salary_data2.lan_none), Integer),\
+            cast(func.sum(salary_data2.lan_other), Integer)).filter(salary_data2.title == jobtitle).all()
+    library_data = session.query(cast(func.sum(salary_data2.ggplot), Integer),\
+            cast(func.sum(salary_data2.matplotlib), Integer), cast(func.sum(salary_data2.altair), Integer), cast(func.sum(salary_data2.shiny), Integer),\
+            cast(func.sum(salary_data2.d3), Integer), cast(func.sum(salary_data2.plotly), Integer), cast(func.sum(salary_data2.bokeh), Integer),\
+            cast(func.sum(salary_data2.seaborn), Integer), cast(func.sum(salary_data2.geoplotlib), Integer), cast(func.sum(salary_data2.leaflet), Integer),\
+            cast(func.sum(salary_data2.vis_none), Integer), cast(func.sum(salary_data2.vis_other), Integer)).\
             filter(salary_data2.title == jobtitle).all()
-    ml_model_data = session.query(func.sum(salary_data2.regression),\
-            func.sum(salary_data2.tree_forest), func.sum(salary_data2.gradient_boost), func.sum(salary_data2.bayesian),\
-            func.sum(salary_data2.evolutionary), func.sum(salary_data2.dnn), func.sum(salary_data2.cnn),\
-            func.sum(salary_data2.gan), func.sum(salary_data2.rnn), func.sum(salary_data2.bert), func.sum(salary_data2.mach_none),\
-            func.sum(salary_data2.mach_other)).filter(salary_data2.title == jobtitle).all()
-    database_data = session.query(func.sum(salary_data2.mysql),\
-            func.sum(salary_data2.postgres), func.sum(salary_data2.sql_lite), func.sum(salary_data2.sqlserver),\
-            func.sum(salary_data2.oracle), func.sum(salary_data2.micro_acess), func.sum(salary_data2.aws_data),\
-            func.sum(salary_data2.aws_dynamo), func.sum(salary_data2.azure_sql), func.sum(salary_data2.google_sql),\
-            func.sum(salary_data2.database_none), func.sum(salary_data2.database_other)).\
+    ml_model_data = session.query(cast(func.sum(salary_data2.regression), Integer),\
+            cast(func.sum(salary_data2.tree_forest), Integer), cast(func.sum(salary_data2.gradient_boost), Integer), cast(func.sum(salary_data2.bayesian), Integer),\
+            cast(func.sum(salary_data2.evolutionary), Integer), cast(func.sum(salary_data2.dnn), Integer), cast(func.sum(salary_data2.cnn), Integer),\
+            cast(func.sum(salary_data2.gan), Integer), cast(func.sum(salary_data2.rnn), Integer), cast(func.sum(salary_data2.bert), Integer), cast(func.sum(salary_data2.mach_none), Integer),\
+            cast(func.sum(salary_data2.mach_other), Integer)).filter(salary_data2.title == jobtitle).all()
+    database_data = session.query(cast(func.sum(salary_data2.mysql), Integer),\
+            cast(func.sum(salary_data2.postgres), Integer), cast(func.sum(salary_data2.sql_lite), Integer), cast(func.sum(salary_data2.sqlserver), Integer),\
+            cast(func.sum(salary_data2.oracle), Integer), cast(func.sum(salary_data2.micro_acess), Integer), cast(func.sum(salary_data2.aws_data), Integer),\
+            cast(func.sum(salary_data2.aws_dynamo), Integer), cast(func.sum(salary_data2.azure_sql), Integer), cast(func.sum(salary_data2.google_sql), Integer),\
+            cast(func.sum(salary_data2.database_none), Integer), cast(func.sum(salary_data2.database_other), Integer)).\
             filter(salary_data2.title == jobtitle).all()
     
     session.close()
@@ -375,7 +375,7 @@ def salary_visuals_data(filter_choice):
 
     # query to obtain salaries of each chosen filter
     if (filter_choice == "job_title_dataset2"):
-        visuals_data = session.query(salary_data2.title, func.count(salary_data2.title), func.avg(salary_data2.salary)).\
+        visuals_data = session.query(salary_data2.title, cast(func.count(salary_data2.title), Integer), cast(func.avg(salary_data2.salary), Integer)).\
             group_by(salary_data2.title).all()    
         session.close()
         
@@ -388,7 +388,7 @@ def salary_visuals_data(filter_choice):
             data_list.append(data_list_dict)
 
     elif (filter_choice == "gender"):
-        visuals_data = session.query(salary_data2.gender, func.count(salary_data2.gender), func.avg(salary_data2.salary)).\
+        visuals_data = session.query(salary_data2.gender, cast(func.count(salary_data2.gender), Integer), cast(func.avg(salary_data2.salary), Integer)).\
             group_by(salary_data2.gender).all()
         session.close()
 
@@ -400,7 +400,7 @@ def salary_visuals_data(filter_choice):
             data_list.append(data_list_dict)
     
     elif (filter_choice == "education_dataset2"):
-        visuals_data = session.query(salary_data2.education, func.count(salary_data2.education), func.avg(salary_data2.salary)).\
+        visuals_data = session.query(salary_data2.education, cast(func.count(salary_data2.education), Integer), cast(func.avg(salary_data2.salary), Integer)).\
             group_by(salary_data2.education).all()
         session.close()
 
@@ -412,7 +412,7 @@ def salary_visuals_data(filter_choice):
             data_list.append(data_list_dict)
 
     elif (filter_choice == "country_dataset2"):
-        visuals_data = session.query(salary_data2.country, func.count(salary_data2.country), func.avg(salary_data2.salary)).\
+        visuals_data = session.query(salary_data2.country, cast(func.count(salary_data2.country), Integer), cast(func.avg(salary_data2.salary), Integer)).\
             group_by(salary_data2.country).all()
         session.close()
 
@@ -424,7 +424,7 @@ def salary_visuals_data(filter_choice):
             data_list.append(data_list_dict)
 
     elif (filter_choice == "job_title_dataset1"):
-        visuals_data = session.query(salary_data1.jobtitle, func.count(salary_data1.jobtitle), func.avg(salary_data1.salaryusd)).\
+        visuals_data = session.query(salary_data1.jobtitle, cast(func.count(salary_data1.jobtitle), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
             group_by(salary_data1.jobtitle).all()
         session.close()
 
@@ -436,7 +436,7 @@ def salary_visuals_data(filter_choice):
             data_list.append(data_list_dict)
 
     elif (filter_choice == "education_dataset1"):
-        visuals_data = session.query(salary_data1.education, func.count(salary_data1.education), func.avg(salary_data1.salaryusd)).\
+        visuals_data = session.query(salary_data1.education, cast(func.count(salary_data1.education), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
             group_by(salary_data1.education).all()
         session.close()
 
@@ -448,7 +448,7 @@ def salary_visuals_data(filter_choice):
             data_list.append(data_list_dict)
 
     elif (filter_choice == "comp_education"):
-        visuals_data = session.query(salary_data1.educationiscomputerrelated, func.count(salary_data1.educationiscomputerrelated), func.avg(salary_data1.salaryusd)).\
+        visuals_data = session.query(salary_data1.educationiscomputerrelated, cast(func.count(salary_data1.educationiscomputerrelated), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
             group_by(salary_data1.educationiscomputerrelated).all()
         session.close()
 
@@ -460,7 +460,7 @@ def salary_visuals_data(filter_choice):
             data_list.append(data_list_dict)
 
     elif (filter_choice == "certifications"):
-        visuals_data = session.query(salary_data1.certifications, func.count(salary_data1.certifications), func.avg(salary_data1.salaryusd)).\
+        visuals_data = session.query(salary_data1.certifications, cast(func.count(salary_data1.certifications), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
             group_by(salary_data1.certifications).all()
         session.close()
 
@@ -472,7 +472,7 @@ def salary_visuals_data(filter_choice):
             data_list.append(data_list_dict)
 
     elif (filter_choice == "country_dataset1"):
-        visuals_data = session.query(salary_data1.country, func.count(salary_data1.country), func.avg(salary_data1.salaryusd)).\
+        visuals_data = session.query(salary_data1.country, cast(func.count(salary_data1.country), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
             group_by(salary_data1.country).all()
         session.close()
 
@@ -504,7 +504,7 @@ def salary_visuals_data_by_country(filter_choice, country):
     data_list = []
     # query to obtain salaries of each chosen filter
     if (filter_choice == "job_title_dataset2"):
-        visuals_data = session.query(salary_data2.title, func.count(salary_data2.title), func.avg(salary_data2.salary)).\
+        visuals_data = session.query(salary_data2.title, cast(func.count(salary_data2.title), Integer), cast(func.avg(salary_data2.salary), Integer)).\
             filter(salary_data2.country == country).\
             group_by(salary_data2.title).all()    
         session.close()
@@ -518,7 +518,7 @@ def salary_visuals_data_by_country(filter_choice, country):
             data_list.append(data_list_dict)
 
     elif (filter_choice == "gender"):
-        visuals_data = session.query(salary_data2.gender, func.count(salary_data2.gender), func.avg(salary_data2.salary)).\
+        visuals_data = session.query(salary_data2.gender, cast(func.count(salary_data2.gender), Integer), cast(func.avg(salary_data2.salary), Integer)).\
             filter(salary_data2.country == country).\
             group_by(salary_data2.gender).all()
         session.close()
@@ -531,7 +531,7 @@ def salary_visuals_data_by_country(filter_choice, country):
             data_list.append(data_list_dict)
     
     elif (filter_choice == "education_dataset2"):
-        visuals_data = session.query(salary_data2.education, func.count(salary_data2.education), func.avg(salary_data2.salary)).\
+        visuals_data = session.query(salary_data2.education, cast(func.count(salary_data2.education), Integer), cast(func.avg(salary_data2.salary), Integer)).\
             filter(salary_data2.country == country).\
             group_by(salary_data2.education).all()
         session.close()
@@ -544,7 +544,7 @@ def salary_visuals_data_by_country(filter_choice, country):
             data_list.append(data_list_dict)
 
     elif (filter_choice == "job_title_dataset1"):
-        visuals_data = session.query(salary_data1.jobtitle, func.count(salary_data1.jobtitle), func.avg(salary_data1.salaryusd)).\
+        visuals_data = session.query(salary_data1.jobtitle, cast(func.count(salary_data1.jobtitle), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
             filter(salary_data1.country == country).\
             group_by(salary_data1.jobtitle).all()
         session.close()
@@ -557,7 +557,7 @@ def salary_visuals_data_by_country(filter_choice, country):
             data_list.append(data_list_dict)
 
     elif (filter_choice == "education_dataset1"):
-        visuals_data = session.query(salary_data1.education, func.count(salary_data1.education), func.avg(salary_data1.salaryusd)).\
+        visuals_data = session.query(salary_data1.education, cast(func.count(salary_data1.education), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
             filter(salary_data1.country == country).\
             group_by(salary_data1.education).all()
         session.close()
@@ -570,7 +570,7 @@ def salary_visuals_data_by_country(filter_choice, country):
             data_list.append(data_list_dict)
 
     elif (filter_choice == "comp_education"):
-        visuals_data = session.query(salary_data1.educationiscomputerrelated, func.count(salary_data1.educationiscomputerrelated), func.avg(salary_data1.salaryusd)).\
+        visuals_data = session.query(salary_data1.educationiscomputerrelated, cast(func.count(salary_data1.educationiscomputerrelated), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
             filter(salary_data1.country == country).\
             group_by(salary_data1.educationiscomputerrelated).all()
         session.close()
@@ -583,7 +583,7 @@ def salary_visuals_data_by_country(filter_choice, country):
             data_list.append(data_list_dict)
 
     elif (filter_choice == "certifications"):
-        visuals_data = session.query(salary_data1.certifications, func.count(salary_data1.certifications), func.avg(salary_data1.salaryusd)).\
+        visuals_data = session.query(salary_data1.certifications, cast(func.count(salary_data1.certifications), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
             filter(salary_data1.country == country).\
             group_by(salary_data1.certifications).all()
         session.close()
@@ -603,15 +603,14 @@ def salary_visuals_data_by_country(filter_choice, country):
 def all_salary_data1(title):
     session = Session(engine)
 
-    # query to obtain state name and rank
     all_data = session.query(salary_data1.salaryusd, salary_data1.primarydatabase,\
-        salary_data1.yearswiththisdatabase, salary_data1.employmentstatus,\
-            salary_data1.jobtitle, salary_data1.managestaff, salary_data1.yearswiththistypeofjob,\
-            salary_data1.otherpeopleonyourteam, salary_data1.databaseservers,\
-            salary_data1.education, salary_data1.educationiscomputerrelated,\
-            salary_data1.certifications, salary_data1.hoursworkedperweek, salary_data1.telecommutedaysperweek,\
-            salary_data1.employmentsector, salary_data1.region).\
-            filter(salary_data1.jobtitle == title).all()
+        cast(salary_data1.yearswiththisdatabase, Integer), salary_data1.employmentstatus,\
+        salary_data1.jobtitle, salary_data1.managestaff, cast(salary_data1.yearswiththistypeofjob, Integer),\
+        salary_data1.otherpeopleonyourteam, salary_data1.databaseservers,\
+        salary_data1.education, salary_data1.educationiscomputerrelated,\
+        salary_data1.certifications, salary_data1.hoursworkedperweek, salary_data1.telecommutedaysperweek,\
+        salary_data1.employmentsector, salary_data1.region).\
+        filter(salary_data1.jobtitle == title).all()
     session.close()
 
     # adds data into a dictionary to be jsonified
