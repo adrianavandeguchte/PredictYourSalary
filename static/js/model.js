@@ -15,7 +15,7 @@ d3.json(country_region_url).then(function(data) {
     }
 });
 
-function optionChanged(value) {
+function optionChangedCountry(value) {
     country_region_url = "/salary_visuals_data/country_region_dataset1"
     d3.json(country_region_url).then(function(data) {
         var filteredData = data.filter(record => record.country === value);
@@ -24,4 +24,20 @@ function optionChanged(value) {
         region_menu.html("");
         region_menu.append("option").text(region).property("value", region);
     })
+}
+
+function optionChangedTitle(value) {
+    var managerInput = d3.select("#manager_input");
+
+    if (value == "Manager") {
+        console.log("hi");
+        managerInput.html("");
+        managerInput.append("option").text("Yes").property("value", "Yes");
+    }
+    else {
+        managerInput.html("");
+        managerInput.append("option").property("style", "display:none;").property("disabled", true).property("selected", true);
+        managerInput.append("option").text("Yes").property("value", "Yes");
+        managerInput.append("option").text("No").property("value", "No");
+    }
 }
