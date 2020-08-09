@@ -1,12 +1,18 @@
 d3.json("/recommendations_data", function (err, words) {
 var scaleCount = d3.scale.linear()
-  .domain([0,5300])
-  .range([20,100]);
+  .domain([10,5300])
+  .range([15,100]);
 
 words.forEach(function (d) {
   d.count = scaleCount(d.count);
 });
-
+words = words.filter(function (d) {
+  return d.recommended_first_language !== "None"
+});
+words = words.filter(function (d) {
+  return d.recommended_first_language !== "Other"
+});
+console.log(words)
 // Encapsulate the word cloud functionality
 function wordCloud(selector) {
 
@@ -105,3 +111,7 @@ var myWordCloud = wordCloud('.wordCloud');
 //Start cycling through the demo data
 showNewWords(myWordCloud);
 });
+
+function selectFilter(filter) {
+  
+}
