@@ -649,6 +649,7 @@ def go_to_prediction():
     X_encoded = pd.read_csv("exported_data/X_encoded_df.csv")
     X_encoded_empty = X_encoded[0:0]
 
+
     if request.method == 'POST':
         salary_model = joblib.load('notebooks/salary_model_trained.sav')
 
@@ -666,6 +667,7 @@ def go_to_prediction():
         telecommute = request.form['telecommute']
         manager = request.form['manager']
         title = request.form["title"]
+        print(years_db, years_job, country, region, comp_ed, primary_db, employ_sector, telecommute, manager, title)
 
         yearswiththisdatabase_header = "yearswiththisdatabase"
         yearswiththistypeofjob_header = "yearswiththistypeofjob"
@@ -690,10 +692,11 @@ def go_to_prediction():
 
         prediction_rounded  = round(prediction_untransformed[0], 2)
         prediction_formatted = "{:,.2f}".format(prediction_rounded)
+        prediction_string = f'Predicted Salary: ${prediction_formatted}'
         print("PREDICTION")
-        print(prediction_formatted)
+        print(prediction_string)
 
-        return render_template('predictions.html', salary_prediction=prediction_formatted)
+        return render_template('predictions.html', salary_prediction=prediction_string)
 
     else:
         return render_template("predictions.html")

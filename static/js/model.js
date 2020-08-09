@@ -27,13 +27,17 @@ function optionChangedCountry(value) {
 }
 
 function optionChangedTitle(value) {
-    var manager_input_yes = d3.select("#managerYesInput");
-    var manager_input_no = d3.select("#managerNoInput");
-    var manager_label_no = d3.select("#managerNoLabel");
+    var managerInput = d3.select("#manager_input");
 
     if (value == "Manager") {
-        manager_input_yes.property("checked");
-        manager_input_no.property("disabled");
-        manager_label_no.property("disabled");
+        console.log("hi");
+        managerInput.html("");
+        managerInput.append("option").text("Yes").property("value", "Yes");
+    }
+    else {
+        managerInput.html("");
+        managerInput.append("option").property("style", "display:none;").property("disabled", true).property("selected", true);
+        managerInput.append("option").text("Yes").property("value", "Yes");
+        managerInput.append("option").text("No").property("value", "No");
     }
 }
