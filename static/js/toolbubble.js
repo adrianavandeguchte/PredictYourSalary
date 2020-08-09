@@ -20,32 +20,32 @@ function bubbleChart() {
   }
 
   // create a force simulation and add forces to it
-  const simulation = d3.forceSimulation()
-    .force('charge', d3.forceManyBody().strength(charge))
-    // .force('center', d3.forceCenter(centre.x, centre.y))
-    .force('x', d3.forceX().strength(forceStrength).x(centre.x))
-    .force('y', d3.forceY().strength(forceStrength).y(centre.y))
-    .force('collision', d3.forceCollide().radius(d => d.radius + 1));
+  const simulation = d3v5.forceSimulation()
+    .force('charge', d3v5.forceManyBody().strength(charge))
+    // .force('center', d3v5.forceCenter(centre.x, centre.y))
+    .force('x', d3v5.forceX().strength(forceStrength).x(centre.x))
+    .force('y', d3v5.forceY().strength(forceStrength).y(centre.y))
+    .force('collision', d3v5.forceCollide().radius(d => d.radius + 1));
 
   // force simulation starts up automatically, which we don't want as there aren't any nodes yet
   simulation.stop();
 
   // set up colour scale
-  const fillColour = d3.scaleOrdinal()
+  const fillColour = d3v5.scaleOrdinal()
   	.domain(["1", "2", "3", "5", "99"])
   	.range(["#0074D9", "#7FDBFF", "#39CCCC", "#3D9970", "#AAAAAA"]);
 
   // data manipulation function takes raw data from csv and converts it into an array of node objects
   // each node will store data and visualisation values to draw a bubble
-  // rawData is expected to be an array of data objects, read in d3.csv
+  // rawData is expected to be an array of data objects, read in d3v5.csv
   // function returns the new node array, with a node for each element in the rawData input
   function createNodes(rawData) {
     // use max size in the data as the max in the scale's domain
     // note we have to ensure that size is a number
-    const maxSize = d3.max(rawData, d => +d.size);
+    const maxSize = d3v5.max(rawData, d => +d.size);
 
     // size bubbles based on area
-    const radiusScale = d3.scaleSqrt()
+    const radiusScale = d3v5.scaleSqrt()
       .domain([0, maxSize])
       .range([0, 80])
 
@@ -68,7 +68,7 @@ function bubbleChart() {
     nodes = createNodes(rawData);
 
     // create svg element inside provided selector
-    svg = d3.select(selector)
+    svg = d3v5.select(selector)
       .append('svg')
       .attr('width', width)
       .attr('height', height)
@@ -123,8 +123,8 @@ let myBubbleChart = bubbleChart();
 // function called once promise is resolved and data is loaded from csv
 // calls bubble chart function to display inside #vis div
 function display(data) {
-  myBubbleChart('#vis', data);
+  myBubbleChart('.bubble', data);
 }
 
 // load data
-d3.json("/tools").then(display);
+d3v5.csv('../temp/bubble_data.csv').then(display);

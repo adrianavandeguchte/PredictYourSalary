@@ -39,6 +39,21 @@
   color: #f1f1f1;
 }
 
+/* Styling for image icons */
+.sidebar-icon {
+  width: 140px;
+  height: 140px;
+  display: block;
+  padding: 6px 8px 6px 16px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform .2s; /* Animation */
+}
+
+.sidebar-icon:hover {
+  transform: scale(1.25); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
 /* Style the main content */
 .main {
   margin-left: 160px; /* Same as the width of the sidenav */
