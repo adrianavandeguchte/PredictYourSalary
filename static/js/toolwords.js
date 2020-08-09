@@ -1,4 +1,12 @@
 d3.json("/recommendations_data", function (err, words) {
+var scaleCount = d3.scale.linear()
+  .domain([0,5300])
+  .range([20,100]);
+
+words.forEach(function (d) {
+  d.count = scaleCount(d.count);
+});
+
 // Encapsulate the word cloud functionality
 function wordCloud(selector) {
 
