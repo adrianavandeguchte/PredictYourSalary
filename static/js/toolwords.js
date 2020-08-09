@@ -1,3 +1,4 @@
+d3.json("/recommendations_data", function (err, words) {
 // Encapsulate the word cloud functionality
 function wordCloud(selector) {
 
@@ -70,7 +71,6 @@ function wordCloud(selector) {
 //Some sample data - http://en.wikiquote.org/wiki/Opening_lines
 
 // var words = [{word: "Running", size: "10"}, {word: "Surfing", size: "20"}, {word: "Climbing", size: "50"}, {word: "Kiting", size: "30"}, {word: "Sailing", size: "20"}, {word: "Snowboarding", size: "60"} ]
-d3.json("/recommendations_data", function (err, words) {
     //Prepare one of the sample sentences by removing punctuation,
     // creating an array of words and computing a random size attribute.
     function getWords(i) {
@@ -81,7 +81,6 @@ d3.json("/recommendations_data", function (err, words) {
                     return {text: d.recommended_first_language, size:d.count};
                 })
     }
-});
 //This method tells the word cloud to redraw with a new set of words.
 //In reality the new words would probably come from a server request,
 // user input or some other source.
@@ -97,3 +96,4 @@ var myWordCloud = wordCloud('.wordCloud');
 
 //Start cycling through the demo data
 showNewWords(myWordCloud);
+});
