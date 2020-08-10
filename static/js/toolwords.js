@@ -1,4 +1,6 @@
-d3.json("/recommendations_data", function (err, words) {
+var sel = "/recommendations_data"
+
+d3.json(test, function (err, words) {
 var scaleCount = d3.scale.linear()
   .domain([50,5300])
   .range([15,100]);
@@ -116,5 +118,6 @@ showNewWords(myWordCloud);
 });
 
 function selectFilter(filter) {
+  var sel = document.getElementById('jobFilter');
 
 }
