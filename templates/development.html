@@ -15,110 +15,142 @@
   <div class="container">
 
     <div class="view overlay my-4">
-      <img src="../images/team.png" class="img-fluid" alt="">
-    </div>
-    
-    <div class="card mb-3" style="max-width: 1000px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="../images/sandy.png" class="card-img-top" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Sandra Froonjian</h5>
-            <p class="card-text">Sandra graduated from Stockton University with a bachelors degree in Biology and Education. 
-              Before the Bootcamp, she taught middle and high school biology for almost 3 years. 
-              During her time as a teacher, she started self mastering how to code, and realized that she wanted to 
-              pursue a career in computer programing instead. 
-              She researched careers in the industry and academic programs, which led her to enroll this Data Science Bootcamp at Rutgers. 
-              Her goal is to become a data engineer.
-            </p>
-            <a href="https://www.linkedin.com/in/sandrafroonjian/" class="card-link">LinkedIn</a>
-            <a href="https://github.com/sfroonjian" class="card-link">GitHub</a>
-            <a href="https://public.tableau.com/profile/!/" class="card-link">Tableau</a>
-          </div>
-        </div>
-      </div>
+      <img src="../images/developement.png" class="img-fluid" alt="">
+<br>
+<br>
+<br>
 
-      <div class="card mb-3" style="max-width: 1000px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="../images/kasia.jpeg" class="card-img-top" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Katarzyna (Kasia) Kalemba</h5>
-              <p class="card-text">Kasia graduated from Rutgers University with a Bachelor's degree in Cell Biology and Neuroscience  
-                and a Master's in Biomedical Science. She is currently a full time research scientist at Robert Wood Johnson Medical School
-                studying molecular mechanisms of disease. After the Data Science Bootcamp, she hopes to combine her scientific 
-                passion and knowledge with her newly aquired skills in coding. See links below for more information on her work. 
-              </p>
-              <a href="https://www.linkedin.com/in/katarzynakalemba/" class="card-link">LinkedIn</a>
-              <a href="https://github.com/kasiakalemba" class="card-link">GitHub</a>
-              <a href="https://public.tableau.com/profile/katarzyna.kalemba#!/" class="card-link">Tableau</a>
-            </div>
-          </div>
-        </div>
+<h1>Brief introduction:</h1>
+<p>As most of the Bootcamp graduates will be looking for a new job, our group developed a tool to explore the different tools used in the field and the expectations that different data professional job titles possess. Through our app, you can see a salary prediction based on your region, years of experience and primary tools used in a specific job title. By using our tool, you can estimate how much you can expect to earn with the current skills you have as well as compare your expertise to those in the field. </p>
+<p> We used the skills we learned in the Rutgers Bootcamp Course in order to accomplish this task. See below for a set by step guide behind our though process behind our developement.</p>
+
+<br>
+
+<h1>Step 1: Data Processing</h1>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 10%" style="height: 40px" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
+</div>
+
+<br>
+
+<h4> Data Sources</h4>
+<p>The first data set was collected from 171 countries as a survey for a Kaggle Competition. The survey responders were data professionals who are currently working in the field. We used their responses for the visuals for salary, gender, country, age and multiple data tools that they use in their current jobs. <a href="https://www.kaggle.com/c/kaggle-survey-2019">Get Data Here</a>
+
+<p> Our second dataset was used to develop our machine learning model for the salary prediction. We used factors such as location, title, primary database use, management level, education and year experience to predict a salary for a data professional. 
+<a href="https://www.brentozar.com/archive/2019/01/the-2019-data-professional-salary-survey-results/">Get Data Here</a>
+
+<br>
+
+<h4> Cleaning Dataset 1 Kaggle Survey </h4>
+<ul>
+<li>The original CSV file was loaded in Jupyter Notebook and consisted of 246 columns and 19718 rows and was narrowed down to 109 columns and 19718 rows.</li>
+<li>Columns were renamed for easier data access.</li>
+<li>Age and Salary columns consisted of ranges therefore we took both of those fields and took their column average that was needed for our visualizations. </li>
+<li>Extra characters such as: $, :, > were subsequently stripped from the text and columns were converted to integers or floats as needed.</li>
+<li>A clean CSV was exported for the remaining work. </li>
+</ul>
 
 
-    <div class="card mb-3" style="max-width: 1000px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="../images/solito.jpeg" class="card-img-top" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Solito Reyes III</h5>
-            <p class="card-text">Solito is a Data Scientist who graduated from a univeristy.
-              He plans to use his newly aquired skills in a new badass job.
-            </p>
-            <a href="https://www.linkedin.com/in/solitoreyesiii/" class="card-link">LinkedIn</a>
-            <a href="https://github.com/solrey3" class="card-link">GitHub</a>
-            <a href="https://public.tableau.com/profile/solito.reyes#!/" class="card-link">Tableau</a>
-          </div>
-        </div>
-      </div>
+<h4>Cleaning Dataset 2 Brent Ozar Data:</h4> 
+<ul>
+<li>The original CSV file was loaded in Jupyter Notebook and consisted of 6893 rows and 29 columns and was narrowed down to 6893 rows and 17 columns.</li>
+<li>By inspecting the column types we did the following a) converted them into needed types such as integers or floats, b) replaced extra characters such as commas or dollar signs c) replaced values in the years column that were not filled out correctly by the user. </li>
+<li>There were 10 job fields that were dropped from the whole dataset because they only consisted of 1-2 entries for each. </li>
+<li>Job titles within the same category such as Database Analyst were merged into one category or separated based on management. </li>
+<li>We merged a new dataset that included a world region based on country because we wanted our future data to be based on the region on the world rather than each individual country. </li>
+<li>A clean CSV was exported for the remaining work. </li>
 
-      <div class="card mb-3" style="max-width: 1000px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="../images/sandy.png" class="card-img-top" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Adriana van de Guchte</h5>
-              <p class="card-text">Adriana is a Data Scientist who graduated from a univeristy.
-                She plans to use his newly aquired skills in a new badass job.
-              </p>
-              <a href="https://github.com/adrianavandeguchte" class="card-link">LinkedIn</a>
-              <a href="https://www.linkedin.com/in/adriana-van-de-guchte-6096791a3/" class="card-link">GitHub</a>
-              <a href="https://public.tableau.com/profile/!/" class="card-link">Tableau</a>
-            </div>
-          </div>
-        </div>
+</ul>
+</p>
+
+<br>
+
+<h1>Step 2: Machine Learning</h1>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+</div>
+
+<br>
+<p>Our machine learning model focused on gathering enough information from the datset that would make an accurate salary predition based on those factors for someone looking for a job in the data science world. Our main features included ... </p>
+<h4>Scikit-Learn Model </h4>
+<ul>
+<li>For data pre-processing, we first selected all the features for the dataset except the salary which we made into our y variable which needed to be reshaped. We then encoded the data that was categorical into integers. Next we used a RandomForestClassifier and feature importance to narrow down the features for our model. We selected 10 features for our model. </li>
+<li>Next we scaled the data using Standard Scaler. </li>
+<li>We then trained and tested our model using: Linear Regression, Gradient Boosting Regressor, Lasso, Ridge and Elastic Net. </li>
+<li>Lastly, we saved the model to use in our future salary prediction in the flask app. </li>
+
+</ul>
+
+<h4>Natural Language Processing </h4>
+<ul>
+<li>Solito did this </li>
+<li>Solito did that </li>
+</ul>
+
+<br>
+
+<h1>Step 3: Visualizations</h1>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+</div>
+
+<br>
+
+<p> We decided to make visualizations that represent average salaries based on job titles in the different regions of the world. We also compared female and males salaries to observe whether these is a big gender pay gap and looked at other factors such as age. Other visualizations focused on the tools of the trade and years of experience. </p>
+
+<h4>Tableau</h4>
+<ul>
+<li>The cleaned CSV file 1 was loaded into Tableau Desktop. </li>
+<li>Visualizations for gender pay gap, age and salary region were made using different Tableau options.</li>
+<li>The final dashboard was published in Tableau Public and finally embedded into our html page.</li>
+</ul>
+
+<h4>D3</h4> 
+<ul>
+<li>Different versions of D3 were made compatible by ... </li>
+<li>We used .... </li>
+<li>Another thing ... </li>
+</ul>
+
+<br>
 
 
-        <div class="card mb-3" style="max-width: 1000px;">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <img src="../images/sandy.png" class="card-img-top" alt="...">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">Shrilekha Vijayakanthan</h5>
-                <p class="card-text">Shri is a Data Scientist who graduated from a univeristy.
-                  She plans to use his newly aquired skills in a new badass job.
-                </p>
-                <a href="https://github.com/Shri2985" class="card-link">LinkedIn</a>
-                <a href="https://github.com/sfroonjian" class="card-link">GitHub</a>
-                <a href="https://public.tableau.com/profile/shrilekha.vijayakanthan8354#!/" class="card-link">Tableau</a>
-              </div>
-            </div>
-          </div>
+<h1>Step 4: Flask App</h1>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+</div>
+<br>
+
+<h4> Developing the Flask App </h4>
+<p>By using Python and Flask App, we were able to connect our data and predictions with the HTML page for our app.</p>
+
+<ul>
+<li>/tools_data/ route focuses on the tools of the data world </li>
+<li>/salary_visuals/ route brings the users to the different salary graphics</li>
+<li>/salary_visuals_country/</li>
+<li>/predictions/ route is the machine learning model that let's a user predict their salary</li>
+<li>/methodology/ route goes into the detailed development process of this app</li>
+<li>/about/ route describes the authors of this project</li>
+</ul>
+
+<br>
+
+<h1>Step 5: Webpage and AWS Deployment</h1>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+</div>
+<br>
+
+<h4>HTML/CSS/Bootstrap</h4>
+<p>The final part of the project was telling the story of our data. The best tool for this job involved creating an interactive webpage allowing the user to explore their career options for their future career in data science. We wanted to introduce the page with the main highlights of the trade by summarizing the job titles. Our goal was to create a clean, modern, creative and a user friendly page. For this part, we used formatting provided by the Bootstrap library, some CSS styling and the Canva platform to create our graphics.</p>
+
+<h4>AWS Deployment</h4>
+<p> Deployment to AWS was the final step to make the webpage accessible by a link for the user. </p>
+
+<br>
+<h1>Tools and Technologies Used</h1>
 
 
-
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
