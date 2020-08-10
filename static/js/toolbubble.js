@@ -131,7 +131,6 @@ function display(data) {
 }
 
 d3.json("/tools_data", function (err, rawData) {
-  console.log(rawData);
-  
+
 
 });
