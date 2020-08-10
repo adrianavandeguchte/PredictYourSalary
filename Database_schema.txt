@@ -21,7 +21,6 @@ CREATE TABLE salary_data1 (
 	averagesalaryusdbins TEXT
 );
 
-
 DROP TABLE public.salary_data2;
 
 CREATE TABLE public.salary_data2
