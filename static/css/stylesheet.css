@@ -1,3 +1,32 @@
+/* NavBar Styling */
+.nav-style {
+  background-color: #ffdddd;
+  border-color: #ddc6c6;
+
+}
+
+.active {
+  font-style: italic;
+  background-color: #ffc6c6;
+}
+
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #6588a6;
+    outline: 0;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: #555;
+    background-color: #ffc6c6;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #555;
+    background-color: #ffc6c6;
+}
+
 /* Index page styling */
 .card-image {
   width: 200px;
