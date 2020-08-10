@@ -1,4 +1,4 @@
-var sel = "/recommendations_data"
+var test = "/recommendations_data"
 
 d3.json(test, function (err, words) {
 var scaleCount = d3.scale.linear()

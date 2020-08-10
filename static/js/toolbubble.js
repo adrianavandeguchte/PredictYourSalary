@@ -1,8 +1,8 @@
 
 
 function bubbleChart() {
-  const width = 940;
-  const height = 500;
+  const width = 900;
+  const height = 640;
 
   // location to centre the bubbles
   const centre = { x: width/2, y: height/2 };
@@ -34,8 +34,8 @@ function bubbleChart() {
 
   // set up colour scale
   const fillColour = d3v5.scaleOrdinal()
-  	.domain(["1", "2", "3", "5", "99"])
-  	.range(["#0074D9", "#7FDBFF", "#39CCCC", "#3D9970", "#AAAAAA"]);
+  	.domain(["database","ml_model","visualization_library","language","text_editor","course_platform"])
+  	.range(["#8583f8", "#7FDBFF", "#39CCCC", "#3D9970", "#AAAAAA","#9cb4eb","#89daae"]);
 
 
 
@@ -51,15 +51,15 @@ function bubbleChart() {
     // size bubbles based on area
     const radiusScale = d3v5.scaleSqrt()
       .domain([0, maxSize])
-      .range([0, 80])
+      .range([0, 60])
 
     // use map() to convert raw data into node data
     const myNodes = rawData.map(d => ({
       ...d,
       radius: radiusScale(+d.count),
       size: +d.count,
-      x: Math.random() * 900,
-      y: Math.random() * 800
+      x: Math.random() * 600,
+      y: Math.random() * 400
     }))
 
     return myNodes;
@@ -131,6 +131,12 @@ function display(data) {
 }
 
 d3.json("/tools_data", function (err, toolData) {
+  toolData = toolData.filter(function (d) {
+    return d.tool !== "None"
+  });
+  toolData = toolData.filter(function (d) {
+    return d.tool !== "Other"
+  });
   display(toolData)
 
 });

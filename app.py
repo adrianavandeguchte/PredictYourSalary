@@ -88,7 +88,7 @@ def tools_data():
             cast(func.sum(salary_data2.oracle), Integer), cast(func.sum(salary_data2.micro_acess), Integer), cast(func.sum(salary_data2.aws_data), Integer),\
             cast(func.sum(salary_data2.aws_dynamo), Integer), cast(func.sum(salary_data2.azure_sql), Integer), cast(func.sum(salary_data2.google_sql), Integer),\
             cast(func.sum(salary_data2.database_none), Integer), cast(func.sum(salary_data2.database_other), Integer)).all()
-    
+
     session.close()
 
     # adds data into a dictionaries to be jsonified
@@ -96,51 +96,51 @@ def tools_data():
     for udacity, coursera, edx, datacamp, dataquest, kaggle, fastai, udemy, linkedin, university, plat_none, plat_other in course_platform_data:
         udacity_dict = {}
         udacity_dict["type"] = "course_platform"
-        udacity_dict["tool"] = "udacity"
+        udacity_dict["tool"] = "Udacity"
         udacity_dict["count"] = udacity
         coursera_dict = {}
         coursera_dict["type"] = "course_platform"
-        coursera_dict["tool"] = "coursera"
+        coursera_dict["tool"] = "Coursera"
         coursera_dict["count"] = coursera
         edx_dict = {}
         edx_dict["type"] = "course_platform"
-        edx_dict["tool"] = "edx"
+        edx_dict["tool"] = "edX"
         edx_dict["count"] = edx
         datacamp_dict = {}
         datacamp_dict["type"] = "course_platform"
-        datacamp_dict["tool"] = "datacamp"
+        datacamp_dict["tool"] = "Datacamp"
         datacamp_dict["count"] = datacamp
         dataquest_dict = {}
         dataquest_dict["type"] = "course_platform"
-        dataquest_dict["tool"] = "dataquest"
+        dataquest_dict["tool"] = "Dataquest"
         dataquest_dict["count"] = dataquest
         kaggle_dict = {}
         kaggle_dict["type"] = "course_platform"
-        kaggle_dict["tool"] = "kaggle"
+        kaggle_dict["tool"] = "Kaggle"
         kaggle_dict["count"] = kaggle
         fastai_dict = {}
         fastai_dict["type"] = "course_platform"
-        fastai_dict["tool"] = "fastai"
+        fastai_dict["tool"] = "fast.ai"
         fastai_dict["count"] = fastai
         udemy_dict = {}
         udemy_dict["type"] = "course_platform"
-        udemy_dict["tool"] = "udemy"
+        udemy_dict["tool"] = "Udemy"
         udemy_dict["count"] = udemy
         linkedin_dict = {}
         linkedin_dict["type"] = "course_platform"
-        linkedin_dict["tool"] = "linkedin"
+        linkedin_dict["tool"] = "LinkedIn"
         linkedin_dict["count"] = linkedin
         university_dict = {}
         university_dict["type"] = "course_platform"
-        university_dict["tool"] = "university"
+        university_dict["tool"] = "University"
         university_dict["count"] = university
         plat_none_dict = {}
         plat_none_dict["type"] = "course_platform"
-        plat_none_dict["tool"] = "none"
+        plat_none_dict["tool"] = "None"
         plat_none_dict["count"] = plat_none
         plat_other_dict = {}
         plat_other_dict["type"] = "course_platform"
-        plat_other_dict["tool"] = "other"
+        plat_other_dict["tool"] = "Other"
         plat_other_dict["count"] = plat_other
 
         data_list.append(udacity_dict)
@@ -155,55 +155,55 @@ def tools_data():
         data_list.append(university_dict)
         data_list.append(plat_none_dict)
         data_list.append(plat_other_dict)
-   
+
     for jupyter, rstudio, pycharm, atom, matlab, vsc, spyder, vim_emacs, notepad, sublime, env_none, env_other in text_editor_data:
         jupyter_dict = {}
         jupyter_dict["type"] = "text_editor"
-        jupyter_dict["tool"] = "jupyter_notebook"
+        jupyter_dict["tool"] = "Jupyter Notebook"
         jupyter_dict["count"] = jupyter
         rstudio_dict = {}
         rstudio_dict["type"] = "text_editor"
-        rstudio_dict["tool"] = "rstudio"
+        rstudio_dict["tool"] = "RStudio"
         rstudio_dict["count"] = rstudio
         pycharm_dict = {}
         pycharm_dict["type"] = "text_editor"
-        pycharm_dict["tool"] = "pycharm"
+        pycharm_dict["tool"] = "PyCharm"
         pycharm_dict["count"] = pycharm
         atom_dict = {}
         atom_dict["type"] = "text_editor"
-        atom_dict["tool"] = "atom"
+        atom_dict["tool"] = "Atom"
         atom_dict["count"] = atom
         matlab_dict = {}
         matlab_dict["type"] = "text_editor"
-        matlab_dict["tool"] = "matlab"
+        matlab_dict["tool"] = "MATLAB"
         matlab_dict["count"] = matlab
         vsc_dict = {}
         vsc_dict["type"] = "text_editor"
-        vsc_dict["tool"] = "visual_studio_code"
+        vsc_dict["tool"] = "Visual Studio Code"
         vsc_dict["count"] = vsc
         spyder_dict = {}
         spyder_dict["type"] = "text_editor"
-        spyder_dict["tool"] = "spyder"
+        spyder_dict["tool"] = "Spyder"
         spyder_dict["count"] = spyder
         vim_emacs_dict = {}
         vim_emacs_dict["type"] = "text_editor"
-        vim_emacs_dict["tool"] = "vim_emacs"
+        vim_emacs_dict["tool"] = "Vim/Emacs"
         vim_emacs_dict["count"] = vim_emacs
         notepad_dict = {}
         notepad_dict["type"] = "text_editor"
-        notepad_dict["tool"] = "notepad++"
+        notepad_dict["tool"] = "Notepad++"
         notepad_dict["count"] = notepad
         sublime_dict = {}
         sublime_dict["type"] = "text_editor"
-        sublime_dict["tool"] = "sublime"
+        sublime_dict["tool"] = "Sublime"
         sublime_dict["count"] = sublime
         env_none_dict = {}
         env_none_dict["type"] = "text_editor"
-        env_none_dict["tool"] = "none"
+        env_none_dict["tool"] = "None"
         env_none_dict["count"] = env_none
         env_other_dict = {}
         env_other_dict["type"] = "text_editor"
-        env_other_dict["tool"] = "other"
+        env_other_dict["tool"] = "Other"
         env_other_dict["count"] = env_other
 
         data_list.append(jupyter_dict)
@@ -222,51 +222,51 @@ def tools_data():
     for python, r, sql, c, c_plusplus, java, javascript, typescript, bash, lan_matlab, lan_none, lan_other in language_data:
         python_dict = {}
         python_dict["type"] = "language"
-        python_dict["tool"] = "python"
+        python_dict["tool"] = "Python"
         python_dict["count"] = python
         r_dict = {}
         r_dict["type"] = "language"
-        r_dict["tool"] = "r"
+        r_dict["tool"] = "R"
         r_dict["count"] = r
         sql_dict = {}
         sql_dict["type"] = "language"
-        sql_dict["tool"] = "sql"
+        sql_dict["tool"] = "SQL"
         sql_dict["count"] = sql
         c_dict = {}
         c_dict["type"] = "language"
-        c_dict["tool"] = "c"
+        c_dict["tool"] = "C"
         c_dict["count"] = c
         c_plusplus_dict = {}
         c_plusplus_dict["type"] = "language"
-        c_plusplus_dict["tool"] = "c++"
+        c_plusplus_dict["tool"] = "C++"
         c_plusplus_dict["count"] = c_plusplus
         java_dict = {}
         java_dict["type"] = "language"
-        java_dict["tool"] = "java"
+        java_dict["tool"] = "Java"
         java_dict["count"] = java
         javascript_dict = {}
         javascript_dict["type"] = "language"
-        javascript_dict["tool"] = "javascript"
+        javascript_dict["tool"] = "JavaScript"
         javascript_dict["count"] = javascript
         typescript_dict = {}
         typescript_dict["type"] = "language"
-        typescript_dict["tool"] = "typescript"
+        typescript_dict["tool"] = "TypeScript"
         typescript_dict["count"] = typescript
         bash_dict = {}
         bash_dict["type"] = "language"
-        bash_dict["tool"] = "bash"
+        bash_dict["tool"] = "Bash"
         bash_dict["count"] = bash
         lan_matlab_dict = {}
         lan_matlab_dict["type"] = "language"
-        lan_matlab_dict["tool"] = "matlab_language"
+        lan_matlab_dict["tool"] = "MATLAB"
         lan_matlab_dict["count"] = lan_matlab
         lan_none_dict = {}
         lan_none_dict["type"] = "language"
-        lan_none_dict["tool"] = "none"
+        lan_none_dict["tool"] = "None"
         lan_none_dict["count"] = lan_none
         lan_other_dict = {}
         lan_other_dict["type"] = "language"
-        lan_other_dict["tool"] = "other"
+        lan_other_dict["tool"] = "Other"
         lan_other_dict["count"] = lan_other
 
         data_list.append(python_dict)
@@ -281,7 +281,7 @@ def tools_data():
         data_list.append(lan_matlab_dict)
         data_list.append(lan_none_dict)
         data_list.append(lan_other_dict)
- 
+
     for ggplot, matplotlib, altair, shiny, d3, plotly, bokeh, seaborn, geoplotlib, leaflet, vis_none, vis_other in library_data:
         ggplot_dict = {}
         ggplot_dict["type"] = "visualization_library"
@@ -289,15 +289,15 @@ def tools_data():
         ggplot_dict["count"] = ggplot
         matplotlib_dict = {}
         matplotlib_dict["type"] = "visualization_library"
-        matplotlib_dict["tool"] = "matplotlib"
+        matplotlib_dict["tool"] = "Matplotlib"
         matplotlib_dict["count"] = matplotlib
         altair_dict = {}
         altair_dict["type"] = "visualization_library"
-        altair_dict["tool"] = "altair"
+        altair_dict["tool"] = "Altair"
         altair_dict["count"] = altair
         shiny_dict = {}
         shiny_dict["type"] = "visualization_library"
-        shiny_dict["tool"] = "shiny"
+        shiny_dict["tool"] = "Shiny"
         shiny_dict["count"] = shiny
         d3_dict = {}
         d3_dict["type"] = "visualization_library"
@@ -305,15 +305,15 @@ def tools_data():
         d3_dict["count"] = d3
         plotly_dict = {}
         plotly_dict["type"] = "visualization_library"
-        plotly_dict["tool"] = "plotly"
+        plotly_dict["tool"] = "Plotly"
         plotly_dict["count"] = plotly
         bokeh_dict = {}
         bokeh_dict["type"] = "visualization_library"
-        bokeh_dict["tool"] = "bokeh"
+        bokeh_dict["tool"] = "Bokeh"
         bokeh_dict["count"] = bokeh
         seaborn_dict = {}
         seaborn_dict["type"] = "visualization_library"
-        seaborn_dict["tool"] = "seaborn"
+        seaborn_dict["tool"] = "Seaborn"
         seaborn_dict["count"] = seaborn
         geoplotlib_dict = {}
         geoplotlib_dict["type"] = "visualization_library"
@@ -321,15 +321,15 @@ def tools_data():
         geoplotlib_dict["count"] = geoplotlib
         leaflet_dict = {}
         leaflet_dict["type"] = "visualization_library"
-        leaflet_dict["tool"] = "leaflet"
+        leaflet_dict["tool"] = "Leaflet"
         leaflet_dict["count"] = leaflet
         vis_none_dict = {}
         vis_none_dict["type"] = "visualization_library"
-        vis_none_dict["tool"] = "none"
+        vis_none_dict["tool"] = "None"
         vis_none_dict["count"] = vis_none
         vis_other_dict = {}
         vis_other_dict["type"] = "visualization_library"
-        vis_other_dict["tool"] = "other"
+        vis_other_dict["tool"] = "Other"
         vis_other_dict["count"] = vis_other
 
         data_list.append(ggplot_dict)
@@ -348,51 +348,51 @@ def tools_data():
     for regression, tree_forest, gradient_boost, bayesian, evolutionary, dnn, cnn, gan, rnn, bert, mach_none, mach_other in ml_model_data:
         regression_dict = {}
         regression_dict["type"] = "ml_model"
-        regression_dict["tool"] = "regression"
+        regression_dict["tool"] = "Regression"
         regression_dict["count"] = regression
         tree_forest_dict = {}
         tree_forest_dict["type"] = "ml_model"
-        tree_forest_dict["tool"] = "tree_forest"
+        tree_forest_dict["tool"] = "Random Forest"
         tree_forest_dict["count"] = tree_forest
         gradient_boost_dict = {}
         gradient_boost_dict["type"] = "ml_model"
-        gradient_boost_dict["tool"] = "gradient_boost"
+        gradient_boost_dict["tool"] = "Gradient Boost"
         gradient_boost_dict["count"] = gradient_boost
         bayesian_dict = {}
         bayesian_dict["type"] = "ml_model"
-        bayesian_dict["tool"] = "bayesian"
+        bayesian_dict["tool"] = "Bayesian"
         bayesian_dict["count"] = bayesian
         evolutionary_dict = {}
         evolutionary_dict["type"] = "ml_model"
-        evolutionary_dict["tool"] = "evolutionary"
+        evolutionary_dict["tool"] = "Evolutionary"
         evolutionary_dict["count"] = evolutionary
         dnn_dict = {}
         dnn_dict["type"] = "ml_model"
-        dnn_dict["tool"] = "dnn"
+        dnn_dict["tool"] = "DNN"
         dnn_dict["count"] = dnn
         cnn_dict = {}
         cnn_dict["type"] = "ml_model"
-        cnn_dict["tool"] = "cnn"
+        cnn_dict["tool"] = "CNN"
         cnn_dict["count"] = cnn
         gan_dict = {}
         gan_dict["type"] = "ml_model"
-        gan_dict["tool"] = "gan"
+        gan_dict["tool"] = "GAN"
         gan_dict["count"] = gan
         rnn_dict = {}
         rnn_dict["type"] = "ml_model"
-        rnn_dict["tool"] = "rnn"
+        rnn_dict["tool"] = "RNN"
         rnn_dict["count"] = rnn
         bert_dict = {}
         bert_dict["type"] = "ml_model"
-        bert_dict["tool"] = "bert"
+        bert_dict["tool"] = "BERT"
         bert_dict["count"] = bert
         mach_none_dict = {}
         mach_none_dict["type"] = "ml_model"
-        mach_none_dict["tool"] = "none"
+        mach_none_dict["tool"] = "None"
         mach_none_dict["count"] = mach_none
         mach_other_dict = {}
         mach_other_dict["type"] = "ml_model"
-        mach_other_dict["tool"] = "other"
+        mach_other_dict["tool"] = "Other"
         mach_other_dict["count"] = mach_other
 
         data_list.append(regression_dict)
@@ -411,51 +411,51 @@ def tools_data():
     for mysql, postgres, sql_lite, sqlserver, oracle, micro_aces, aws_data, aws_dynamo, azure_sql, google_sql, database_none, database_other in database_data:
         mysql_dict = {}
         mysql_dict["type"] = "database"
-        mysql_dict["tool"] = "mysql"
+        mysql_dict["tool"] = "MySQL"
         mysql_dict["count"] = mysql
         postgres_dict = {}
         postgres_dict["type"] = "database"
-        postgres_dict["tool"] = "postgres"
+        postgres_dict["tool"] = "PostgreSQL"
         postgres_dict["count"] = postgres
         sql_lite_dict = {}
         sql_lite_dict["type"] = "database"
-        sql_lite_dict["tool"] = "sql_lite"
+        sql_lite_dict["tool"] = "SQLite"
         sql_lite_dict["count"] = sql_lite
         sqlserver_dict = {}
         sqlserver_dict["type"] = "database"
-        sqlserver_dict["tool"] = "sqlserver"
+        sqlserver_dict["tool"] = "SQL Server"
         sqlserver_dict["count"] = sqlserver
         oracle_dict = {}
         oracle_dict["type"] = "database"
-        oracle_dict["tool"] = "oracle"
+        oracle_dict["tool"] = "Oracle"
         oracle_dict["count"] = oracle
         micro_aces_dict = {}
         micro_aces_dict["type"] = "database"
-        micro_aces_dict["tool"] = "micro_aces"
+        micro_aces_dict["tool"] = "Micro Access"
         micro_aces_dict["count"] = micro_aces
         aws_data_dict = {}
         aws_data_dict["type"] = "database"
-        aws_data_dict["tool"] = "aws_data"
+        aws_data_dict["tool"] = "AWS"
         aws_data_dict["count"] = aws_data
         aws_dynamo_dict = {}
         aws_dynamo_dict["type"] = "database"
-        aws_dynamo_dict["tool"] = "aws_dynamo"
+        aws_dynamo_dict["tool"] = "DynamoDB"
         aws_dynamo_dict["count"] = aws_dynamo
         azure_sql_dict = {}
         azure_sql_dict["type"] = "database"
-        azure_sql_dict["tool"] = "azure_sql"
+        azure_sql_dict["tool"] = "Azure"
         azure_sql_dict["count"] = azure_sql
         google_sql_dict = {}
         google_sql_dict["type"] = "database"
-        google_sql_dict["tool"] = "google_sql"
+        google_sql_dict["tool"] = "Google SQL"
         google_sql_dict["count"] = google_sql
         database_none_dict = {}
         database_none_dict["type"] = "database"
-        database_none_dict["tool"] = "none"
+        database_none_dict["tool"] = "None"
         database_none_dict["count"] = database_none
         database_other_dict = {}
         database_other_dict["type"] = "database"
-        database_other_dict["tool"] = "other"
+        database_other_dict["tool"] = "Other"
         database_other_dict["count"] = database_other
 
         data_list.append(mysql_dict)
@@ -512,7 +512,7 @@ def tools_data_by_title(jobtitle):
             cast(func.sum(salary_data2.aws_dynamo), Integer), cast(func.sum(salary_data2.azure_sql), Integer), cast(func.sum(salary_data2.google_sql), Integer),\
             cast(func.sum(salary_data2.database_none), Integer), cast(func.sum(salary_data2.database_other), Integer)).\
             filter(salary_data2.title == jobtitle).all()
-    
+
     session.close()
 
      # adds data into a dictionaries to be jsonified
@@ -579,7 +579,7 @@ def tools_data_by_title(jobtitle):
         data_list.append(university_dict)
         data_list.append(plat_none_dict)
         data_list.append(plat_other_dict)
-   
+
     for jupyter, rstudio, pycharm, atom, matlab, vsc, spyder, vim_emacs, notepad, sublime, env_none, env_other in text_editor_data:
         jupyter_dict = {}
         jupyter_dict["type"] = "text_editor"
@@ -705,7 +705,7 @@ def tools_data_by_title(jobtitle):
         data_list.append(lan_matlab_dict)
         data_list.append(lan_none_dict)
         data_list.append(lan_other_dict)
- 
+
     for ggplot, matplotlib, altair, shiny, d3, plotly, bokeh, seaborn, geoplotlib, leaflet, vis_none, vis_other in library_data:
         ggplot_dict = {}
         ggplot_dict["type"] = "visualization_library"
@@ -911,7 +911,7 @@ def recommendations_data():
     recommendation_data = session.query(salary_data2.first_program, cast(func.count(salary_data2.first_program), Integer)).\
         group_by(salary_data2.first_program).all()
     session.close()
-    
+
     data_list = []
     for language, count in recommendation_data:
         if (language != "0"):
@@ -931,7 +931,7 @@ def recommendations_data_by_title(jobtitle):
         filter(salary_data2.title == jobtitle).\
         group_by(salary_data2.first_program).all()
     session.close()
-    
+
     data_list = []
     for language, count in recommendation_data:
         if (language != "0"):
@@ -958,9 +958,9 @@ def salary_visuals_data(filter_choice):
     # query to obtain salaries of each chosen filter
     if (filter_choice == "job_title_dataset2"):
         visuals_data = session.query(salary_data2.title, cast(func.count(salary_data2.title), Integer), cast(func.avg(salary_data2.salary), Integer)).\
-            group_by(salary_data2.title).all()    
+            group_by(salary_data2.title).all()
         session.close()
-        
+
         # adds data into a dictionary to be jsonified
         for title, count, salary in visuals_data:
             data_list_dict = {}
@@ -980,7 +980,7 @@ def salary_visuals_data(filter_choice):
             data_list_dict["count"] = count
             data_list_dict["salary"] = salary
             data_list.append(data_list_dict)
-    
+
     elif (filter_choice == "education_dataset2"):
         visuals_data = session.query(salary_data2.education, cast(func.count(salary_data2.education), Integer), cast(func.avg(salary_data2.salary), Integer)).\
             group_by(salary_data2.education).all()
@@ -1064,7 +1064,7 @@ def salary_visuals_data(filter_choice):
             data_list_dict["count"] = count
             data_list_dict["salary"] = salary
             data_list.append(data_list_dict)
-    
+
     elif (filter_choice == "country_region_dataset1"):
         visuals_data = session.query(salary_data1.country.distinct(), salary_data1.region).all()
         session.close()
@@ -1074,7 +1074,7 @@ def salary_visuals_data(filter_choice):
             data_list_dict["country"] = country
             data_list_dict["region"] = region
             data_list.append(data_list_dict)
-    
+
     return jsonify(data_list)
 
 
@@ -1088,9 +1088,9 @@ def salary_visuals_data_by_country(filter_choice, country):
     if (filter_choice == "job_title_dataset2"):
         visuals_data = session.query(salary_data2.title, cast(func.count(salary_data2.title), Integer), cast(func.avg(salary_data2.salary), Integer)).\
             filter(salary_data2.country == country).\
-            group_by(salary_data2.title).all()    
+            group_by(salary_data2.title).all()
         session.close()
-        
+
         # adds data into a dictionary to be jsonified
         for title, count, salary in visuals_data:
             data_list_dict = {}
@@ -1111,7 +1111,7 @@ def salary_visuals_data_by_country(filter_choice, country):
             data_list_dict["count"] = count
             data_list_dict["salary"] = salary
             data_list.append(data_list_dict)
-    
+
     elif (filter_choice == "education_dataset2"):
         visuals_data = session.query(salary_data2.education, cast(func.count(salary_data2.education), Integer), cast(func.avg(salary_data2.salary), Integer)).\
             filter(salary_data2.country == country).\
@@ -1176,7 +1176,7 @@ def salary_visuals_data_by_country(filter_choice, country):
             data_list_dict["count"] = count
             data_list_dict["salary"] = salary
             data_list.append(data_list_dict)
-    
+
     return jsonify(data_list)
 
 
@@ -1216,7 +1216,7 @@ def all_salary_data1(title):
         data_list_dict["employment_sector"] = sector
         data_list_dict["region"] = region
         data_list.append(data_list_dict)
-    
+
     return jsonify(data_list)
 
 
