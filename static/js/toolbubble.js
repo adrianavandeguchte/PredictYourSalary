@@ -46,7 +46,7 @@ function bubbleChart() {
   function createNodes(rawData) {
     // use max size in the data as the max in the scale's domain
     // note we have to ensure that size is a number
-    const maxSize = d3v5.max(rawData, d => +d.size);
+    const maxSize = d3v5.max(rawData, d => +d.count);
 
     // size bubbles based on area
     const radiusScale = d3v5.scaleSqrt()
@@ -56,8 +56,8 @@ function bubbleChart() {
     // use map() to convert raw data into node data
     const myNodes = rawData.map(d => ({
       ...d,
-      radius: radiusScale(+d.size),
-      size: +d.size,
+      radius: radiusScale(+d.count),
+      size: +d.count,
       x: Math.random() * 900,
       y: Math.random() * 800
     }))
@@ -79,7 +79,7 @@ function bubbleChart() {
 
     // bind nodes data to circle elements
     const elements = svg.selectAll('.bubble')
-      .data(nodes, d => d.id)
+      .data(nodes, d => d.tool)
       .enter()
       .append('g')
 
@@ -87,7 +87,7 @@ function bubbleChart() {
       .append('circle')
       .classed('bubble', true)
       .attr('r', d => d.radius)
-      .attr('fill', d => fillColour(d.groupid))
+      .attr('fill', d => fillColour(d.type))
 
     // labels
     labels = elements
@@ -95,7 +95,7 @@ function bubbleChart() {
       .attr('dy', '.3em')
       .style('text-anchor', 'middle')
       .style('font-size', 10)
-      .text(d => d.id)
+      .text(d => d.tool)
 
     // set simulation's nodes to our newly created nodes array
     // simulation starts running automatically once nodes are set
@@ -130,7 +130,7 @@ function display(data) {
   myBubbleChart('.bubble', data);
 }
 
-d3.json("/tools_data", function (err, rawData) {
-
+d3.json("/tools_data", function (err, toolData) {
+  display(toolData)
 
 });
