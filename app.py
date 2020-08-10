@@ -94,101 +94,382 @@ def tools_data():
     # adds data into a dictionaries to be jsonified
     data_list = []
     for udacity, coursera, edx, datacamp, dataquest, kaggle, fastai, udemy, linkedin, university, plat_none, plat_other in course_platform_data:
-        course_platform_dict = {}
-        course_platform_dict["udacity"] = udacity
-        course_platform_dict["coursera"] = coursera
-        course_platform_dict["edx"] = edx
-        course_platform_dict["datacamp"] = datacamp
-        course_platform_dict["dataquest"] = dataquest
-        course_platform_dict["kaggle"] = kaggle
-        course_platform_dict["fastai"] = fastai
-        course_platform_dict["udemy"] = udemy
-        course_platform_dict["linkedin"] = linkedin
-        course_platform_dict["university"] = university
-        course_platform_dict["none"] = plat_none
-        course_platform_dict["other"] = plat_other
-        course_platform_dict_with_name = {"course_platforms":course_platform_dict}
-        data_list.append(course_platform_dict_with_name)
+        udacity_dict = {}
+        udacity_dict["type"] = "course_platform"
+        udacity_dict["tool"] = "udacity"
+        udacity_dict["count"] = udacity
+        coursera_dict = {}
+        coursera_dict["type"] = "course_platform"
+        coursera_dict["tool"] = "coursera"
+        coursera_dict["count"] = coursera
+        edx_dict = {}
+        edx_dict["type"] = "course_platform"
+        edx_dict["tool"] = "edx"
+        edx_dict["count"] = edx
+        datacamp_dict = {}
+        datacamp_dict["type"] = "course_platform"
+        datacamp_dict["tool"] = "datacamp"
+        datacamp_dict["count"] = datacamp
+        dataquest_dict = {}
+        dataquest_dict["type"] = "course_platform"
+        dataquest_dict["tool"] = "dataquest"
+        dataquest_dict["count"] = dataquest
+        kaggle_dict = {}
+        kaggle_dict["type"] = "course_platform"
+        kaggle_dict["tool"] = "kaggle"
+        kaggle_dict["count"] = kaggle
+        fastai_dict = {}
+        fastai_dict["type"] = "course_platform"
+        fastai_dict["tool"] = "fastai"
+        fastai_dict["count"] = fastai
+        udemy_dict = {}
+        udemy_dict["type"] = "course_platform"
+        udemy_dict["tool"] = "udemy"
+        udemy_dict["count"] = udemy
+        linkedin_dict = {}
+        linkedin_dict["type"] = "course_platform"
+        linkedin_dict["tool"] = "linkedin"
+        linkedin_dict["count"] = linkedin
+        university_dict = {}
+        university_dict["type"] = "course_platform"
+        university_dict["tool"] = "university"
+        university_dict["count"] = university
+        plat_none_dict = {}
+        plat_none_dict["type"] = "course_platform"
+        plat_none_dict["tool"] = "none"
+        plat_none_dict["count"] = plat_none
+        plat_other_dict = {}
+        plat_other_dict["type"] = "course_platform"
+        plat_other_dict["tool"] = "other"
+        plat_other_dict["count"] = plat_other
+
+        data_list.append(udacity_dict)
+        data_list.append(coursera_dict)
+        data_list.append(edx_dict)
+        data_list.append(datacamp_dict)
+        data_list.append(dataquest_dict)
+        data_list.append(kaggle_dict)
+        data_list.append(fastai_dict)
+        data_list.append(udemy_dict)
+        data_list.append(linkedin_dict)
+        data_list.append(university_dict)
+        data_list.append(plat_none_dict)
+        data_list.append(plat_other_dict)
+   
     for jupyter, rstudio, pycharm, atom, matlab, vsc, spyder, vim_emacs, notepad, sublime, env_none, env_other in text_editor_data:
-        text_editor_dict = {}
-        text_editor_dict["jupyter"] = jupyter
-        text_editor_dict["rstudio"] = rstudio
-        text_editor_dict["pycharm"] = pycharm
-        text_editor_dict["atom"] = atom
-        text_editor_dict["matlab"] = matlab
-        text_editor_dict["vsc"] = vsc
-        text_editor_dict["spyder"] = spyder
-        text_editor_dict["vim_emacs"] = vim_emacs
-        text_editor_dict["notepad++"] = notepad
-        text_editor_dict["sublime"] = sublime
-        text_editor_dict["none"] = env_none
-        text_editor_dict["other"] = env_other
-        text_editor_dict_with_name = {"text_editors":text_editor_dict}
-        data_list.append(text_editor_dict_with_name)
+        jupyter_dict = {}
+        jupyter_dict["type"] = "text_editor"
+        jupyter_dict["tool"] = "jupyter_notebook"
+        jupyter_dict["count"] = jupyter
+        rstudio_dict = {}
+        rstudio_dict["type"] = "text_editor"
+        rstudio_dict["tool"] = "rstudio"
+        rstudio_dict["count"] = rstudio
+        pycharm_dict = {}
+        pycharm_dict["type"] = "text_editor"
+        pycharm_dict["tool"] = "pycharm"
+        pycharm_dict["count"] = pycharm
+        atom_dict = {}
+        atom_dict["type"] = "text_editor"
+        atom_dict["tool"] = "atom"
+        atom_dict["count"] = atom
+        matlab_dict = {}
+        matlab_dict["type"] = "text_editor"
+        matlab_dict["tool"] = "matlab"
+        matlab_dict["count"] = matlab
+        vsc_dict = {}
+        vsc_dict["type"] = "text_editor"
+        vsc_dict["tool"] = "visual_studio_code"
+        vsc_dict["count"] = vsc
+        spyder_dict = {}
+        spyder_dict["type"] = "text_editor"
+        spyder_dict["tool"] = "spyder"
+        spyder_dict["count"] = spyder
+        vim_emacs_dict = {}
+        vim_emacs_dict["type"] = "text_editor"
+        vim_emacs_dict["tool"] = "vim_emacs"
+        vim_emacs_dict["count"] = vim_emacs
+        notepad_dict = {}
+        notepad_dict["type"] = "text_editor"
+        notepad_dict["tool"] = "notepad++"
+        notepad_dict["count"] = notepad
+        sublime_dict = {}
+        sublime_dict["type"] = "text_editor"
+        sublime_dict["tool"] = "sublime"
+        sublime_dict["count"] = sublime
+        env_none_dict = {}
+        env_none_dict["type"] = "text_editor"
+        env_none_dict["tool"] = "none"
+        env_none_dict["count"] = env_none
+        env_other_dict = {}
+        env_other_dict["type"] = "text_editor"
+        env_other_dict["tool"] = "other"
+        env_other_dict["count"] = env_other
+
+        data_list.append(jupyter_dict)
+        data_list.append(rstudio_dict)
+        data_list.append(pycharm_dict)
+        data_list.append(atom_dict)
+        data_list.append(matlab_dict)
+        data_list.append(vsc_dict)
+        data_list.append(spyder_dict)
+        data_list.append(vim_emacs_dict)
+        data_list.append(notepad_dict)
+        data_list.append(sublime_dict)
+        data_list.append(env_none_dict)
+        data_list.append(env_other_dict)
+
     for python, r, sql, c, c_plusplus, java, javascript, typescript, bash, lan_matlab, lan_none, lan_other in language_data:
-        language_dict = {}
-        language_dict["python"] = python
-        language_dict["r"] = r
-        language_dict["sql"] = sql
-        language_dict["c"] = c
-        language_dict["c++"] = c_plusplus
-        language_dict["java"] = java
-        language_dict["javascript"] = javascript
-        language_dict["typescript"] = typescript
-        language_dict["bash"] = bash
-        language_dict["matlab_language"] = lan_matlab
-        language_dict["none"] = lan_none
-        language_dict["other"] = lan_other
-        language_dict_with_name = {"languages":language_dict}
-        data_list.append(language_dict_with_name)
+        python_dict = {}
+        python_dict["type"] = "language"
+        python_dict["tool"] = "python"
+        python_dict["count"] = python
+        r_dict = {}
+        r_dict["type"] = "language"
+        r_dict["tool"] = "r"
+        r_dict["count"] = r
+        sql_dict = {}
+        sql_dict["type"] = "language"
+        sql_dict["tool"] = "sql"
+        sql_dict["count"] = sql
+        c_dict = {}
+        c_dict["type"] = "language"
+        c_dict["tool"] = "c"
+        c_dict["count"] = c
+        c_plusplus_dict = {}
+        c_plusplus_dict["type"] = "language"
+        c_plusplus_dict["tool"] = "c++"
+        c_plusplus_dict["count"] = c_plusplus
+        java_dict = {}
+        java_dict["type"] = "language"
+        java_dict["tool"] = "java"
+        java_dict["count"] = java
+        javascript_dict = {}
+        javascript_dict["type"] = "language"
+        javascript_dict["tool"] = "javascript"
+        javascript_dict["count"] = javascript
+        typescript_dict = {}
+        typescript_dict["type"] = "language"
+        typescript_dict["tool"] = "typescript"
+        typescript_dict["count"] = typescript
+        bash_dict = {}
+        bash_dict["type"] = "language"
+        bash_dict["tool"] = "bash"
+        bash_dict["count"] = bash
+        lan_matlab_dict = {}
+        lan_matlab_dict["type"] = "language"
+        lan_matlab_dict["tool"] = "matlab_language"
+        lan_matlab_dict["count"] = lan_matlab
+        lan_none_dict = {}
+        lan_none_dict["type"] = "language"
+        lan_none_dict["tool"] = "none"
+        lan_none_dict["count"] = lan_none
+        lan_other_dict = {}
+        lan_other_dict["type"] = "language"
+        lan_other_dict["tool"] = "other"
+        lan_other_dict["count"] = lan_other
+
+        data_list.append(python_dict)
+        data_list.append(r_dict)
+        data_list.append(sql_dict)
+        data_list.append(c_dict)
+        data_list.append(c_plusplus_dict)
+        data_list.append(java_dict)
+        data_list.append(javascript_dict)
+        data_list.append(typescript_dict)
+        data_list.append(bash_dict)
+        data_list.append(lan_matlab_dict)
+        data_list.append(lan_none_dict)
+        data_list.append(lan_other_dict)
+ 
     for ggplot, matplotlib, altair, shiny, d3, plotly, bokeh, seaborn, geoplotlib, leaflet, vis_none, vis_other in library_data:
-        library_dict = {}
-        library_dict["ggplot"] = ggplot
-        library_dict["matplotlib"] = matplotlib
-        library_dict["altair"] = altair
-        library_dict["shiny"] = shiny
-        library_dict["d3"] = d3
-        library_dict["plotly"] = plotly
-        library_dict["bokeh"] = bokeh
-        library_dict["seaborn"] = seaborn
-        library_dict["geoplotlib"] = geoplotlib
-        library_dict["leaflet"] = leaflet
-        library_dict["none"] = vis_none
-        library_dict["other"] = vis_other
-        library_dict_with_name = {"libraries":library_dict}
-        data_list.append(library_dict_with_name)
+        ggplot_dict = {}
+        ggplot_dict["type"] = "visualization_library"
+        ggplot_dict["tool"] = "ggplot"
+        ggplot_dict["count"] = ggplot
+        matplotlib_dict = {}
+        matplotlib_dict["type"] = "visualization_library"
+        matplotlib_dict["tool"] = "matplotlib"
+        matplotlib_dict["count"] = matplotlib
+        altair_dict = {}
+        altair_dict["type"] = "visualization_library"
+        altair_dict["tool"] = "altair"
+        altair_dict["count"] = altair
+        shiny_dict = {}
+        shiny_dict["type"] = "visualization_library"
+        shiny_dict["tool"] = "shiny"
+        shiny_dict["count"] = shiny
+        d3_dict = {}
+        d3_dict["type"] = "visualization_library"
+        d3_dict["tool"] = "d3"
+        d3_dict["count"] = d3
+        plotly_dict = {}
+        plotly_dict["type"] = "visualization_library"
+        plotly_dict["tool"] = "plotly"
+        plotly_dict["count"] = plotly
+        bokeh_dict = {}
+        bokeh_dict["type"] = "visualization_library"
+        bokeh_dict["tool"] = "bokeh"
+        bokeh_dict["count"] = bokeh
+        seaborn_dict = {}
+        seaborn_dict["type"] = "visualization_library"
+        seaborn_dict["tool"] = "seaborn"
+        seaborn_dict["count"] = seaborn
+        geoplotlib_dict = {}
+        geoplotlib_dict["type"] = "visualization_library"
+        geoplotlib_dict["tool"] = "geoplotlib"
+        geoplotlib_dict["count"] = geoplotlib
+        leaflet_dict = {}
+        leaflet_dict["type"] = "visualization_library"
+        leaflet_dict["tool"] = "leaflet"
+        leaflet_dict["count"] = leaflet
+        vis_none_dict = {}
+        vis_none_dict["type"] = "visualization_library"
+        vis_none_dict["tool"] = "none"
+        vis_none_dict["count"] = vis_none
+        vis_other_dict = {}
+        vis_other_dict["type"] = "visualization_library"
+        vis_other_dict["tool"] = "other"
+        vis_other_dict["count"] = vis_other
+
+        data_list.append(ggplot_dict)
+        data_list.append(matplotlib_dict)
+        data_list.append(altair_dict)
+        data_list.append(shiny_dict)
+        data_list.append(d3_dict)
+        data_list.append(plotly_dict)
+        data_list.append(bokeh_dict)
+        data_list.append(seaborn_dict)
+        data_list.append(geoplotlib_dict)
+        data_list.append(leaflet_dict)
+        data_list.append(vis_none_dict)
+        data_list.append(vis_other_dict)
+
     for regression, tree_forest, gradient_boost, bayesian, evolutionary, dnn, cnn, gan, rnn, bert, mach_none, mach_other in ml_model_data:
-        ml_model_dict = {}
-        ml_model_dict["regression"] = regression
-        ml_model_dict["tree_forest"] = tree_forest
-        ml_model_dict["gradient_boost"] = gradient_boost
-        ml_model_dict["bayesian"] = bayesian
-        ml_model_dict["evolutionary"] = evolutionary
-        ml_model_dict["dnn"] = dnn
-        ml_model_dict["cnn"] = cnn
-        ml_model_dict["gan"] = gan
-        ml_model_dict["rnn"] = rnn
-        ml_model_dict["bert"] = bert
-        ml_model_dict["none"] = mach_none
-        ml_model_dict["other"] = mach_other
-        ml_model_dict_with_name = {"ml_models":ml_model_dict}
-        data_list.append(ml_model_dict_with_name)
+        regression_dict = {}
+        regression_dict["type"] = "ml_model"
+        regression_dict["tool"] = "regression"
+        regression_dict["count"] = regression
+        tree_forest_dict = {}
+        tree_forest_dict["type"] = "ml_model"
+        tree_forest_dict["tool"] = "tree_forest"
+        tree_forest_dict["count"] = tree_forest
+        gradient_boost_dict = {}
+        gradient_boost_dict["type"] = "ml_model"
+        gradient_boost_dict["tool"] = "gradient_boost"
+        gradient_boost_dict["count"] = gradient_boost
+        bayesian_dict = {}
+        bayesian_dict["type"] = "ml_model"
+        bayesian_dict["tool"] = "bayesian"
+        bayesian_dict["count"] = bayesian
+        evolutionary_dict = {}
+        evolutionary_dict["type"] = "ml_model"
+        evolutionary_dict["tool"] = "evolutionary"
+        evolutionary_dict["count"] = evolutionary
+        dnn_dict = {}
+        dnn_dict["type"] = "ml_model"
+        dnn_dict["tool"] = "dnn"
+        dnn_dict["count"] = dnn
+        cnn_dict = {}
+        cnn_dict["type"] = "ml_model"
+        cnn_dict["tool"] = "cnn"
+        cnn_dict["count"] = cnn
+        gan_dict = {}
+        gan_dict["type"] = "ml_model"
+        gan_dict["tool"] = "gan"
+        gan_dict["count"] = gan
+        rnn_dict = {}
+        rnn_dict["type"] = "ml_model"
+        rnn_dict["tool"] = "rnn"
+        rnn_dict["count"] = rnn
+        bert_dict = {}
+        bert_dict["type"] = "ml_model"
+        bert_dict["tool"] = "bert"
+        bert_dict["count"] = bert
+        mach_none_dict = {}
+        mach_none_dict["type"] = "ml_model"
+        mach_none_dict["tool"] = "none"
+        mach_none_dict["count"] = mach_none
+        mach_other_dict = {}
+        mach_other_dict["type"] = "ml_model"
+        mach_other_dict["tool"] = "other"
+        mach_other_dict["count"] = mach_other
+
+        data_list.append(regression_dict)
+        data_list.append(tree_forest_dict)
+        data_list.append(gradient_boost_dict)
+        data_list.append(bayesian_dict)
+        data_list.append(evolutionary_dict)
+        data_list.append(dnn_dict)
+        data_list.append(cnn_dict)
+        data_list.append(gan_dict)
+        data_list.append(rnn_dict)
+        data_list.append(bert_dict)
+        data_list.append(mach_none_dict)
+        data_list.append(mach_other_dict)
+
     for mysql, postgres, sql_lite, sqlserver, oracle, micro_aces, aws_data, aws_dynamo, azure_sql, google_sql, database_none, database_other in database_data:
-        database_dict = {}
-        database_dict["mysql"] = mysql
-        database_dict["postgres"] = postgres
-        database_dict["sql_lite"] = sql_lite
-        database_dict["sqlserver"] = sqlserver
-        database_dict["oracle"] = oracle
-        database_dict["micro_aces"] = micro_aces
-        database_dict["aws_data"] = aws_data
-        database_dict["aws_dynamo"] = aws_dynamo
-        database_dict["azure_sql"] = azure_sql
-        database_dict["google_sql"] = google_sql
-        database_dict["none"] = database_none
-        database_dict["other"] = database_other
-        database_dict_with_name = {"databases":database_dict}
-        data_list.append(database_dict_with_name)
+        mysql_dict = {}
+        mysql_dict["type"] = "database"
+        mysql_dict["tool"] = "mysql"
+        mysql_dict["count"] = mysql
+        postgres_dict = {}
+        postgres_dict["type"] = "database"
+        postgres_dict["tool"] = "postgres"
+        postgres_dict["count"] = postgres
+        sql_lite_dict = {}
+        sql_lite_dict["type"] = "database"
+        sql_lite_dict["tool"] = "sql_lite"
+        sql_lite_dict["count"] = sql_lite
+        sqlserver_dict = {}
+        sqlserver_dict["type"] = "database"
+        sqlserver_dict["tool"] = "sqlserver"
+        sqlserver_dict["count"] = sqlserver
+        oracle_dict = {}
+        oracle_dict["type"] = "database"
+        oracle_dict["tool"] = "oracle"
+        oracle_dict["count"] = oracle
+        micro_aces_dict = {}
+        micro_aces_dict["type"] = "database"
+        micro_aces_dict["tool"] = "micro_aces"
+        micro_aces_dict["count"] = micro_aces
+        aws_data_dict = {}
+        aws_data_dict["type"] = "database"
+        aws_data_dict["tool"] = "aws_data"
+        aws_data_dict["count"] = aws_data
+        aws_dynamo_dict = {}
+        aws_dynamo_dict["type"] = "database"
+        aws_dynamo_dict["tool"] = "aws_dynamo"
+        aws_dynamo_dict["count"] = aws_dynamo
+        azure_sql_dict = {}
+        azure_sql_dict["type"] = "database"
+        azure_sql_dict["tool"] = "azure_sql"
+        azure_sql_dict["count"] = azure_sql
+        google_sql_dict = {}
+        google_sql_dict["type"] = "database"
+        google_sql_dict["tool"] = "google_sql"
+        google_sql_dict["count"] = google_sql
+        database_none_dict = {}
+        database_none_dict["type"] = "database"
+        database_none_dict["tool"] = "none"
+        database_none_dict["count"] = database_none
+        database_other_dict = {}
+        database_other_dict["type"] = "database"
+        database_other_dict["tool"] = "other"
+        database_other_dict["count"] = database_other
+
+        data_list.append(mysql_dict)
+        data_list.append(postgres_dict)
+        data_list.append(sql_lite_dict)
+        data_list.append(sqlserver_dict)
+        data_list.append(oracle_dict)
+        data_list.append(micro_aces_dict)
+        data_list.append(aws_data_dict)
+        data_list.append(aws_dynamo_dict)
+        data_list.append(azure_sql_dict)
+        data_list.append(google_sql_dict)
+        data_list.append(database_none_dict)
+        data_list.append(database_other_dict)
 
     return jsonify(data_list)
 
@@ -234,104 +515,385 @@ def tools_data_by_title(jobtitle):
     
     session.close()
 
-    # adds data into a dictionaries to be jsonified
+     # adds data into a dictionaries to be jsonified
     data_list = []
     for udacity, coursera, edx, datacamp, dataquest, kaggle, fastai, udemy, linkedin, university, plat_none, plat_other in course_platform_data:
-        course_platform_dict = {}
-        course_platform_dict["udacity"] = udacity
-        course_platform_dict["coursera"] = coursera
-        course_platform_dict["edx"] = edx
-        course_platform_dict["datacamp"] = datacamp
-        course_platform_dict["dataquest"] = dataquest
-        course_platform_dict["kaggle"] = kaggle
-        course_platform_dict["fastai"] = fastai
-        course_platform_dict["udemy"] = udemy
-        course_platform_dict["linkedin"] = linkedin
-        course_platform_dict["university"] = university
-        course_platform_dict["none"] = plat_none
-        course_platform_dict["other"] = plat_other
-        course_platform_dict_with_name = {"course_platforms":course_platform_dict}
-        data_list.append(course_platform_dict_with_name)
+        udacity_dict = {}
+        udacity_dict["type"] = "course_platform"
+        udacity_dict["tool"] = "udacity"
+        udacity_dict["count"] = udacity
+        coursera_dict = {}
+        coursera_dict["type"] = "course_platform"
+        coursera_dict["tool"] = "coursera"
+        coursera_dict["count"] = coursera
+        edx_dict = {}
+        edx_dict["type"] = "course_platform"
+        edx_dict["tool"] = "edx"
+        edx_dict["count"] = edx
+        datacamp_dict = {}
+        datacamp_dict["type"] = "course_platform"
+        datacamp_dict["tool"] = "datacamp"
+        datacamp_dict["count"] = datacamp
+        dataquest_dict = {}
+        dataquest_dict["type"] = "course_platform"
+        dataquest_dict["tool"] = "dataquest"
+        dataquest_dict["count"] = dataquest
+        kaggle_dict = {}
+        kaggle_dict["type"] = "course_platform"
+        kaggle_dict["tool"] = "kaggle"
+        kaggle_dict["count"] = kaggle
+        fastai_dict = {}
+        fastai_dict["type"] = "course_platform"
+        fastai_dict["tool"] = "fastai"
+        fastai_dict["count"] = fastai
+        udemy_dict = {}
+        udemy_dict["type"] = "course_platform"
+        udemy_dict["tool"] = "udemy"
+        udemy_dict["count"] = udemy
+        linkedin_dict = {}
+        linkedin_dict["type"] = "course_platform"
+        linkedin_dict["tool"] = "linkedin"
+        linkedin_dict["count"] = linkedin
+        university_dict = {}
+        university_dict["type"] = "course_platform"
+        university_dict["tool"] = "university"
+        university_dict["count"] = university
+        plat_none_dict = {}
+        plat_none_dict["type"] = "course_platform"
+        plat_none_dict["tool"] = "none"
+        plat_none_dict["count"] = plat_none
+        plat_other_dict = {}
+        plat_other_dict["type"] = "course_platform"
+        plat_other_dict["tool"] = "other"
+        plat_other_dict["count"] = plat_other
+
+        data_list.append(udacity_dict)
+        data_list.append(coursera_dict)
+        data_list.append(edx_dict)
+        data_list.append(datacamp_dict)
+        data_list.append(dataquest_dict)
+        data_list.append(kaggle_dict)
+        data_list.append(fastai_dict)
+        data_list.append(udemy_dict)
+        data_list.append(linkedin_dict)
+        data_list.append(university_dict)
+        data_list.append(plat_none_dict)
+        data_list.append(plat_other_dict)
+   
     for jupyter, rstudio, pycharm, atom, matlab, vsc, spyder, vim_emacs, notepad, sublime, env_none, env_other in text_editor_data:
-        text_editor_dict = {}
-        text_editor_dict["jupyter"] = jupyter
-        text_editor_dict["rstudio"] = rstudio
-        text_editor_dict["pycharm"] = pycharm
-        text_editor_dict["atom"] = atom
-        text_editor_dict["matlab"] = matlab
-        text_editor_dict["vsc"] = vsc
-        text_editor_dict["spyder"] = spyder
-        text_editor_dict["vim_emacs"] = vim_emacs
-        text_editor_dict["notepad++"] = notepad
-        text_editor_dict["sublime"] = sublime
-        text_editor_dict["none"] = env_none
-        text_editor_dict["other"] = env_other
-        text_editor_dict_with_name = {"text_editors":text_editor_dict}
-        data_list.append(text_editor_dict_with_name)
+        jupyter_dict = {}
+        jupyter_dict["type"] = "text_editor"
+        jupyter_dict["tool"] = "jupyter_notebook"
+        jupyter_dict["count"] = jupyter
+        rstudio_dict = {}
+        rstudio_dict["type"] = "text_editor"
+        rstudio_dict["tool"] = "rstudio"
+        rstudio_dict["count"] = rstudio
+        pycharm_dict = {}
+        pycharm_dict["type"] = "text_editor"
+        pycharm_dict["tool"] = "pycharm"
+        pycharm_dict["count"] = pycharm
+        atom_dict = {}
+        atom_dict["type"] = "text_editor"
+        atom_dict["tool"] = "atom"
+        atom_dict["count"] = atom
+        matlab_dict = {}
+        matlab_dict["type"] = "text_editor"
+        matlab_dict["tool"] = "matlab"
+        matlab_dict["count"] = matlab
+        vsc_dict = {}
+        vsc_dict["type"] = "text_editor"
+        vsc_dict["tool"] = "visual_studio_code"
+        vsc_dict["count"] = vsc
+        spyder_dict = {}
+        spyder_dict["type"] = "text_editor"
+        spyder_dict["tool"] = "spyder"
+        spyder_dict["count"] = spyder
+        vim_emacs_dict = {}
+        vim_emacs_dict["type"] = "text_editor"
+        vim_emacs_dict["tool"] = "vim_emacs"
+        vim_emacs_dict["count"] = vim_emacs
+        notepad_dict = {}
+        notepad_dict["type"] = "text_editor"
+        notepad_dict["tool"] = "notepad++"
+        notepad_dict["count"] = notepad
+        sublime_dict = {}
+        sublime_dict["type"] = "text_editor"
+        sublime_dict["tool"] = "sublime"
+        sublime_dict["count"] = sublime
+        env_none_dict = {}
+        env_none_dict["type"] = "text_editor"
+        env_none_dict["tool"] = "none"
+        env_none_dict["count"] = env_none
+        env_other_dict = {}
+        env_other_dict["type"] = "text_editor"
+        env_other_dict["tool"] = "other"
+        env_other_dict["count"] = env_other
+
+        data_list.append(jupyter_dict)
+        data_list.append(rstudio_dict)
+        data_list.append(pycharm_dict)
+        data_list.append(atom_dict)
+        data_list.append(matlab_dict)
+        data_list.append(vsc_dict)
+        data_list.append(spyder_dict)
+        data_list.append(vim_emacs_dict)
+        data_list.append(notepad_dict)
+        data_list.append(sublime_dict)
+        data_list.append(env_none_dict)
+        data_list.append(env_other_dict)
+
     for python, r, sql, c, c_plusplus, java, javascript, typescript, bash, lan_matlab, lan_none, lan_other in language_data:
-        language_dict = {}
-        language_dict["python"] = python
-        language_dict["r"] = r
-        language_dict["sql"] = sql
-        language_dict["c"] = c
-        language_dict["c++"] = c_plusplus
-        language_dict["java"] = java
-        language_dict["javascript"] = javascript
-        language_dict["typescript"] = typescript
-        language_dict["bash"] = bash
-        language_dict["matlab_language"] = lan_matlab
-        language_dict["none"] = lan_none
-        language_dict["other"] = lan_other
-        language_dict_with_name = {"languages":language_dict}
-        data_list.append(language_dict_with_name)
+        python_dict = {}
+        python_dict["type"] = "language"
+        python_dict["tool"] = "python"
+        python_dict["count"] = python
+        r_dict = {}
+        r_dict["type"] = "language"
+        r_dict["tool"] = "r"
+        r_dict["count"] = r
+        sql_dict = {}
+        sql_dict["type"] = "language"
+        sql_dict["tool"] = "sql"
+        sql_dict["count"] = sql
+        c_dict = {}
+        c_dict["type"] = "language"
+        c_dict["tool"] = "c"
+        c_dict["count"] = c
+        c_plusplus_dict = {}
+        c_plusplus_dict["type"] = "language"
+        c_plusplus_dict["tool"] = "c++"
+        c_plusplus_dict["count"] = c_plusplus
+        java_dict = {}
+        java_dict["type"] = "language"
+        java_dict["tool"] = "java"
+        java_dict["count"] = java
+        javascript_dict = {}
+        javascript_dict["type"] = "language"
+        javascript_dict["tool"] = "javascript"
+        javascript_dict["count"] = javascript
+        typescript_dict = {}
+        typescript_dict["type"] = "language"
+        typescript_dict["tool"] = "typescript"
+        typescript_dict["count"] = typescript
+        bash_dict = {}
+        bash_dict["type"] = "language"
+        bash_dict["tool"] = "bash"
+        bash_dict["count"] = bash
+        lan_matlab_dict = {}
+        lan_matlab_dict["type"] = "language"
+        lan_matlab_dict["tool"] = "matlab_language"
+        lan_matlab_dict["count"] = lan_matlab
+        lan_none_dict = {}
+        lan_none_dict["type"] = "language"
+        lan_none_dict["tool"] = "none"
+        lan_none_dict["count"] = lan_none
+        lan_other_dict = {}
+        lan_other_dict["type"] = "language"
+        lan_other_dict["tool"] = "other"
+        lan_other_dict["count"] = lan_other
+
+        data_list.append(python_dict)
+        data_list.append(r_dict)
+        data_list.append(sql_dict)
+        data_list.append(c_dict)
+        data_list.append(c_plusplus_dict)
+        data_list.append(java_dict)
+        data_list.append(javascript_dict)
+        data_list.append(typescript_dict)
+        data_list.append(bash_dict)
+        data_list.append(lan_matlab_dict)
+        data_list.append(lan_none_dict)
+        data_list.append(lan_other_dict)
+ 
     for ggplot, matplotlib, altair, shiny, d3, plotly, bokeh, seaborn, geoplotlib, leaflet, vis_none, vis_other in library_data:
-        library_dict = {}
-        library_dict["ggplot"] = ggplot
-        library_dict["matplotlib"] = matplotlib
-        library_dict["altair"] = altair
-        library_dict["shiny"] = shiny
-        library_dict["d3"] = d3
-        library_dict["plotly"] = plotly
-        library_dict["bokeh"] = bokeh
-        library_dict["seaborn"] = seaborn
-        library_dict["geoplotlib"] = geoplotlib
-        library_dict["leaflet"] = leaflet
-        library_dict["none"] = vis_none
-        library_dict["other"] = vis_other
-        library_dict_with_name = {"libraries":library_dict}
-        data_list.append(library_dict_with_name)
+        ggplot_dict = {}
+        ggplot_dict["type"] = "visualization_library"
+        ggplot_dict["tool"] = "ggplot"
+        ggplot_dict["count"] = ggplot
+        matplotlib_dict = {}
+        matplotlib_dict["type"] = "visualization_library"
+        matplotlib_dict["tool"] = "matplotlib"
+        matplotlib_dict["count"] = matplotlib
+        altair_dict = {}
+        altair_dict["type"] = "visualization_library"
+        altair_dict["tool"] = "altair"
+        altair_dict["count"] = altair
+        shiny_dict = {}
+        shiny_dict["type"] = "visualization_library"
+        shiny_dict["tool"] = "shiny"
+        shiny_dict["count"] = shiny
+        d3_dict = {}
+        d3_dict["type"] = "visualization_library"
+        d3_dict["tool"] = "d3"
+        d3_dict["count"] = d3
+        plotly_dict = {}
+        plotly_dict["type"] = "visualization_library"
+        plotly_dict["tool"] = "plotly"
+        plotly_dict["count"] = plotly
+        bokeh_dict = {}
+        bokeh_dict["type"] = "visualization_library"
+        bokeh_dict["tool"] = "bokeh"
+        bokeh_dict["count"] = bokeh
+        seaborn_dict = {}
+        seaborn_dict["type"] = "visualization_library"
+        seaborn_dict["tool"] = "seaborn"
+        seaborn_dict["count"] = seaborn
+        geoplotlib_dict = {}
+        geoplotlib_dict["type"] = "visualization_library"
+        geoplotlib_dict["tool"] = "geoplotlib"
+        geoplotlib_dict["count"] = geoplotlib
+        leaflet_dict = {}
+        leaflet_dict["type"] = "visualization_library"
+        leaflet_dict["tool"] = "leaflet"
+        leaflet_dict["count"] = leaflet
+        vis_none_dict = {}
+        vis_none_dict["type"] = "visualization_library"
+        vis_none_dict["tool"] = "none"
+        vis_none_dict["count"] = vis_none
+        vis_other_dict = {}
+        vis_other_dict["type"] = "visualization_library"
+        vis_other_dict["tool"] = "other"
+        vis_other_dict["count"] = vis_other
+
+        data_list.append(ggplot_dict)
+        data_list.append(matplotlib_dict)
+        data_list.append(altair_dict)
+        data_list.append(shiny_dict)
+        data_list.append(d3_dict)
+        data_list.append(plotly_dict)
+        data_list.append(bokeh_dict)
+        data_list.append(seaborn_dict)
+        data_list.append(geoplotlib_dict)
+        data_list.append(leaflet_dict)
+        data_list.append(vis_none_dict)
+        data_list.append(vis_other_dict)
+
     for regression, tree_forest, gradient_boost, bayesian, evolutionary, dnn, cnn, gan, rnn, bert, mach_none, mach_other in ml_model_data:
-        ml_model_dict = {}
-        ml_model_dict["regression"] = regression
-        ml_model_dict["tree_forest"] = tree_forest
-        ml_model_dict["gradient_boost"] = gradient_boost
-        ml_model_dict["bayesian"] = bayesian
-        ml_model_dict["evolutionary"] = evolutionary
-        ml_model_dict["dnn"] = dnn
-        ml_model_dict["cnn"] = cnn
-        ml_model_dict["gan"] = gan
-        ml_model_dict["rnn"] = rnn
-        ml_model_dict["bert"] = bert
-        ml_model_dict["none"] = mach_none
-        ml_model_dict["other"] = mach_other
-        ml_model_dict_with_name = {"ml_models":ml_model_dict}
-        data_list.append(ml_model_dict_with_name)
+        regression_dict = {}
+        regression_dict["type"] = "ml_model"
+        regression_dict["tool"] = "regression"
+        regression_dict["count"] = regression
+        tree_forest_dict = {}
+        tree_forest_dict["type"] = "ml_model"
+        tree_forest_dict["tool"] = "tree_forest"
+        tree_forest_dict["count"] = tree_forest
+        gradient_boost_dict = {}
+        gradient_boost_dict["type"] = "ml_model"
+        gradient_boost_dict["tool"] = "gradient_boost"
+        gradient_boost_dict["count"] = gradient_boost
+        bayesian_dict = {}
+        bayesian_dict["type"] = "ml_model"
+        bayesian_dict["tool"] = "bayesian"
+        bayesian_dict["count"] = bayesian
+        evolutionary_dict = {}
+        evolutionary_dict["type"] = "ml_model"
+        evolutionary_dict["tool"] = "evolutionary"
+        evolutionary_dict["count"] = evolutionary
+        dnn_dict = {}
+        dnn_dict["type"] = "ml_model"
+        dnn_dict["tool"] = "dnn"
+        dnn_dict["count"] = dnn
+        cnn_dict = {}
+        cnn_dict["type"] = "ml_model"
+        cnn_dict["tool"] = "cnn"
+        cnn_dict["count"] = cnn
+        gan_dict = {}
+        gan_dict["type"] = "ml_model"
+        gan_dict["tool"] = "gan"
+        gan_dict["count"] = gan
+        rnn_dict = {}
+        rnn_dict["type"] = "ml_model"
+        rnn_dict["tool"] = "rnn"
+        rnn_dict["count"] = rnn
+        bert_dict = {}
+        bert_dict["type"] = "ml_model"
+        bert_dict["tool"] = "bert"
+        bert_dict["count"] = bert
+        mach_none_dict = {}
+        mach_none_dict["type"] = "ml_model"
+        mach_none_dict["tool"] = "none"
+        mach_none_dict["count"] = mach_none
+        mach_other_dict = {}
+        mach_other_dict["type"] = "ml_model"
+        mach_other_dict["tool"] = "other"
+        mach_other_dict["count"] = mach_other
+
+        data_list.append(regression_dict)
+        data_list.append(tree_forest_dict)
+        data_list.append(gradient_boost_dict)
+        data_list.append(bayesian_dict)
+        data_list.append(evolutionary_dict)
+        data_list.append(dnn_dict)
+        data_list.append(cnn_dict)
+        data_list.append(gan_dict)
+        data_list.append(rnn_dict)
+        data_list.append(bert_dict)
+        data_list.append(mach_none_dict)
+        data_list.append(mach_other_dict)
+
     for mysql, postgres, sql_lite, sqlserver, oracle, micro_aces, aws_data, aws_dynamo, azure_sql, google_sql, database_none, database_other in database_data:
-        database_dict = {}
-        database_dict["mysql"] = mysql
-        database_dict["postgres"] = postgres
-        database_dict["sql_lite"] = sql_lite
-        database_dict["sqlserver"] = sqlserver
-        database_dict["oracle"] = oracle
-        database_dict["micro_aces"] = micro_aces
-        database_dict["aws_data"] = aws_data
-        database_dict["aws_dynamo"] = aws_dynamo
-        database_dict["azure_sql"] = azure_sql
-        database_dict["google_sql"] = google_sql
-        database_dict["none"] = database_none
-        database_dict["other"] = database_other
-        database_dict_with_name = {"databases":database_dict}
-        data_list.append(database_dict_with_name)
+        mysql_dict = {}
+        mysql_dict["type"] = "database"
+        mysql_dict["tool"] = "mysql"
+        mysql_dict["count"] = mysql
+        postgres_dict = {}
+        postgres_dict["type"] = "database"
+        postgres_dict["tool"] = "postgres"
+        postgres_dict["count"] = postgres
+        sql_lite_dict = {}
+        sql_lite_dict["type"] = "database"
+        sql_lite_dict["tool"] = "sql_lite"
+        sql_lite_dict["count"] = sql_lite
+        sqlserver_dict = {}
+        sqlserver_dict["type"] = "database"
+        sqlserver_dict["tool"] = "sqlserver"
+        sqlserver_dict["count"] = sqlserver
+        oracle_dict = {}
+        oracle_dict["type"] = "database"
+        oracle_dict["tool"] = "oracle"
+        oracle_dict["count"] = oracle
+        micro_aces_dict = {}
+        micro_aces_dict["type"] = "database"
+        micro_aces_dict["tool"] = "micro_aces"
+        micro_aces_dict["count"] = micro_aces
+        aws_data_dict = {}
+        aws_data_dict["type"] = "database"
+        aws_data_dict["tool"] = "aws_data"
+        aws_data_dict["count"] = aws_data
+        aws_dynamo_dict = {}
+        aws_dynamo_dict["type"] = "database"
+        aws_dynamo_dict["tool"] = "aws_dynamo"
+        aws_dynamo_dict["count"] = aws_dynamo
+        azure_sql_dict = {}
+        azure_sql_dict["type"] = "database"
+        azure_sql_dict["tool"] = "azure_sql"
+        azure_sql_dict["count"] = azure_sql
+        google_sql_dict = {}
+        google_sql_dict["type"] = "database"
+        google_sql_dict["tool"] = "google_sql"
+        google_sql_dict["count"] = google_sql
+        database_none_dict = {}
+        database_none_dict["type"] = "database"
+        database_none_dict["tool"] = "none"
+        database_none_dict["count"] = database_none
+        database_other_dict = {}
+        database_other_dict["type"] = "database"
+        database_other_dict["tool"] = "other"
+        database_other_dict["count"] = database_other
+
+        data_list.append(mysql_dict)
+        data_list.append(postgres_dict)
+        data_list.append(sql_lite_dict)
+        data_list.append(sqlserver_dict)
+        data_list.append(oracle_dict)
+        data_list.append(micro_aces_dict)
+        data_list.append(aws_data_dict)
+        data_list.append(aws_dynamo_dict)
+        data_list.append(azure_sql_dict)
+        data_list.append(google_sql_dict)
+        data_list.append(database_none_dict)
+        data_list.append(database_other_dict)
 
     return jsonify(data_list)
 
@@ -347,6 +909,26 @@ def recommendations_data():
     session = Session(engine)
 
     recommendation_data = session.query(salary_data2.first_program, cast(func.count(salary_data2.first_program), Integer)).\
+        group_by(salary_data2.first_program).all()
+    session.close()
+    
+    data_list = []
+    for language, count in recommendation_data:
+        if (language != "0"):
+            recommendation_dict = {}
+            recommendation_dict["recommended_first_language"] = language
+            recommendation_dict["count"] = count
+            data_list.append(recommendation_dict)
+
+    return jsonify(data_list)
+
+
+@app.route("/recommendations_data/<jobtitle>")
+def recommendations_data_by_title(jobtitle):
+    session = Session(engine)
+
+    recommendation_data = session.query(salary_data2.first_program, cast(func.count(salary_data2.first_program), Integer)).\
+        filter(salary_data2.title == jobtitle).\
         group_by(salary_data2.first_program).all()
     session.close()
     
