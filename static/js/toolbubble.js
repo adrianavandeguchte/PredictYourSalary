@@ -127,7 +127,7 @@ let myBubbleChart = bubbleChart();
 // function called once promise is resolved and data is loaded from csv
 // calls bubble chart function to display inside #vis div
 function display(data) {
-  myBubbleChart('.bubble', data);
+  myBubbleChart('#bubble', data);
 }
 
 d3.json("/tools_data", function (err, toolData) {

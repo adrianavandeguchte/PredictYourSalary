@@ -117,7 +117,7 @@ function showNewWords(vis, i) {
 
 function wordDisplay(rawData) {
   //Create a new instance of the word cloud visualisation.
-  var vis = wordCloud('.wordCloud')
+  var vis = wordCloud('#wordCloud')
   vis.update(getWords(rawData));
 
 }

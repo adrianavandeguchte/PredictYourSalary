@@ -4,7 +4,8 @@ function loadFilter(filter) {
 
   console.log(recURL)
 
-
+  document.getElementById("bubble");
+  myNode.innerHTML = '';
   d3.json(toolURL, function (err, toolData) {
     toolData = toolData.filter(function (d) {
       return d.tool !== "None"
@@ -14,7 +15,8 @@ function loadFilter(filter) {
     });
     display(toolData)
   });
-
+  document.getElementById("wordCloud");
+    myNode.innerHTML = '';
     d3.json(recURL, function (err, rawData) {
       var scaleCount = d3.scale.linear()
         .domain([50,5300])
