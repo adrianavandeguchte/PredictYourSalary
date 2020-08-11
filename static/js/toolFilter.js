@@ -4,7 +4,7 @@ function loadFilter(filter) {
 
   console.log(recURL)
 
-  
+
   d3.json(toolURL, function (err, toolData) {
     toolData = toolData.filter(function (d) {
       return d.tool !== "None"
@@ -22,13 +22,13 @@ function loadFilter(filter) {
       rawData.forEach(function (d) {
         d.count = scaleCount(d.count);
       });
-      words = words.filter(function (d) {
+      rawData = rawData.filter(function (d) {
         return d.recommended_first_language !== "None"
       });
-      words = words.filter(function (d) {
+      rawData = rawData.filter(function (d) {
         return d.recommended_first_language !== "Other"
       });
-      words = words.filter(function (d) {
+      rawData = rawData.filter(function (d) {
         return d.recommended_first_language !== "TypeScript"
       });
       wordDisplay(rawData);
@@ -38,4 +38,4 @@ function loadFilter(filter) {
 }
 
 
-loadFilter("/test_filter")
+loadFilter("")

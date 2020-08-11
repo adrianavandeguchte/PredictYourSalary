@@ -129,13 +129,13 @@ d3.json(test, function (err, rawData) {
   rawData.forEach(function (d) {
     d.count = scaleCount(d.count);
   });
-  words = words.filter(function (d) {
+  rawData = rawData.filter(function (d) {
     return d.recommended_first_language !== "None"
   });
-  words = words.filter(function (d) {
+  rawData = rawData.filter(function (d) {
     return d.recommended_first_language !== "Other"
   });
-  words = words.filter(function (d) {
+  rawData = rawData.filter(function (d) {
     return d.recommended_first_language !== "TypeScript"
   });
   wordDisplay(rawData);
