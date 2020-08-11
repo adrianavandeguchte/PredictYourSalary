@@ -53,6 +53,10 @@ def doc():
 def team():
     return render_template("team.html")
 
+@app.route("/requirements")
+def requirements():
+    return render_template("requirements.html")
+
 @app.route("/tools")
 def tools():
     return render_template("tools.html")
