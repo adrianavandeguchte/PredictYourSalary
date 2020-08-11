@@ -1,4 +1,4 @@
-country_region_url = "/salary_visuals_data/country_region_dataset1"
+country_region_url = "/country_region_data"
 // d3.json(country_url).then((data) => {
 d3.json(country_region_url).then(function(data) {
         
@@ -16,7 +16,7 @@ d3.json(country_region_url).then(function(data) {
 });
 
 function optionChangedCountry(value) {
-    country_region_url = "/salary_visuals_data/country_region_dataset1"
+    country_region_url = "/country_region_data"
     d3.json(country_region_url).then(function(data) {
         var filteredData = data.filter(record => record.country === value);
         var region = filteredData[0].region

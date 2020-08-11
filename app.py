@@ -943,281 +943,401 @@ def recommendations_data_by_title(jobtitle):
     return jsonify(data_list)
 
 
-# salary_visuals page to render salary_visuals.html
-@app.route("/salary_visuals")
-def salary_visuals():
-    return render_template("salary_visuals.html")
-
-
-@app.route("/salary_visuals_data/<filter_choice>")
-def salary_visuals_data(filter_choice):
+@app.route("/education_data")
+def education_data():
     session = Session(engine)
 
-    data_list = []
-
-    # query to obtain salaries of each chosen filter
-    if (filter_choice == "job_title_dataset2"):
-        visuals_data = session.query(salary_data2.title, cast(func.count(salary_data2.title), Integer), cast(func.avg(salary_data2.salary), Integer)).\
-            group_by(salary_data2.title).all()
-        session.close()
-
-        # adds data into a dictionary to be jsonified
-        for title, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["job_title"] = title
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "gender"):
-        visuals_data = session.query(salary_data2.gender, cast(func.count(salary_data2.gender), Integer), cast(func.avg(salary_data2.salary), Integer)).\
-            group_by(salary_data2.gender).all()
-        session.close()
-
-        for gender, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["gender"] = gender
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "education_dataset2"):
-        visuals_data = session.query(salary_data2.education, cast(func.count(salary_data2.education), Integer), cast(func.avg(salary_data2.salary), Integer)).\
-            group_by(salary_data2.education).all()
-        session.close()
-
-        for education, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["education"] = education
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "country_dataset2"):
-        visuals_data = session.query(salary_data2.country, cast(func.count(salary_data2.country), Integer), cast(func.avg(salary_data2.salary), Integer)).\
-            group_by(salary_data2.country).all()
-        session.close()
-
-        for country, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["country"] = country
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "job_title_dataset1"):
-        visuals_data = session.query(salary_data1.jobtitle, cast(func.count(salary_data1.jobtitle), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
-            group_by(salary_data1.jobtitle).all()
-        session.close()
-
-        for title, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["job_title"] = title
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "education_dataset1"):
-        visuals_data = session.query(salary_data1.education, cast(func.count(salary_data1.education), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
-            group_by(salary_data1.education).all()
-        session.close()
-
-        for education, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["education"] = education
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "comp_education"):
-        visuals_data = session.query(salary_data1.educationiscomputerrelated, cast(func.count(salary_data1.educationiscomputerrelated), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
-            group_by(salary_data1.educationiscomputerrelated).all()
-        session.close()
-
-        for comp_education, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["is_education_comp_related"] = comp_education
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "certifications"):
-        visuals_data = session.query(salary_data1.certifications, cast(func.count(salary_data1.certifications), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
-            group_by(salary_data1.certifications).all()
-        session.close()
-
-        for certifications, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["certifications"] = certifications
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "country_dataset1"):
-        visuals_data = session.query(salary_data1.country, cast(func.count(salary_data1.country), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
-            group_by(salary_data1.country).all()
-        session.close()
-
-        for country, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["country"] = country
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "country_region_dataset1"):
-        visuals_data = session.query(salary_data1.country.distinct(), salary_data1.region).all()
-        session.close()
-
-        for country, region in visuals_data:
-            data_list_dict = {}
-            data_list_dict["country"] = country
-            data_list_dict["region"] = region
-            data_list.append(data_list_dict)
-
-    return jsonify(data_list)
-
-
-# tools of the trade page to render tools.html
-@app.route("/salary_visuals_data/<filter_choice>/<country>")
-def salary_visuals_data_by_country(filter_choice, country):
-    session = Session(engine)
-
-    data_list = []
-    # query to obtain salaries of each chosen filter
-    if (filter_choice == "job_title_dataset2"):
-        visuals_data = session.query(salary_data2.title, cast(func.count(salary_data2.title), Integer), cast(func.avg(salary_data2.salary), Integer)).\
-            filter(salary_data2.country == country).\
-            group_by(salary_data2.title).all()
-        session.close()
-
-        # adds data into a dictionary to be jsonified
-        for title, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["job_title"] = title
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "gender"):
-        visuals_data = session.query(salary_data2.gender, cast(func.count(salary_data2.gender), Integer), cast(func.avg(salary_data2.salary), Integer)).\
-            filter(salary_data2.country == country).\
-            group_by(salary_data2.gender).all()
-        session.close()
-
-        for gender, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["gender"] = gender
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "education_dataset2"):
-        visuals_data = session.query(salary_data2.education, cast(func.count(salary_data2.education), Integer), cast(func.avg(salary_data2.salary), Integer)).\
-            filter(salary_data2.country == country).\
-            group_by(salary_data2.education).all()
-        session.close()
-
-        for education, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["education"] = education
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "job_title_dataset1"):
-        visuals_data = session.query(salary_data1.jobtitle, cast(func.count(salary_data1.jobtitle), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
-            filter(salary_data1.country == country).\
-            group_by(salary_data1.jobtitle).all()
-        session.close()
-
-        for title, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["job_title"] = title
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "education_dataset1"):
-        visuals_data = session.query(salary_data1.education, cast(func.count(salary_data1.education), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
-            filter(salary_data1.country == country).\
-            group_by(salary_data1.education).all()
-        session.close()
-
-        for education, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["education"] = education
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "comp_education"):
-        visuals_data = session.query(salary_data1.educationiscomputerrelated, cast(func.count(salary_data1.educationiscomputerrelated), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
-            filter(salary_data1.country == country).\
-            group_by(salary_data1.educationiscomputerrelated).all()
-        session.close()
-
-        for comp_education, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["is_education_comp_related"] = comp_education
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    elif (filter_choice == "certifications"):
-        visuals_data = session.query(salary_data1.certifications, cast(func.count(salary_data1.certifications), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
-            filter(salary_data1.country == country).\
-            group_by(salary_data1.certifications).all()
-        session.close()
-
-        for certifications, count, salary in visuals_data:
-            data_list_dict = {}
-            data_list_dict["certifications"] = certifications
-            data_list_dict["count"] = count
-            data_list_dict["salary"] = salary
-            data_list.append(data_list_dict)
-
-    return jsonify(data_list)
-
-
-# api route to obtain the name data from salary_data1
-@app.route("/salary_data1/<title>")
-def all_salary_data1(title):
-    session = Session(engine)
-
-    all_data = session.query(salary_data1.salaryusd, salary_data1.primarydatabase,\
-        cast(salary_data1.yearswiththisdatabase, Integer), salary_data1.employmentstatus,\
-        salary_data1.jobtitle, salary_data1.managestaff, cast(salary_data1.yearswiththistypeofjob, Integer),\
-        salary_data1.otherpeopleonyourteam, salary_data1.databaseservers,\
-        salary_data1.education, salary_data1.educationiscomputerrelated,\
-        salary_data1.certifications, salary_data1.hoursworkedperweek, salary_data1.telecommutedaysperweek,\
-        salary_data1.employmentsector, salary_data1.region).\
-        filter(salary_data1.jobtitle == title).all()
+    salary_data = session.query(salary_data2.title, cast(func.avg(salary_data2.salary), Integer)).\
+        group_by(salary_data2.title, salary_data2.education).all()
     session.close()
 
-    # adds data into a dictionary to be jsonified
+    education_data = session.query(salary_data2.title, salary_data2.education, cast(func.count(salary_data2.education), Integer)).\
+        group_by(salary_data2.title, salary_data2.education).all()
+    session.close()
+
+    for title, salary in salary_data:
+        if title == "Business Analyst":
+            business_analyst_salary = salary
+        elif title == "Data Analyst":
+            data_analyst_salary = salary
+        elif title == "Data Engineer":
+            data_engineer_salary = salary
+        elif title == "DBA/Database Engineer":
+            dba_salary = salary
+        elif title == "Software Engineer":
+            software_engineer_salary = salary
+        elif title == "Research Scientist":
+            research_scientist_salary = salary
+        elif title == "Product/Project Manager":
+            manager_salary = salary
+        elif title == "Data Scientist":
+            data_scientist_salary = salary
+
     data_list = []
-    for salary, database, years_database, status, title, manager, years_job, team, servers, education, education_comp, certs, hours, telecommute, sector, region in all_data:
+    business_analyst_ed_count_list = []
+    data_analyst_ed_count_list = []
+    data_engineer_ed_count_list = []
+    dba_ed_count_list = []
+    software_ed_count_list = []
+    research_ed_count_list = []
+    manager_ed_count_list = []
+    data_scientist_ed_count_list = []
+
+    for title, education, count in education_data:
+        if title == "Business Analyst":
+            business_analyst_ed_count_dict = {}
+            business_analyst_ed_count_dict[education] = count
+            business_analyst_ed_count_list.append(business_analyst_ed_count_dict)
+            business_analyst_dict = {}
+            business_analyst_dict[title] = {
+                "education": business_analyst_ed_count_list,
+                "salary": business_analyst_salary
+            }
+        elif title == "Data Analyst":
+            data_analyst_ed_count_dict = {}
+            data_analyst_ed_count_dict[education] = count
+            data_analyst_ed_count_list.append(data_analyst_ed_count_dict)
+            data_analyst_dict = {}
+            data_analyst_dict[title] = {
+                "education": data_analyst_ed_count_list,
+                "salary": data_analyst_salary
+            }
+        elif title == "Data Engineer":
+            data_engineer_ed_count_dict = {}
+            data_engineer_ed_count_dict[education] = count
+            data_engineer_ed_count_list.append(data_engineer_ed_count_dict)
+            data_engineer_dict = {}
+            data_engineer_dict[title] = {
+                "education": data_engineer_ed_count_list,
+                "salary": data_engineer_salary
+            }
+        elif title == "DBA/Database Engineer":
+            dba_ed_count_dict = {}
+            dba_ed_count_dict[education] = count
+            dba_ed_count_list.append(dba_ed_count_dict)
+            dba_dict = {}
+            dba_dict[title] = {
+                "education": dba_ed_count_list,
+                "salary": dba_salary
+            }
+        elif title == "Software Engineer":
+            software_ed_count_dict = {}
+            software_ed_count_dict[education] = count
+            software_ed_count_list.append(software_ed_count_dict)
+            software_engineer_dict = {}
+            software_engineer_dict[title] = {
+                "education": software_ed_count_list,
+                "salary": software_engineer_salary
+            }
+        elif title == "Research Scientist":
+            research_ed_count_dict = {}
+            research_ed_count_dict[education] = count
+            research_ed_count_list.append(research_ed_count_dict)
+            research_scientist_dict = {}
+            research_scientist_dict[title] = {
+                "education": research_ed_count_list,
+                "salary": research_scientist_salary
+            }
+        elif title == "Product/Project Manager":
+            manager_ed_count_dict = {}
+            manager_ed_count_dict[education] = count
+            manager_ed_count_list.append(manager_ed_count_dict)
+            manager_dict = {}
+            manager_dict[title] = {
+                "education": manager_ed_count_list,
+                "salary": manager_salary
+            }
+        elif title == "Data Scientist":
+            data_scientist_ed_count_dict = {}
+            data_scientist_ed_count_dict[education] = count
+            data_scientist_ed_count_list.append(data_scientist_ed_count_dict)
+            data_scientist_dict = {}
+            data_scientist_dict[title] = {
+                "education": data_scientist_ed_count_list,
+                "salary": data_scientist_salary
+            }
+
+    data_list.append(business_analyst_dict)
+    data_list.append(data_analyst_dict)
+    data_list.append(dba_dict)
+    data_list.append(data_engineer_dict)
+    data_list.append(software_engineer_dict)
+    data_list.append(research_scientist_dict)
+    data_list.append(manager_dict)
+    data_list.append(data_scientist_dict)
+
+    return jsonify(data_list)
+
+
+
+@app.route("/country_region_data")
+def salary_visuals_data():
+    session = Session(engine)
+
+    # elif (filter_choice == "country_region_dataset1"):
+    visuals_data = session.query(salary_data1.country.distinct(), salary_data1.region).all()
+    session.close()
+
+    data_list = []
+    for country, region in visuals_data:
         data_list_dict = {}
-        data_list_dict["salary"] = salary
-        data_list_dict["primary_database"] = database
-        data_list_dict["years_with_this_database"] = years_database
-        data_list_dict["employment_status"] = status
-        data_list_dict["job_title"] = title
-        data_list_dict["manager"] = manager
-        data_list_dict["years_with_this_type_of_job"] = years_job
-        data_list_dict["other_people_on_your_team"] = team
-        data_list_dict["database_servers"] = servers
-        data_list_dict["education"] = education
-        data_list_dict["education_is_computer_related"] = education_comp
-        data_list_dict["certifications"] = certs
-        data_list_dict["years_with_this_type_of_job"] = hours
-        data_list_dict["telecommute_days_per_week"] = telecommute
-        data_list_dict["employment_sector"] = sector
+        data_list_dict["country"] = country
         data_list_dict["region"] = region
         data_list.append(data_list_dict)
 
     return jsonify(data_list)
+
+    # # query to obtain salaries of each chosen filter
+    # if (filter_choice == "job_title_dataset2"):
+    #     visuals_data = session.query(salary_data2.title, cast(func.count(salary_data2.title), Integer), cast(func.avg(salary_data2.salary), Integer)).\
+    #         group_by(salary_data2.title).all()
+    #     session.close()
+
+    #     # adds data into a dictionary to be jsonified
+    #     for title, count, salary in visuals_data:
+    #         data_list_dict = {}
+    #         data_list_dict["job_title"] = title
+    #         data_list_dict["count"] = count
+    #         data_list_dict["salary"] = salary
+    #         data_list.append(data_list_dict)
+
+    # elif (filter_choice == "gender"):
+    #     visuals_data = session.query(salary_data2.gender, cast(func.count(salary_data2.gender), Integer), cast(func.avg(salary_data2.salary), Integer)).\
+    #         group_by(salary_data2.gender).all()
+    #     session.close()
+
+    #     for gender, count, salary in visuals_data:
+    #         data_list_dict = {}
+    #         data_list_dict["gender"] = gender
+    #         data_list_dict["count"] = count
+    #         data_list_dict["salary"] = salary
+    #         data_list.append(data_list_dict)
+
+    # elif (filter_choice == "education_dataset2"):
+    #     visuals_data = session.query(salary_data2.education, cast(func.count(salary_data2.education), Integer), cast(func.avg(salary_data2.salary), Integer)).\
+    #         group_by(salary_data2.education).all()
+    #     session.close()
+
+    #     for education, count, salary in visuals_data:
+    #         data_list_dict = {}
+    #         data_list_dict["education"] = education
+    #         data_list_dict["count"] = count
+    #         data_list_dict["salary"] = salary
+    #         data_list.append(data_list_dict)
+
+    # elif (filter_choice == "country_dataset2"):
+    #     visuals_data = session.query(salary_data2.country, cast(func.count(salary_data2.country), Integer), cast(func.avg(salary_data2.salary), Integer)).\
+    #         group_by(salary_data2.country).all()
+    #     session.close()
+
+    #     for country, count, salary in visuals_data:
+    #         data_list_dict = {}
+    #         data_list_dict["country"] = country
+    #         data_list_dict["count"] = count
+    #         data_list_dict["salary"] = salary
+    #         data_list.append(data_list_dict)
+
+    # elif (filter_choice == "job_title_dataset1"):
+    #     visuals_data = session.query(salary_data1.jobtitle, cast(func.count(salary_data1.jobtitle), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
+    #         group_by(salary_data1.jobtitle).all()
+    #     session.close()
+
+    #     for title, count, salary in visuals_data:
+    #         data_list_dict = {}
+    #         data_list_dict["job_title"] = title
+    #         data_list_dict["count"] = count
+    #         data_list_dict["salary"] = salary
+    #         data_list.append(data_list_dict)
+
+    # elif (filter_choice == "education_dataset1"):
+    #     visuals_data = session.query(salary_data1.education, cast(func.count(salary_data1.education), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
+    #         group_by(salary_data1.education).all()
+    #     session.close()
+
+    #     for education, count, salary in visuals_data:
+    #         data_list_dict = {}
+    #         data_list_dict["education"] = education
+    #         data_list_dict["count"] = count
+    #         data_list_dict["salary"] = salary
+    #         data_list.append(data_list_dict)
+
+    # elif (filter_choice == "comp_education"):
+    #     visuals_data = session.query(salary_data1.educationiscomputerrelated, cast(func.count(salary_data1.educationiscomputerrelated), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
+    #         group_by(salary_data1.educationiscomputerrelated).all()
+    #     session.close()
+
+    #     for comp_education, count, salary in visuals_data:
+    #         data_list_dict = {}
+    #         data_list_dict["is_education_comp_related"] = comp_education
+    #         data_list_dict["count"] = count
+    #         data_list_dict["salary"] = salary
+    #         data_list.append(data_list_dict)
+
+    # elif (filter_choice == "certifications"):
+    #     visuals_data = session.query(salary_data1.certifications, cast(func.count(salary_data1.certifications), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
+    #         group_by(salary_data1.certifications).all()
+    #     session.close()
+
+    #     for certifications, count, salary in visuals_data:
+    #         data_list_dict = {}
+    #         data_list_dict["certifications"] = certifications
+    #         data_list_dict["count"] = count
+    #         data_list_dict["salary"] = salary
+    #         data_list.append(data_list_dict)
+
+    # elif (filter_choice == "country_dataset1"):
+    #     visuals_data = session.query(salary_data1.country, cast(func.count(salary_data1.country), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
+    #         group_by(salary_data1.country).all()
+    #     session.close()
+
+    #     for country, count, salary in visuals_data:
+    #         data_list_dict = {}
+    #         data_list_dict["country"] = country
+    #         data_list_dict["count"] = count
+    #         data_list_dict["salary"] = salary
+    #         data_list.append(data_list_dict)
+
+
+# # tools of the trade page to render tools.html
+# @app.route("/salary_visuals_data/<filter_choice>/<country>")
+# def salary_visuals_data_by_country(filter_choice, country):
+#     session = Session(engine)
+
+#     data_list = []
+#     # query to obtain salaries of each chosen filter
+#     if (filter_choice == "job_title_dataset2"):
+#         visuals_data = session.query(salary_data2.title, cast(func.count(salary_data2.title), Integer), cast(func.avg(salary_data2.salary), Integer)).\
+#             filter(salary_data2.country == country).\
+#             group_by(salary_data2.title).all()
+#         session.close()
+
+#         # adds data into a dictionary to be jsonified
+#         for title, count, salary in visuals_data:
+#             data_list_dict = {}
+#             data_list_dict["job_title"] = title
+#             data_list_dict["count"] = count
+#             data_list_dict["salary"] = salary
+#             data_list.append(data_list_dict)
+
+#     elif (filter_choice == "gender"):
+#         visuals_data = session.query(salary_data2.gender, cast(func.count(salary_data2.gender), Integer), cast(func.avg(salary_data2.salary), Integer)).\
+#             filter(salary_data2.country == country).\
+#             group_by(salary_data2.gender).all()
+#         session.close()
+
+#         for gender, count, salary in visuals_data:
+#             data_list_dict = {}
+#             data_list_dict["gender"] = gender
+#             data_list_dict["count"] = count
+#             data_list_dict["salary"] = salary
+#             data_list.append(data_list_dict)
+
+#     elif (filter_choice == "education_dataset2"):
+#         visuals_data = session.query(salary_data2.education, cast(func.count(salary_data2.education), Integer), cast(func.avg(salary_data2.salary), Integer)).\
+#             filter(salary_data2.country == country).\
+#             group_by(salary_data2.education).all()
+#         session.close()
+
+#         for education, count, salary in visuals_data:
+#             data_list_dict = {}
+#             data_list_dict["education"] = education
+#             data_list_dict["count"] = count
+#             data_list_dict["salary"] = salary
+#             data_list.append(data_list_dict)
+
+#     elif (filter_choice == "job_title_dataset1"):
+#         visuals_data = session.query(salary_data1.jobtitle, cast(func.count(salary_data1.jobtitle), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
+#             filter(salary_data1.country == country).\
+#             group_by(salary_data1.jobtitle).all()
+#         session.close()
+
+#         for title, count, salary in visuals_data:
+#             data_list_dict = {}
+#             data_list_dict["job_title"] = title
+#             data_list_dict["count"] = count
+#             data_list_dict["salary"] = salary
+#             data_list.append(data_list_dict)
+
+#     elif (filter_choice == "education_dataset1"):
+#         visuals_data = session.query(salary_data1.education, cast(func.count(salary_data1.education), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
+#             filter(salary_data1.country == country).\
+#             group_by(salary_data1.education).all()
+#         session.close()
+
+#         for education, count, salary in visuals_data:
+#             data_list_dict = {}
+#             data_list_dict["education"] = education
+#             data_list_dict["count"] = count
+#             data_list_dict["salary"] = salary
+#             data_list.append(data_list_dict)
+
+#     elif (filter_choice == "comp_education"):
+#         visuals_data = session.query(salary_data1.educationiscomputerrelated, cast(func.count(salary_data1.educationiscomputerrelated), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
+#             filter(salary_data1.country == country).\
+#             group_by(salary_data1.educationiscomputerrelated).all()
+#         session.close()
+
+#         for comp_education, count, salary in visuals_data:
+#             data_list_dict = {}
+#             data_list_dict["is_education_comp_related"] = comp_education
+#             data_list_dict["count"] = count
+#             data_list_dict["salary"] = salary
+#             data_list.append(data_list_dict)
+
+#     elif (filter_choice == "certifications"):
+#         visuals_data = session.query(salary_data1.certifications, cast(func.count(salary_data1.certifications), Integer), cast(func.avg(salary_data1.salaryusd), Integer)).\
+#             filter(salary_data1.country == country).\
+#             group_by(salary_data1.certifications).all()
+#         session.close()
+
+#         for certifications, count, salary in visuals_data:
+#             data_list_dict = {}
+#             data_list_dict["certifications"] = certifications
+#             data_list_dict["count"] = count
+#             data_list_dict["salary"] = salary
+#             data_list.append(data_list_dict)
+
+#     return jsonify(data_list)
+
+
+# # api route to obtain the name data from salary_data1
+# @app.route("/salary_data1/<title>")
+# def all_salary_data1(title):
+#     session = Session(engine)
+
+#     all_data = session.query(salary_data1.salaryusd, salary_data1.primarydatabase,\
+#         cast(salary_data1.yearswiththisdatabase, Integer), salary_data1.employmentstatus,\
+#         salary_data1.jobtitle, salary_data1.managestaff, cast(salary_data1.yearswiththistypeofjob, Integer),\
+#         salary_data1.otherpeopleonyourteam, salary_data1.databaseservers,\
+#         salary_data1.education, salary_data1.educationiscomputerrelated,\
+#         salary_data1.certifications, salary_data1.hoursworkedperweek, salary_data1.telecommutedaysperweek,\
+#         salary_data1.employmentsector, salary_data1.region).\
+#         filter(salary_data1.jobtitle == title).all()
+#     session.close()
+
+#     # adds data into a dictionary to be jsonified
+#     data_list = []
+#     for salary, database, years_database, status, title, manager, years_job, team, servers, education, education_comp, certs, hours, telecommute, sector, region in all_data:
+#         data_list_dict = {}
+#         data_list_dict["salary"] = salary
+#         data_list_dict["primary_database"] = database
+#         data_list_dict["years_with_this_database"] = years_database
+#         data_list_dict["employment_status"] = status
+#         data_list_dict["job_title"] = title
+#         data_list_dict["manager"] = manager
+#         data_list_dict["years_with_this_type_of_job"] = years_job
+#         data_list_dict["other_people_on_your_team"] = team
+#         data_list_dict["database_servers"] = servers
+#         data_list_dict["education"] = education
+#         data_list_dict["education_is_computer_related"] = education_comp
+#         data_list_dict["certifications"] = certs
+#         data_list_dict["years_with_this_type_of_job"] = hours
+#         data_list_dict["telecommute_days_per_week"] = telecommute
+#         data_list_dict["employment_sector"] = sector
+#         data_list_dict["region"] = region
+#         data_list.append(data_list_dict)
+
+#     return jsonify(data_list)
 
 
 @app.route('/predictions', methods=['GET','POST'])
