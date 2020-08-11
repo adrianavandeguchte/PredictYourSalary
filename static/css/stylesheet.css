@@ -96,3 +96,6 @@
   .sidebar {padding-top: 15px;}
   .sidebar a {font-size: 18px;}
 }
+.card mb-3  {
+  font-family: 'Merriweather', serif, !important;
+}

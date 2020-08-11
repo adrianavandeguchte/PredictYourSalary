@@ -1,0 +1,13 @@
+﻿Language ,Hours_Lan,Tools,Hours_Tools,Database,Hours_Database,Machine Learning,Activity_Machinelearn,BigData,Activity_BigData
+Python,10,Matplotlib,10,PostgreSQL,10,Regression,6,MapReduce,2
+Javascript,10,D3,10,SQL Lite/Alchemy,10,Sklearn,2,Pyspark,6
+R,2,Plotly,10,,,Trees/Forests,2,NaïveBayes,1
+HTML/CSS,10,Leaflet,10,,,KNN,2,NLP,6
+VBA,10,Tableau,10,,,SVM,2,AWS,6
+Sql,10,Google Places,4,,,Grid Search,2,,
+,,,,,,One Hot Encoding,1,,
+,,,,,,Neural Network,2,,
+,,,,,,Deep Learning,2,,
+,,,,,,Kmeans,2,,
+,,,,,,Mnist,1,,
+,,,,,,CNNs,2,,

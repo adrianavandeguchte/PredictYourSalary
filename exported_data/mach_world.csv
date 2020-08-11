@@ -1,0 +1,13 @@
+,does not use,use,% of total used
+Regression,4854,7643,61.16
+Tree/Forest,5973,6524,52.2
+Gradient Boost,8070,4427,35.42
+Bayesian,9631,2866,22.93
+Evolutionary,11797,700,5.6
+DNN,10047,2450,19.6
+CNN,8566,3931,31.46
+GAN,11769,728,5.83
+RNN,9899,2598,20.79
+Bert,11756,741,5.93
+None,11647,850,6.8
+Other,12158,339,2.71
