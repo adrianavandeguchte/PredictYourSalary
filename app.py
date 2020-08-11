@@ -25,30 +25,34 @@ app = Flask(__name__)
 
 # Flask Routes
 
-# home page to render index.html
 @app.route("/")
 def home():
     return render_template("index.html")
-
-# about page to render about.html
-@app.route("/about")
-def about():
-    return render_template("about.html")
-
-# methodology page to render methodology.html
-@app.route("/methodology")
-def methodology():
-    return render_template("methodology.html")
-
-@app.route("/demographics")
-def demographics():
-    return render_template("demog.html")
 
 @app.route("/audit")
 def audit():
     return render_template("audit.html")
 
-# tools of the trade page to render tools.html
+@app.route("/authors")
+def authors():
+    return render_template("authors.html")
+
+@app.route("/demographics")
+def demographics():
+    return render_template("demog.html")
+
+@app.route("/development")
+def development():
+    return render_template("development.html")
+
+@app.route("/doc")
+def doc():
+    return render_template("doc.html")
+
+@app.route("/team")
+def team():
+    return render_template("team.html")
+
 @app.route("/tools")
 def tools():
     return render_template("tools.html")
@@ -1066,8 +1070,8 @@ def education_data():
     data_list.append(manager_dict)
     data_list.append(data_scientist_dict)
 
-    return jsonify(data_list)
-
+    return render_template('index.html', salary_education_data=data_list)
+    # return jsonify(data_list)
 
 
 @app.route("/country_region_data")
@@ -1086,6 +1090,7 @@ def salary_visuals_data():
         data_list.append(data_list_dict)
 
     return jsonify(data_list)
+
 
     # # query to obtain salaries of each chosen filter
     # if (filter_choice == "job_title_dataset2"):
@@ -1342,7 +1347,6 @@ def salary_visuals_data():
 
 @app.route('/predictions', methods=['GET','POST'])
 def go_to_prediction():
-	# return render_template('predictions.html')
 
     import joblib
     from sklearn.preprocessing import StandardScaler
