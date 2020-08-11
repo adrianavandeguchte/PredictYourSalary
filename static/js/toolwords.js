@@ -1,22 +1,22 @@
 var test = "/recommendations_data"
 
-d3.json(test, function (err, words) {
-var scaleCount = d3.scale.linear()
-  .domain([50,5300])
-  .range([15,100]);
+// d3.json(test, function (err, words) {
+// var scaleCount = d3.scale.linear()
+//   .domain([50,5300])
+//   .range([15,100]);
 
-words.forEach(function (d) {
-  d.count = scaleCount(d.count);
-});
-words = words.filter(function (d) {
-  return d.recommended_first_language !== "None"
-});
-words = words.filter(function (d) {
-  return d.recommended_first_language !== "Other"
-});
-words = words.filter(function (d) {
-  return d.recommended_first_language !== "TypeScript"
-});
+// words.forEach(function (d) {
+//   d.count = scaleCount(d.count);
+// });
+// words = words.filter(function (d) {
+//   return d.recommended_first_language !== "None"
+// });
+// words = words.filter(function (d) {
+//   return d.recommended_first_language !== "Other"
+// });
+// words = words.filter(function (d) {
+//   return d.recommended_first_language !== "TypeScript"
+// });
 // console.log(words)
 // Encapsulate the word cloud functionality
 function wordCloud(selector) {
@@ -92,7 +92,7 @@ function wordCloud(selector) {
 // var words = [{word: "Running", size: "10"}, {word: "Surfing", size: "20"}, {word: "Climbing", size: "50"}, {word: "Kiting", size: "30"}, {word: "Sailing", size: "20"}, {word: "Snowboarding", size: "60"} ]
     //Prepare one of the sample sentences by removing punctuation,
     // creating an array of words and computing a random size attribute.
-    function getWords(i) {
+    function getWords(words) {
         return words
                 // .replace(/[!\.,:;\?]/g, '')
                 // .split(' ')
@@ -110,14 +110,37 @@ function showNewWords(vis, i) {
     // setTimeout(function() { showNewWords(vis, i + 1)}, 2000)
 }
 
-//Create a new instance of the word cloud visualisation.
-var myWordCloud = wordCloud('.wordCloud');
 
 //Start cycling through the demo data
-showNewWords(myWordCloud);
-});
+// showNewWords(myWordCloud);
+// });
 
-function selectFilter(filter) {
-  var sel = document.getElementById('jobFilter');
+function wordDisplay(rawData) {
+  //Create a new instance of the word cloud visualisation.
+  var vis = wordCloud('.wordCloud')
+  vis.update(getWords(rawData));
 
 }
+
+d3.json(test, function (err, rawData) {
+  var scaleCount = d3.scale.linear()
+    .domain([50,5300])
+    .range([15,100]);
+  rawData.forEach(function (d) {
+    d.count = scaleCount(d.count);
+  });
+  words = words.filter(function (d) {
+    return d.recommended_first_language !== "None"
+  });
+  words = words.filter(function (d) {
+    return d.recommended_first_language !== "Other"
+  });
+  words = words.filter(function (d) {
+    return d.recommended_first_language !== "TypeScript"
+  });
+  wordDisplay(rawData);
+});
+
+// function selectFilter(filter) {
+//   var sel = document.getElementById('jobFilter');
+// }
