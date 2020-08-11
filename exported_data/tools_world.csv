@@ -1,0 +1,13 @@
+,does not use,use,% of total used
+ggplot,9223,3274,26.2
+Matplotlib,4990,7507,60.07
+Altair,12356,141,1.13
+Shiny,11387,1110,8.88
+D3,11547,950,7.6
+Plotly,9931,2566,20.53
+Bokeh,11627,870,6.96
+Seaborn,7520,4977,39.83
+Geoplotlib,12010,487,3.9
+Leaflet,12024,473,3.78
+None,11530,967,7.74
+Other,12110,387,3.1
