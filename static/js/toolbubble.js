@@ -46,15 +46,15 @@ function bubbleChart() {
   function createNodes(rawData) {
     // use max size in the data as the max in the scale's domain
     // note we have to ensure that size is a number
-    const maxSize = d3v5.max(rawData, d => +d.count);
+    var maxSize = d3v5.max(rawData, d => +d.count);
 
     // size bubbles based on area
-    const radiusScale = d3v5.scaleSqrt()
+    var radiusScale = d3v5.scaleSqrt()
       .domain([0, maxSize])
       .range([0, 60])
 
     // use map() to convert raw data into node data
-    const myNodes = rawData.map(d => ({
+    var myNodes = rawData.map(d => ({
       ...d,
       radius: radiusScale(+d.count),
       size: +d.count,
