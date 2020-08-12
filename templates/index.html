@@ -37,7 +37,7 @@
     	<div class="row">
     		<div class="col-md-12">
     			<h3>
-    				Welcome to the World of Data Professionals
+					Welcome to the World of Data Professionals
 				</h3>
 
     			<p>
@@ -56,16 +56,16 @@
     						</h5>
     						<div class="card-body">
 								<h3>Data/Business Analyst</h3>
-    							<p class="card-text">
+								<p class="card-text">
 									<strong>Salary:</strong><br>
-									{{ salary_education_data[1]["Data Analyst"]["salary"] }}<br>
+									{{ salary_education_data[0]["Data & Business Analyst"]["salary"] }}<br>
 									<strong>Highest Level of Education:</strong><br>
-									Doctoral Degree: {{ salary_education_data[1]["Data Analyst"]["education"][2]["Doctoral degree"] }}<br>
-									Master's Degree: {{ salary_education_data[1]["Data Analyst"]["education"][0]["Master’s degree"] }}<br>
-									Bachelor’s Degree: {{ salary_education_data[1]["Data Analyst"]["education"][1]["Bachelor’s degree"] }}<br>
-									Professional Degree: {{ salary_education_data[1]["Data Analyst"]["education"][3]["Professional degree"] }}<br>
-									Some College: {{ salary_education_data[1]["Data Analyst"]["education"][6]["Some college/university study without earning a bachelor’s degree"] }}<br>								
-									High School: {{ salary_education_data[1]["Data Analyst"]["education"][4]["No formal education past high school"] }}
+									Doctoral Degree: {{ salary_education_data[0]["Data & Business Analyst"]["education"][0]["Doctoral degree"] }}<br>
+									Master's Degree: {{ salary_education_data[0]["Data & Business Analyst"]["education"][3]["Master’s degree"] }}<br>
+									Bachelor’s Degree: {{ salary_education_data[0]["Data & Business Analyst"]["education"][4]["Bachelor’s degree"] }}<br>
+									Professional Degree: {{ salary_education_data[0]["Data & Business Analyst"]["education"][2]["Professional degree"] }}<br>
+									Some College: {{ salary_education_data[0]["Data & Business Analyst"]["education"][6]["Some college/university study without earning a bachelor’s degree"] }}<br>								
+									High School: {{ salary_education_data[0]["Data & Business Analyst"]["education"][1]["No formal education past high school"] }}
     							</p>
     						</div>
     						<div class="card-footer">
@@ -82,14 +82,14 @@
     							<h3>Database Administrator/Data Engineer</h3>
     							<p class="card-text">
 									<strong>Salary:</strong><br>
-									{{ salary_education_data[2]["DBA/Database Engineer"]["salary"] }}<br>
+									{{ salary_education_data[1]["DBA & Data Engineer"]["salary"] }}<br>
 									<strong>Highest Level of Education:</strong><br>
-									Doctoral Degree: {{ salary_education_data[2]["DBA/Database Engineer"]["education"][4]["Doctoral degree"] }}<br>
-									Master's Degree: {{ salary_education_data[2]["DBA/Database Engineer"]["education"][2]["Master’s degree"] }}<br>
-									Bachelor’s Degree: {{ salary_education_data[2]["DBA/Database Engineer"]["education"][0]["Bachelor’s degree"] }}<br>
-									Professional Degree: {{ salary_education_data[2]["DBA/Database Engineer"]["education"][3]["Professional degree"] }}<br>
-									Some College: {{ salary_education_data[2]["DBA/Database Engineer"]["education"][6]["Some college/university study without earning a bachelor’s degree"] }}<br>								
-									High School: {{ salary_education_data[2]["DBA/Database Engineer"]["education"][1]["No formal education past high school"] }}
+									Doctoral Degree: {{ salary_education_data[1]["DBA & Data Engineer"]["education"][5]["Doctoral degree"] }}<br>
+									Master's Degree: {{ salary_education_data[1]["DBA & Data Engineer"]["education"][2]["Master’s degree"] }}<br>
+									Bachelor’s Degree: {{ salary_education_data[1]["DBA & Data Engineer"]["education"][4]["Bachelor’s degree"] }}<br>
+									Professional Degree: {{ salary_education_data[1]["DBA & Data Engineer"]["education"][1]["Professional degree"] }}<br>
+									Some College: {{ salary_education_data[1]["DBA & Data Engineer"]["education"][3]["Some college/university study without earning a bachelor’s degree"] }}<br>								
+									High School: 0%
     							</p>
     						</div>
     						<div class="card-footer">
@@ -106,14 +106,14 @@
     							<h3>Software Engineer</h3>
     							<p class="card-text">
 									<strong>Salary:</strong><br>
-									{{ salary_education_data[4]["Software Engineer"]["salary"] }}<br>
+									{{ salary_education_data[2]["Software Engineer"]["salary"] }}<br>
 									<strong>Highest Level of Education:</strong><br>
-									Doctoral Degree: {{ salary_education_data[4]["Software Engineer"]["education"][5]["Doctoral degree"] }}<br>
-									Master's Degree: {{ salary_education_data[4]["Software Engineer"]["education"][6]["Master’s degree"] }}<br>
-									Bachelor’s Degree: {{ salary_education_data[4]["Software Engineer"]["education"][1]["Bachelor’s degree"] }}<br>
-									Professional Degree: {{ salary_education_data[4]["Software Engineer"]["education"][3]["Professional degree"] }}<br>
-									Some College: {{ salary_education_data[4]["Software Engineer"]["education"][2]["Some college/university study without earning a bachelor’s degree"] }}<br>							
-									High School: {{ salary_education_data[4]["Software Engineer"]["education"][0]["No formal education past high school"] }}
+									Doctoral Degree: {{ salary_education_data[2]["Software Engineer"]["education"][5]["Doctoral degree"] }}<br>
+									Master's Degree: {{ salary_education_data[2]["Software Engineer"]["education"][6]["Master’s degree"] }}<br>
+									Bachelor’s Degree: {{ salary_education_data[2]["Software Engineer"]["education"][0]["Bachelor’s degree"] }}<br>
+									Professional Degree: {{ salary_education_data[2]["Software Engineer"]["education"][3]["Professional degree"] }}<br>
+									Some College: {{ salary_education_data[2]["Software Engineer"]["education"][1]["Some college/university study without earning a bachelor’s degree"] }}<br>							
+									High School: {{ salary_education_data[2]["Software Engineer"]["education"][2]["No formal education past high school"] }}
     							</p>
     						</div>
     						<div class="card-footer">
@@ -132,14 +132,14 @@
 					<h3>Research Scientist</h3>
 					<p class="card-text">
 						<strong>Salary:</strong><br>
-						{{ salary_education_data[5]["Research Scientist"]["salary"] }}<br>
+						{{ salary_education_data[3]["Research Scientist"]["salary"] }}<br>
 						<strong>Highest Level of Education:</strong><br>
-						Doctoral Degree: {{ salary_education_data[5]["Research Scientist"]["education"][4]["Doctoral degree"] }}<br>
-						Master's Degree: {{ salary_education_data[5]["Research Scientist"]["education"][5]["Master’s degree"] }}<br>
-						Bachelor’s Degree: {{ salary_education_data[5]["Research Scientist"]["education"][3]["Bachelor’s degree"] }}<br>
-						Professional Degree: {{ salary_education_data[5]["Research Scientist"]["education"][2]["Professional degree"] }}<br>
-						Some College: {{ salary_education_data[5]["Research Scientist"]["education"][1]["Some college/university study without earning a bachelor’s degree"] }}<br>								
-						High School: {{ salary_education_data[5]["Research Scientist"]["education"][0]["No formal education past high school"] }}
+						Doctoral Degree: {{ salary_education_data[3]["Research Scientist"]["education"][0]["Doctoral degree"] }}<br>
+						Master's Degree: {{ salary_education_data[3]["Research Scientist"]["education"][2]["Master’s degree"] }}<br>
+						Bachelor’s Degree: {{ salary_education_data[3]["Research Scientist"]["education"][4]["Bachelor’s degree"] }}<br>
+						Professional Degree: {{ salary_education_data[3]["Research Scientist"]["education"][3]["Professional degree"] }}<br>
+						Some College: {{ salary_education_data[3]["Research Scientist"]["education"][1]["Some college/university study without earning a bachelor’s degree"] }}<br>								
+						High School: 0%
 					</p>
                 </div>
                 <div class="card-footer">
@@ -156,14 +156,14 @@
 					<h3>Product/Project Manager</h3>
 					<p class="card-text">
 						<strong>Salary:</strong><br>
-						{{ salary_education_data[6]["Product/Project Manager"]["salary"] }}<br>
+						{{ salary_education_data[4]["Project Manager"]["salary"] }}<br>
 						<strong>Highest Level of Education:</strong><br>
-						Doctoral Degree: {{ salary_education_data[6]["Product/Project Manager"]["education"][6]["Doctoral degree"] }}<br>
-						Master's Degree: {{ salary_education_data[6]["Product/Project Manager"]["education"][2]["Master’s degree"] }}<br>
-						Bachelor’s Degree: {{ salary_education_data[6]["Product/Project Manager"]["education"][5]["Bachelor’s degree"] }}<br>
-						Professional Degree: {{ salary_education_data[6]["Product/Project Manager"]["education"][1]["Professional degree"] }}<br>
-						Some College: {{ salary_education_data[6]["Product/Project Manager"]["education"][0]["Some college/university study without earning a bachelor’s degree"] }}<br>						
-						High School: {{ salary_education_data[6]["Product/Project Manager"]["education"][3]["No formal education past high school"] }}
+						Doctoral Degree: {{ salary_education_data[4]["Project Manager"]["education"][5]["Doctoral degree"] }}<br>
+						Master's Degree: {{ salary_education_data[4]["Project Manager"]["education"][2]["Master’s degree"] }}<br>
+						Bachelor’s Degree: {{ salary_education_data[4]["Project Manager"]["education"][3]["Bachelor’s degree"] }}<br>
+						Professional Degree: 0%<br>
+						Some College: {{ salary_education_data[4]["Project Manager"]["education"][0]["Some college/university study without earning a bachelor’s degree"] }}<br>						
+						High School: {{ salary_education_data[4]["Project Manager"]["education"][4]["No formal education past high school"] }}
 					</p>
                 </div>
                 <div class="card-footer">
@@ -180,14 +180,14 @@
 					<h3>Data Scientist</h3>
 					<p class="card-text">
 						<strong>Salary:</strong><br>
-						{{ salary_education_data[7]["Data Scientist"]["salary"] }}<br>
+						{{ salary_education_data[5]["Data Scientist"]["salary"] }}<br>
 						<strong>Highest Level of Education:</strong><br>
-						Doctoral Degree: {{ salary_education_data[7]["Data Scientist"]["education"][5]["Doctoral degree"] }}<br>
-						Master's Degree: {{ salary_education_data[7]["Data Scientist"]["education"][4]["Master’s degree"] }}<br>
-						Bachelor’s Degree: {{ salary_education_data[7]["Data Scientist"]["education"][2]["Bachelor’s degree"] }}<br>
-						Professional Degree: {{ salary_education_data[7]["Data Scientist"]["education"][6]["Professional degree"] }}<br>
-						Some College: {{ salary_education_data[7]["Data Scientist"]["education"][3]["Some college/university study without earning a bachelor’s degree"] }}<br>							
-						High School: {{ salary_education_data[7]["Data Scientist"]["education"][1]["No formal education past high school"] }}
+						Doctoral Degree: {{ salary_education_data[5]["Data Scientist"]["education"][4]["Doctoral degree"] }}<br>
+						Master's Degree: {{ salary_education_data[5]["Data Scientist"]["education"][3]["Master’s degree"] }}<br>
+						Bachelor’s Degree: {{ salary_education_data[5]["Data Scientist"]["education"][2]["Bachelor’s degree"] }}<br>
+						Professional Degree: {{ salary_education_data[5]["Data Scientist"]["education"][5]["Professional degree"] }}<br>
+						Some College: {{ salary_education_data[5]["Data Scientist"]["education"][1]["Some college/university study without earning a bachelor’s degree"] }}<br>							
+						High School: 0%
 					</p>
                 </div>
                 <div class="card-footer">
