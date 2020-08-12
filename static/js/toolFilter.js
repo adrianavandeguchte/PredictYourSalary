@@ -16,8 +16,9 @@ function loadFilter(filter) {
   });
   document.getElementById("wordCloud").innerHTML = '';
     d3.json(recURL, function (err, rawData) {
+      var maxWord = d3.max(rawData, d => +d.count);
       var scaleCount = d3.scale.linear()
-        .domain([50,5300])
+        .domain([50,maxWord])
         .range([15,100]);
       rawData.forEach(function (d) {
         d.count = scaleCount(d.count);
@@ -27,9 +28,6 @@ function loadFilter(filter) {
       });
       rawData = rawData.filter(function (d) {
         return d.recommended_first_language !== "Other"
-      });
-      rawData = rawData.filter(function (d) {
-        return d.recommended_first_language !== "TypeScript"
       });
       wordDisplay(rawData);
     });
