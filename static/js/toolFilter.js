@@ -12,6 +12,24 @@ function loadFilter(filter) {
     toolData = toolData.filter(function (d) {
       return d.tool !== "Other"
     });
+    nodes = createNodes(toolData);
+    elements.data(nodes, d => d.tool)
+    elements.enter();
+    elements.attr('r', d => d.radius)
+      .attr('fill', d => fillColour(d.type))
+      .append('text')
+      .attr('dy', '.3em')
+      .style('text-anchor', 'middle')
+      .style('font-size', 10)
+      .text(d => d.tool)
+
+    simulation.nodes(nodes)
+      .on('tick', ticked)
+      .restart();
+  }
+
+
+
     display(toolData)
   });
   document.getElementById("wordCloud").innerHTML = '';
