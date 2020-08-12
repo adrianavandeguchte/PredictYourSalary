@@ -135,7 +135,7 @@ function loadFilter(filter) {
     myBubbleChart('#bubble', data);
   }
 
-  d3.json("/tools_data", function (err, toolData) {
+  d3.json(toolURL, function (err, toolData) {
     toolData = toolData.filter(function (d) {
       return d.tool !== "None"
     });
@@ -148,7 +148,7 @@ function loadFilter(filter) {
     d3.json(recURL, function (err, rawData) {
       var maxWord = d3.max(rawData, d => +d.count);
       var scaleCount = d3.scale.linear()
-        .domain([50,maxWord])
+        .domain([5,maxWord])
         .range([15,100]);
       rawData.forEach(function (d) {
         d.count = scaleCount(d.count);
