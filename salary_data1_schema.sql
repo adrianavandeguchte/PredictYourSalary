@@ -1,4 +1,6 @@
 drop table salary_data1;
+
+
 CREATE TABLE salary_data1 (
 	id INTEGER PRIMARY KEY,
 	salaryusd INTEGER,
