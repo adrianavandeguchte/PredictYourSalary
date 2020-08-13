@@ -77,13 +77,17 @@
 
 /* Styling for image icons */
 .sidebar-icon {
-  width: 105px;
-  height: 105px;
+  width: 110px;
+  height: 110px;
   display: block;
-  padding: 6px 8px 6px 8px;
+  padding: 0px 5px 0px 5px;
   margin-left: auto;
   margin-right: auto;
   transition: transform .2s; /* Animation */
+}
+
+.active-icon {
+
 }
 
 .sidebar-icon:hover {
