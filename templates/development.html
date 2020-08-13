@@ -55,7 +55,7 @@
 
         <br>
 
-      <h4> Cleaning Dataset 1 Kaggle Survey </h4>
+      <h4> Cleaning Dataset 1 Kaggle Survey:</h4>
       <ul>
         <li>The original CSV file was loaded in Jupyter Notebook and consisted of 246 columns and 19718 rows and was
           narrowed down to 109 columns and 19718 rows.</li>
@@ -121,9 +121,6 @@
 
       <br>
 
-
-
-
       <h1>Step 3: Flask App</h1>
       <div class="progress">
         <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
@@ -133,20 +130,29 @@
       <br>
 
       <h4> Developing the Flask App </h4>
-      <p>By using Python, Flask, and SQLAlchemy, we were able to connect our machine-learning model with the HTML page where users can submit a form.</p>
+      <p>By using Python, Flask, and SQLAlchemy, we were able to connect our machine-learning model with the HTML page
+        where users can submit a form.</p>
 
       <ul>
-        <li>Flask and SQLAlchemy were used to run different queries of the data and render API’s of the JSONifed versions of those queries.</li>
+        <li>Flask and SQLAlchemy were used to run different queries of the data and render API’s of the JSONifed
+          versions of those queries.</li>
         <li>/tools_data/ route focuses on the popularities of different technologies of the data world </li>
-        <li>/tools_data/<jobtitle> does the same as the route above, except there is an added filter to it that allows the user to add a job title to the URL</li>
-        <li>/recommendations_data provides a count on the most recommended technologies to start with as a data professional.</li>
-        <li>/recommendations_data/<jobtitle> does the same as the route above, except there is an added filter to it that allows the user to add a job title to the URL</li>
-        <li>/education_data provides a breakdown of the count of each education level of each job title and also provides the average salary of each job title</li>
-        <li>/country_region_data provides a list of all the unique country names of the dataset and its corresponding region</li>
-        <li>/predictions is the route where the user’s response from the form is sent to. Their response is then processed to fit the model, and a prediction is returned. That response is sent back to that page to be used with Jinja.</li>
+        <li>/tools_data/<jobtitle> does the same as the route above, except there is an added filter to it that allows
+            the user to add a job title to the URL</li>
+        <li>/recommendations_data provides a count on the most recommended technologies to start with as a data
+          professional.</li>
+        <li>/recommendations_data/<jobtitle> does the same as the route above, except there is an added filter to it
+            that allows the user to add a job title to the URL</li>
+        <li>/education_data provides a breakdown of the count of each education level of each job title and also
+          provides the average salary of each job title</li>
+        <li>/country_region_data provides a list of all the unique country names of the dataset and its corresponding
+          region</li>
+        <li>/predictions is the route where the user’s response from the form is sent to. Their response is then
+          processed to fit the model, and a prediction is returned. That response is sent back to that page to be used
+          with Jinja.</li>
         The rest of the routes are just simple routes that render html pages.
-        </ul>
-        
+      </ul>
+
 
       <br>
 
@@ -158,16 +164,15 @@
       <br>
 
 
-      <p> We decided to make visualizations that represent average salaries based on job titles in the different regions
-        of the world. We also compared female and males salaries to observe whether these is a big gender pay gap and
-        looked at other factors such as age. Other visualizations focused on the tools of the trade and years of
-        experience. </p>
+      <p> Our visualizations focused primarly on factors affecting salary. </p>
 
       <h4>Tableau</h4>
       <ul>
         <li>The cleaned CSV file 1 was loaded into Tableau Desktop. </li>
-        <li>Visualizations for gender pay gap, age and salary region were made using different Tableau options.</li>
-        <li>The final dashboard was published in Tableau Public and finally embedded into our html page.</li>
+        <li>The following visualizations were made based on factors affecting salary: gender, age, location, education level, 
+          certificates and computer science background were all analyzed for how they played a role in the salary amount. 
+        </li>
+        <li>The final dashboards were published in Tableau Public and finally embedded into our html page using the built in share option.</li>
       </ul>
 
       <h4>D3</h4>
