@@ -1,13 +1,13 @@
 var test = "/recommendations_data"
 
 d3.json(test, function (err, words) {
-var scaleCount = d3.scale.linear()
-  .domain([50,5300])
-  .range([15,100]);
-
-words.forEach(function (d) {
-  d.count = scaleCount(d.count);
-});
+  var maxWord = d3.max(words, d => +d.count);
+  var scaleCount = d3.scale.linear()
+    .domain([5,maxWord])
+    .range([15,100]);
+  words.forEach(function (d) {
+    d.count = scaleCount(d.count);
+  });
 words = words.filter(function (d) {
   return d.recommended_first_language !== "None"
 });
@@ -17,6 +17,7 @@ words = words.filter(function (d) {
 words = words.filter(function (d) {
   return d.recommended_first_language !== "TypeScript"
 });
+
 // console.log(words)
 // Encapsulate the word cloud functionality
 function wordCloud(selector) {
@@ -25,6 +26,7 @@ function wordCloud(selector) {
 
     //Construct the word cloud's SVG element
     var svg = d3.select(selector).append("svg")
+        .attr("id","wordSVG")
         .attr("width", 500)
         .attr("height", 500)
         .append("g")
@@ -116,8 +118,3 @@ var myWordCloud = wordCloud('.wordCloud');
 //Start cycling through the demo data
 showNewWords(myWordCloud);
 });
-
-function selectFilter(filter) {
-  var sel = document.getElementById('jobFilter');
-
-}

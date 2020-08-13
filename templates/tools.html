@@ -42,13 +42,13 @@
       </div>
     </nav>
     <div class="sidebar">
-      <img src="../static/images/no back.png" onclick="window.open(this.src)" class="sidebar-icon">
-      <img src="../static/images/data_analyst.png" onclick="showNewWords(vis,/recommendation_data)" class="sidebar-icon">
-      <img src="../static/images/data_arch.png" onclick="window.open(this.src)" class="sidebar-icon">
-      <img src="../static/images/data_eng.png" onclick="window.open(this.src)" class="sidebar-icon">
-      <img src="../static/images/data_scientist.png" onclick="window.open(this.src)" class="sidebar-icon">
-      <img src="../static/images/database analyst.png" onclick="window.open(this.src)" class="sidebar-icon">
-      <img src="../static/images/software_dev.png" onclick="window.open(this.src)" class="sidebar-icon">
+      <img src="../static/images/no back.png" onclick="loadFilter(&quot;&quot;)" class="sidebar-icon">
+      <img src="../static/images/data_analyst.png" onclick="loadFilter(&quot;/Data Analyst&quot;)" class="sidebar-icon">
+      <img src="../static/images/data_arch.png" onclick="loadFilter(&quot;/Data Engineer&quot;)" class="sidebar-icon">
+      <img src="../static/images/data_eng.png" onclick="loadFilter(&quot;/Data Scientist&quot;)" class="sidebar-icon">
+      <img src="../static/images/data_scientist.png" onclick="loadFilter(&quot;/Product/Project Manager&quot;)" class="sidebar-icon">
+      <img src="../static/images/database analyst.png" onclick="loadFilter(&quot;/Research Scientist&quot;)" class="sidebar-icon">
+      <img src="../static/images/software_dev.png" onclick="loadFilter(&quot;/Statistician&quot;)" class="sidebar-icon">
     </div>
 
 		<div class="container-fluid toolPage">
@@ -70,7 +70,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-              <div class="wordCloud">
+              <div class="wordCloud" id="wordCloud">
               </div>
 						</div>
 					</div>
@@ -94,7 +94,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-              <div class="bubble">
+              <div class="bubble" id="bubble">
               </div>
 						</div>
 					</div>
@@ -137,6 +137,7 @@
     <!-- <script type="text/javascript" src="static/js/toolbubble.js"></script> -->
     <script type="text/javascript" src="static/js/toolwords.js"></script>
     <script type="text/javascript" src="static/js/toolbubble.js"></script>
+    <script type="text/javascript" src="static/js/toolFilter.js"></script>
 	</body>
 
 </html>
