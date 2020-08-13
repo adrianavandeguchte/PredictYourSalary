@@ -37,9 +37,29 @@ def audit():
 def authors():
     return render_template("authors.html")
 
-@app.route("/demographics")
-def demographics():
-    return render_template("demog.html")
+@app.route("/gender")
+def gender():
+    return render_template("gender.html")
+
+@app.route("/age")
+def age():
+    return render_template("age.html")
+
+@app.route("/country")
+def country():
+    return render_template("country.html")
+
+@app.route("/csbackground")
+def csbackground():
+    return render_template("CSbackground.html")
+
+@app.route("/degree")
+def degree():
+    return render_template("degree.html")
+
+@app.route("/certifs")
+def certifs():
+    return render_template("certifs.html")
 
 @app.route("/development")
 def development():

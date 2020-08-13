@@ -133,9 +133,10 @@
 
 /* Tableau embedding styles */
 .tabvis {
-  max-width: 650px;
-  height: 100%;
+  display: flex;
+  justify-content: center;
   width: 100%;
+  margin-bottom: 20px;
 
 }
 
