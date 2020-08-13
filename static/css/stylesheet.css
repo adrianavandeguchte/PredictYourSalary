@@ -1,3 +1,9 @@
+*{
+/* font-family: "Nunito Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+
 /* NavBar Styling */
 .nav-style {
   background-color: #ffdddd;
