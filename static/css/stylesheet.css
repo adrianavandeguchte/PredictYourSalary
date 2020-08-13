@@ -46,14 +46,18 @@
 
 .sidebar {
   height: 100%;
-  width: 160px;
+  width: 140px;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: AntiqueWhite;
   overflow-x: hidden;
-  padding-top: 16px;
+  padding-top: 25px;
+  margin-top: 52px;
+  border-right-color: #efdabf;
+  border-right-style: solid;
+  border-right-width: thin;
 }
 
 /* Style sidebar links */
@@ -72,8 +76,8 @@
 
 /* Styling for image icons */
 .sidebar-icon {
-  width: 140px;
-  height: 140px;
+  width: 130px;
+  height: 130px;
   display: block;
   padding: 6px 8px 6px 16px;
   margin-left: auto;
@@ -82,12 +86,12 @@
 }
 
 .sidebar-icon:hover {
-  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 /* Style the main content */
 .main {
-  margin-left: 160px; /* Same as the width of the sidenav */
+  margin-left: 140px; /* Same as the width of the sidenav */
   padding: 0px 10px;
 }
 
