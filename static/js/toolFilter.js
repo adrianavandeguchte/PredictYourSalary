@@ -4,7 +4,7 @@ function loadFilter(filter) {
 
   console.log(recURL)
 
-  document.getElementById("bubble").innerHTML = '';
+  document.getElementById("bubbleSVG").innerHTML = '';
   function bubbleChart() {
     const width = 900;
     const height = 640;
@@ -78,9 +78,6 @@ function loadFilter(filter) {
 
       // create svg element inside provided selector
       svg = d3v5.select(selector)
-        .append('svg')
-        .attr('width', width)
-        .attr('height', height)
 
       // bind nodes data to circle elements
       const elements = svg.selectAll('.bubble')
@@ -132,7 +129,7 @@ function loadFilter(filter) {
   // function called once promise is resolved and data is loaded from csv
   // calls bubble chart function to display inside #vis div
   function display(data) {
-    myBubbleChart('#bubble', data);
+    myBubbleChart('#bubbleSVG', data);
   }
 
   d3.json(toolURL, function (err, toolData) {
