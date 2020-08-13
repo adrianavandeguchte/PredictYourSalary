@@ -25,9 +25,9 @@ app = Flask(__name__)
 
 # Flask Routes
 
-@app.route("/")
-def home():
-    return render_template("index.html")
+# @app.route("/")
+# def home():
+#     return render_template("index.html")
 
 @app.route("/audit")
 def audit():
@@ -975,86 +975,77 @@ def recommendations_data_by_title(jobtitle):
     return jsonify(data_list)
 
 
-@app.route("/education_data")
+@app.route("/")
 def education_data():
     session = Session(engine)
 
-    salary_data = session.query(salary_data2.title, cast(func.avg(salary_data2.salary), Integer)).\
-        group_by(salary_data2.title, salary_data2.education).all()
+    salary_data = session.query(salary_data2.title, cast(func.avg(salary_data2.salary), Integer), cast(func.count(salary_data2.title), Integer)).\
+        filter(salary_data2.country == 'United States of America').\
+        group_by(salary_data2.title).all()
     session.close()
 
     education_data = session.query(salary_data2.title, salary_data2.education, cast(func.count(salary_data2.education), Integer)).\
+        filter(salary_data2.country == 'United States of America').\
         group_by(salary_data2.title, salary_data2.education).all()
     session.close()
 
-    for title, salary in salary_data:
-        if title == "Business Analyst":
-            business_analyst_salary = salary
-        elif title == "Data Analyst":
-            data_analyst_salary = salary
-        elif title == "Data Engineer":
-            data_engineer_salary = salary
-        elif title == "DBA/Database Engineer":
-            dba_salary = salary
+    print(salary_data)
+    
+    for title, salary, count in salary_data:
+        if title == "Data & Business Analyst":
+            analyst_salary = "${:,.2f}".format(salary)
+            analyst_count = count
+        elif title == "DBA & Data Engineer":
+            dba_engineer_salary = "${:,.2f}".format(salary)
+            dba_engineer_count = count
         elif title == "Software Engineer":
-            software_engineer_salary = salary
+            software_engineer_salary = "${:,.2f}".format(salary)
+            software_count = count
         elif title == "Research Scientist":
-            research_scientist_salary = salary
-        elif title == "Product/Project Manager":
-            manager_salary = salary
+            research_scientist_salary = "${:,.2f}".format(salary)
+            research_count = count
+        elif title == "Project Manager":
+            manager_salary = "${:,.2f}".format(salary)
+            manager_count = count
         elif title == "Data Scientist":
-            data_scientist_salary = salary
+            data_scientist_salary = "${:,.2f}".format(salary)
+            data_scientist_count = count
+
+    print(analyst_salary)
+    print(analyst_count)
+    print(dba_engineer_salary)
+    print(dba_engineer_count)
 
     data_list = []
-    business_analyst_ed_count_list = []
-    data_analyst_ed_count_list = []
-    data_engineer_ed_count_list = []
-    dba_ed_count_list = []
+    analyst_ed_count_list = []
+    dba_engineer_ed_count_list = []
     software_ed_count_list = []
     research_ed_count_list = []
     manager_ed_count_list = []
     data_scientist_ed_count_list = []
 
     for title, education, count in education_data:
-        if title == "Business Analyst":
-            business_analyst_ed_count_dict = {}
-            business_analyst_ed_count_dict[education] = count
-            business_analyst_ed_count_list.append(business_analyst_ed_count_dict)
-            business_analyst_dict = {}
-            business_analyst_dict[title] = {
-                "education": business_analyst_ed_count_list,
-                "salary": business_analyst_salary
+        if title == "Data & Business Analyst":
+            analyst_ed_count_dict = {}
+            analyst_ed_count_dict[education] = "{:,.0f}%".format(round(count / analyst_count * 100, 0))
+            analyst_ed_count_list.append(analyst_ed_count_dict)
+            analyst_dict = {}
+            analyst_dict[title] = {
+                "education": analyst_ed_count_list,
+                "salary": analyst_salary
             }
-        elif title == "Data Analyst":
-            data_analyst_ed_count_dict = {}
-            data_analyst_ed_count_dict[education] = count
-            data_analyst_ed_count_list.append(data_analyst_ed_count_dict)
-            data_analyst_dict = {}
-            data_analyst_dict[title] = {
-                "education": data_analyst_ed_count_list,
-                "salary": data_analyst_salary
-            }
-        elif title == "Data Engineer":
-            data_engineer_ed_count_dict = {}
-            data_engineer_ed_count_dict[education] = count
-            data_engineer_ed_count_list.append(data_engineer_ed_count_dict)
-            data_engineer_dict = {}
-            data_engineer_dict[title] = {
-                "education": data_engineer_ed_count_list,
-                "salary": data_engineer_salary
-            }
-        elif title == "DBA/Database Engineer":
-            dba_ed_count_dict = {}
-            dba_ed_count_dict[education] = count
-            dba_ed_count_list.append(dba_ed_count_dict)
-            dba_dict = {}
-            dba_dict[title] = {
-                "education": dba_ed_count_list,
-                "salary": dba_salary
+        elif title == "DBA & Data Engineer":
+            dba_engineer_ed_count_dict = {}
+            dba_engineer_ed_count_dict[education] = "{:,.0f}%".format(round(count / dba_engineer_count * 100, 0))
+            dba_engineer_ed_count_list.append(dba_engineer_ed_count_dict)
+            dba_engineer_dict = {}
+            dba_engineer_dict[title] = {
+                "education": dba_engineer_ed_count_list,
+                "salary": dba_engineer_salary
             }
         elif title == "Software Engineer":
             software_ed_count_dict = {}
-            software_ed_count_dict[education] = count
+            software_ed_count_dict[education] = "{:,.0f}%".format(round(count / software_count * 100, 0))
             software_ed_count_list.append(software_ed_count_dict)
             software_engineer_dict = {}
             software_engineer_dict[title] = {
@@ -1063,16 +1054,16 @@ def education_data():
             }
         elif title == "Research Scientist":
             research_ed_count_dict = {}
-            research_ed_count_dict[education] = count
+            research_ed_count_dict[education] = "{:,.0f}%".format(round(count / research_count * 100, 0))
             research_ed_count_list.append(research_ed_count_dict)
             research_scientist_dict = {}
             research_scientist_dict[title] = {
                 "education": research_ed_count_list,
                 "salary": research_scientist_salary
             }
-        elif title == "Product/Project Manager":
+        elif title == "Project Manager":
             manager_ed_count_dict = {}
-            manager_ed_count_dict[education] = count
+            manager_ed_count_dict[education] = "{:,.0f}%".format(round(count / manager_count * 100, 0))
             manager_ed_count_list.append(manager_ed_count_dict)
             manager_dict = {}
             manager_dict[title] = {
@@ -1081,25 +1072,26 @@ def education_data():
             }
         elif title == "Data Scientist":
             data_scientist_ed_count_dict = {}
-            data_scientist_ed_count_dict[education] = count
+            data_scientist_ed_count_dict[education] = "{:,.0f}%".format(round(count / data_scientist_count * 100, 0))
             data_scientist_ed_count_list.append(data_scientist_ed_count_dict)
             data_scientist_dict = {}
             data_scientist_dict[title] = {
                 "education": data_scientist_ed_count_list,
                 "salary": data_scientist_salary
             }
+    
+    print(analyst_dict)
+    print(dba_engineer_dict)
 
-    data_list.append(business_analyst_dict)
-    data_list.append(data_analyst_dict)
-    data_list.append(dba_dict)
-    data_list.append(data_engineer_dict)
+    data_list.append(analyst_dict)
+    data_list.append(dba_engineer_dict)
     data_list.append(software_engineer_dict)
     data_list.append(research_scientist_dict)
     data_list.append(manager_dict)
     data_list.append(data_scientist_dict)
 
     return render_template('index.html', salary_education_data=data_list)
-    # return jsonify(data_list)
+    # return jsonify(test_list)
 
 
 @app.route("/country_region_data")
