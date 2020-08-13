@@ -2,184 +2,183 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predictions</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predictions</title>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-
-
+  
 </head>
 
 <body>
-        <div class="container">
+  <div class="container">
 
-      <nav class="navbar navbar-default nav-style">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/">Predict Your Salary</a>
-          </div>
-          <!-- <ul class="nav navbar-nav navbar-right"> -->
-            <li><a href="/">Home</a></li>
-            <li class="active"><a href="/predictions">Predictions</a></li>
-            <li><a href="/demographics">Demographics</a></li>
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tools
-              <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="/tools">Industry Standards</a></li>
-                <li><a href="/audit">Bootcamp Audit</a></li>
-              </ul>
-            </li>
-            <li><a href="/team">About Us</a></li>
+    <nav class="navbar navbar-default nav-style">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Predict Your Salary</a>
+        </div>
+        <!-- <ul class="nav navbar-nav navbar-right"> -->
+        <li><a href="/">Home</a></li>
+        <li class="active"><a href="/predictions">Predictions</a></li>
+        <li><a href="/demographics">Demographics</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tools
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/tools">Industry Standards</a></li>
+            <li><a href="/audit">Bootcamp Audit</a></li>
           </ul>
-        </div>
-      </nav>
+        </li>
+        <li><a href="/team">About Us</a></li>
+        </ul>
+      </div>
+    </nav>
 
-        <script>
-            function showInput(e) {
-                e.preventDefault();
-                var output_info = document.getElementById("myform");
-                var display = document.getElementById("display");
-                var data = output_info.querySelectorAll("input:not([type=submit]), select");
-                // var region_menu = d3.select("#selRegion");
-                // region_menu.html(" ");
-                for (var i = 0; i < data.length; i++) {
-      display.innerHTML += "Criteria:" + data[i].name + " user input:" + data[i].value + "<br>"
-                }
-            }
-        </script>
+    <script>
+      function showInput(e) {
+        e.preventDefault();
+        var output_info = document.getElementById("myform");
+        var display = document.getElementById("display");
+        var data = output_info.querySelectorAll("input:not([type=submit]), select");
+        // var region_menu = d3.select("#selRegion");
+        // region_menu.html(" ");
+        for (var i = 0; i < data.length; i++) {
+          display.innerHTML += "Criteria:" + data[i].name + " user input:" + data[i].value + "<br>"
+        }
+      }
+    </script>
 
-        <div class="view overlay my-4">
-            <img src="../Images/prediction.png" class="img-fluid" alt="">
-        </div>
+    <div class="view overlay my-4">
+      <img src="../Images/prediction.png" class="img-fluid" alt="">
+    </div>
 
-       <div class="col-xs-6 col-md-12">
-        <form id ="myform" role = "form">
-            <div class="form-group">
-                <h1>Enter Job Information to See Salary Prediction:</h1>
-                <div class="panel-body1">
-                    <form method='post'>
-                        Country:
-                        <select class="form-control" id="selCountry" name="country"
-                            onchange="optionChangedCountry(this.value)" required>
-                        </select>
-                        <br>
-                        Region (autofilled):
-                        <select class="form-control" id="selRegion" name="region" required>
-                            <option>
-                            </option>
-                        </select>
-                        <br>
-​
-                        Is Education Background Computer Related?
-                        <select class="form-control" name="comp_ed" required>
-                            <option style="display:none;" disabled selected value></option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                        </select>
-                        <br>
-​
-                        Primary Database of Use:
-                        <select class="form-control" name="primary_db" required>
-                            <option style="display:none;" disabled selected value></option>
-                            <option style="display:none;" disabled selected value></option>
-                            <option value="Amazon RDS (any flavor)">Amazon RDS</option>
-                            <option value="Azure SQL DB">Azure SQL</option>
-                            <option value="Cassandra">Cassandra</option>
-                            <option value="DB2">DB2</option>
-                            <option value="Elasticsearch">Elasticsearch</option>
-                            <option value="Microsoft Access">Microsoft Access</option>
-                            <option value="Microsoft SQL Server">Microsoft SQL Server</option>
-                            <option value="MongoDB">MongoDB</option>
-                            <option value="MySQL/MariaDB">MySQL/MariaDB</option>
-                            <option value="Oracle">Oracle</option>
-                            <option value="PostgreSQL">PostgreSQL</option>
-                            <option value="SAP">SAP</option>
-                            <option value="SQLite">SQLite</option>
-                            <option value="Teradata">Teradata</option>
-                            <option value="Other">Other</option>
-                        </select>
-                        <br>
-​
-                        Years of Experience With this Database:
-                        <input type="number" class="form-control" name="years_db" min="0" max="50" required>
-                        <br>
-​
-                        Job Title:
-                        <select class="form-control" id="selTitle" name="title"
-                            onchange="optionChangedTitle(this.value)" required>
-                            <option style="display:none;" disabled selected value></option>
-                            <option value="Analyst">Data Analyst</option>
-                            <option value="Architect">Data Architect</option>
-                            <option value="DBA">Data Base Administrator</option>
-                            <option value="Developer">Developer</option>
-                            <option value="Engineer">Engineer</option>
-                            <option value="Manager">Manager</option>
-                        </select>
-                        <br>
-​
-                        Years with this Type of Job:
-                        <input type="number" class="form-control" name="years_job" min="0" max="50" required>
-                        <br>
-​
-                        Employment Sector:
-                        <select name="employ_sector" class="form-control" required>
-                            <option style="display:none;" disabled selected value></option>
-                            <option value="Private business">Private</option>
-                            <option value="Government">Government</option>
-                            <option value="Non-profit">Non-profit</option>
-                            <option value="Education (K-12, college, university)">Education</option>
-                        </select>
-                        <br>
-​
-                        Amount of Telecommute Days per Week:
-                        <select name="telecommute" class="form-control" required>
-                            <option style="display:none;" disabled selected value></option>
-                            <option value="None, or less than 1 day per week">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5 or more">5+</option>
-                        </select>
-                        <br>
-​
-                        Are You a Manager:
-                        <select class="form-control" name="manager" id="manager_input" require>
-                            <option style="display:none;" disabled selected value></option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                        </select>
-                        <br>
+    <div class="col-xs-6 col-md-12">
+      <form id="myform" role="form">
+        <div class="form-group">
+          <h1>Enter Job Information to See Salary Prediction:</h1>
+          <div class="panel-body1">
+            <form method='post'>
+              Country:
+              <select class="form-control" id="selCountry" name="country" onchange="optionChangedCountry(this.value)"
+                required>
+              </select>
+              <br>
+              Region (autofilled):
+              <select class="form-control" id="selRegion" name="region" required>
+                <option>
+                </option>
+              </select>
+              <br>
+              ​
+              Is Education Background Computer Related?
+              <select class="form-control" name="comp_ed" required>
+                <option style="display:none;" disabled selected value></option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+              <br>
+              ​
+              Primary Database of Use:
+              <select class="form-control" name="primary_db" required>
+                <option style="display:none;" disabled selected value></option>
+                <option style="display:none;" disabled selected value></option>
+                <option value="Amazon RDS (any flavor)">Amazon RDS</option>
+                <option value="Azure SQL DB">Azure SQL</option>
+                <option value="Cassandra">Cassandra</option>
+                <option value="DB2">DB2</option>
+                <option value="Elasticsearch">Elasticsearch</option>
+                <option value="Microsoft Access">Microsoft Access</option>
+                <option value="Microsoft SQL Server">Microsoft SQL Server</option>
+                <option value="MongoDB">MongoDB</option>
+                <option value="MySQL/MariaDB">MySQL/MariaDB</option>
+                <option value="Oracle">Oracle</option>
+                <option value="PostgreSQL">PostgreSQL</option>
+                <option value="SAP">SAP</option>
+                <option value="SQLite">SQLite</option>
+                <option value="Teradata">Teradata</option>
+                <option value="Other">Other</option>
+              </select>
+              <br>
+              ​
+              Years of Experience With this Database:
+              <input type="number" class="form-control" name="years_db" min="0" max="50" required>
+              <br>
+              ​
+              Job Title:
+              <select class="form-control" id="selTitle" name="title" onchange="optionChangedTitle(this.value)"
+                required>
+                <option style="display:none;" disabled selected value></option>
+                <option value="Analyst">Data Analyst</option>
+                <option value="Architect">Data Architect</option>
+                <option value="DBA">Data Base Administrator</option>
+                <option value="Developer">Developer</option>
+                <option value="Engineer">Engineer</option>
+                <option value="Manager">Manager</option>
+              </select>
+              <br>
+              ​
+              Years with this Type of Job:
+              <input type="number" class="form-control" name="years_job" min="0" max="50" required>
+              <br>
+              ​
+              Employment Sector:
+              <select name="employ_sector" class="form-control" required>
+                <option style="display:none;" disabled selected value></option>
+                <option value="Private business">Private</option>
+                <option value="Government">Government</option>
+                <option value="Non-profit">Non-profit</option>
+                <option value="Education (K-12, college, university)">Education</option>
+              </select>
+              <br>
+              ​
+              Amount of Telecommute Days per Week:
+              <select name="telecommute" class="form-control" required>
+                <option style="display:none;" disabled selected value></option>
+                <option value="None, or less than 1 day per week">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5 or more">5+</option>
+              </select>
+              <br>
+              ​
+              Are You a Manager:
+              <select class="form-control" name="manager" id="manager_input" require>
+                <option style="display:none;" disabled selected value></option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+              <br>
 
 
-                        <input type="submit" onclick="showInput(event);" />
+              <input type="submit" onclick="showInput(event);" />
 
-                    </form>
-                    <br>
-                    <br>
-                    <br>
-                    <h1> The Predicted Salary is {{ salary_prediction }} for the following criteria: </h1>
+            </form>
+            <br>
+            <br>
+            <br>
+            <h1> The Predicted Salary is {{ salary_prediction }} for the following criteria: </h1>
 
-                    <p><span id='display'>
-                        </span>
-                    </p>
-                </div>
+            <p><span id='display'>
+              </span>
+            </p>
+          </div>
         </div>
     </div>
 
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
 </body>
 
 </html>
