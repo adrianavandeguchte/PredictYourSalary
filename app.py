@@ -37,6 +37,10 @@ def audit():
 def authors():
     return render_template("authors.html")
 
+@app.route("/factors")
+def factors():
+    return render_template("demog.html")
+
 @app.route("/gender")
 def gender():
     return render_template("gender.html")
