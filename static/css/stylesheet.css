@@ -2,6 +2,7 @@
 .nav-style {
   background-color: #ffdddd;
   border-color: #ddc6c6;
+  /* position: fixed; */
 
 }
 
@@ -46,15 +47,15 @@
 
 .sidebar {
   height: 100%;
-  width: 140px;
+  width: 120px;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: AntiqueWhite;
   overflow-x: hidden;
-  padding-top: 25px;
-  margin-top: 52px;
+  padding-top: 5px;
+  margin-top: 51px;
   border-right-color: #efdabf;
   border-right-style: solid;
   border-right-width: thin;
@@ -76,10 +77,10 @@
 
 /* Styling for image icons */
 .sidebar-icon {
-  width: 130px;
-  height: 130px;
+  width: 105px;
+  height: 105px;
   display: block;
-  padding: 6px 8px 6px 16px;
+  padding: 6px 8px 6px 8px;
   margin-left: auto;
   margin-right: auto;
   transition: transform .2s; /* Animation */
@@ -91,7 +92,8 @@
 
 /* Style the main content */
 .main {
-  margin-left: 140px; /* Same as the width of the sidenav */
+  margin-left: 120px; /* Same as the width of the sidenav */
+  margin-top: 55px;
   padding: 0px 10px;
 }
 
@@ -128,6 +130,15 @@
 .active:after {
   content: "\2212";
 }
+
+/* Tableau embedding styles */
+.tabvis {
+  max-width: 650px;
+  height: 100%;
+  width: 100%;
+
+}
+
 
 /* Style the collapsible content. Note: hidden by default */
 .content {
