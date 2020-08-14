@@ -5,38 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Predictions</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/stylesheet.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-    <link rel="stylesheet" href="PredictYourSalary/static/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script> -->
+
 
 </head>
 
 <body>
+  <div class="container">
     <nav class="navbar navbar-default nav-style">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">WebSiteName</a>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/">Home</a></li>
-                <li class="active"><a href="/predictions">Predictions</a></li>
-                <li><a href="/demographics">Demographics</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tools
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/tools">Industry Standards</a></li>
-                        <li><a href="/audit">Bootcamp Audit</a></li>
-                    </ul>
-                </li>
-                <li><a href="/team">About Us</a></li>
-            </ul>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Predict Your Salary</a>
         </div>
-    </nav>
-    <div class="container">
+        <li><a href="/">Home</a></li>
+        <li><a href="/predictions">Predictions</a></li>
+        <li><a href="/factors">Factors</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tools
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/tools">Industry Favorites</a></li>
+            <li><a class="dropdown-item" href="/audit">Bootcamp Audit</a></li>
+
+            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Job Search</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/requirements">Most Common Requirements</a></li>
+                <li><a class="dropdown-item" href="/wordcloud">Indeed Requirements</a></li>
+                <li><a class="dropdown-item" href="/wordcloud_nycnj">NJ/NY Requirements</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="/development">Development</a></li>
+        <li><a href="/team">About Us</a></li>
+    </div>
+  </nav>
 
         <script>
             function showInput(e) {
@@ -174,13 +186,46 @@
                 </div>
                 <br>
             </div>
-            <h3 id="prediction">{{ salary_prediction }}</h3>
+            <h3 id="prediction">{{ salary_prediction[0] }}</h3>
+            <p>{{ salary_prediction[1] }}</p>
+            <p>{{ salary_prediction[2] }}</p>
+            <p>{{ salary_prediction[3] }}</p>
+            <p>{{ salary_prediction[4] }}</p>
+            <p>{{ salary_prediction[5] }}</p>
+            <p>{{ salary_prediction[6] }}</p>
+            <p>{{ salary_prediction[7] }}</p>
+            <p>{{ salary_prediction[8] }}</p>
+            <p>{{ salary_prediction[9] }}</p>
+            <p>{{ salary_prediction[10] }}</p>
+            <p>{{ salary_prediction[11] }}</p>
         </div>
     </div>
 
 
+
+        <!-- Styling scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <!-- Dropdown submenu script -->
+        <script>
+          $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+            if (!$(this).next().hasClass('show')) {
+              $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+            }
+            var $subMenu = $(this).next(".dropdown-menu");
+            $subMenu.toggleClass('show');
+            $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+              $('.dropdown-submenu .show').removeClass("show");
+            });
+            return false;
+          });
+        </script>
+        <!-- Form and prediction scripts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
         <script src="../static/js/model.js"></script>
+
 </body>
 
 </html>

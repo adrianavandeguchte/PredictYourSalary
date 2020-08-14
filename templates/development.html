@@ -5,37 +5,44 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Development</title>
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/stylesheet.css">
 </head>
 
 <body>
 
   <div class="container">
-
-
     <nav class="navbar navbar-default nav-style">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="/">Predict Your Salary</a>
         </div>
-        <!-- <ul class="nav navbar-nav navbar-right"> -->
         <li><a href="/">Home</a></li>
-        <li class="active"><a href="/predictions">Predictions</a></li>
-        <li><a href="/demographics">Demographics</a></li>
+        <li><a href="/predictions">Predictions</a></li>
+        <li><a href="/factors">Factors</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tools
-            <span class="caret"></span></a>
+          <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/tools">Industry Standards</a></li>
-            <li><a href="/audit">Bootcamp Audit</a></li>
+            <li><a class="dropdown-item" href="/tools">Industry Favorites</a></li>
+            <li><a class="dropdown-item" href="/audit">Bootcamp Audit</a></li>
+
+            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Job Search</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/requirements">Most Common Requirements</a></li>
+                <li><a class="dropdown-item" href="/wordcloud">Indeed Requirements</a></li>
+                <li><a class="dropdown-item" href="/wordcloud_nycnj">NJ/NY Requirements</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
+        <li><a href="/development">Development</a></li>
         <li><a href="/team">About Us</a></li>
-        </ul>
-      </div>
-    </nav>
+    </div>
+  </nav>
 
     <div class="view overlay my-4">
       <img src="../images/development.png" class="img-fluid" alt="">
@@ -53,6 +60,8 @@
 
       <p> We used the skills we learned in the Rutgers Bootcamp Course in order to accomplish this task. See below for a
         set by step guide behind our though process behind our developement!</p>
+
+      <p><i>All version control handled using GitHub.</i></p>
 
       <br>
 
@@ -198,14 +207,15 @@
           amount.
         </li>
         <li>The final dashboards were published in Tableau Public and finally embedded into our html page using the
-          built in share option.</li>
+          Tableau JavaScript API.</li>
       </ul>
 
       <h4>D3</h4>
       <ul>
-        <li>Different versions of D3 were made compatible by ... </li>
-        <li>We used .... </li>
-        <li>Another thing ... </li>
+        <li>Word cloud of the recommended first language to learn was built using a d3 version 3 base code and expanded upon to filter out values and repopulate only on changing inputs.</li>
+        <li>Bubble chart of tool/language use in industry was built using d3 version 5 and d3.force was used to build movement animation.</li>
+        <li>To allow for compatibility between the two versions of d3, d3 version 5 was assigned a new variable name (d3v5) and all scripts rewritten to account for this change.</li>
+        <li>Filtering of the two visualization by job title was built out using d3 and onclick functions inside the HTML.</li>
       </ul>
 
       <br>
@@ -221,7 +231,7 @@
         an interactive webpage allowing the user to explore their career options for their future career in data
         science. We wanted to introduce the page with the main highlights of the trade by summarizing the job titles.
         Our goal was to create a clean, modern, creative and a user friendly page. For this part, we used formatting
-        provided by the Bootstrap library, some CSS styling and the Canva platform to create our graphics.</p>
+        provided by the Bootstrap library, direct CSS styling, and the Canva platform to create our graphics. Animations were built using CSS and JS.</p>
 
       <h4>AWS Deployment</h4>
       <p> Deployment to AWS was the final step to make the webpage accessible by a link for the user. </p>
@@ -231,7 +241,7 @@
 
 
 
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -240,6 +250,27 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+ -->
+
+ <!-- Styling scripts -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+ <!-- Dropdown submenu script -->
+ <script>
+   $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+     if (!$(this).next().hasClass('show')) {
+       $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+     }
+     var $subMenu = $(this).next(".dropdown-menu");
+     $subMenu.toggleClass('show');
+     $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+       $('.dropdown-submenu .show').removeClass("show");
+     });
+     return false;
+   });
+ </script>
 
 </body>
 

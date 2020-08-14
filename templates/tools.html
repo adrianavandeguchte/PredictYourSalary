@@ -1,65 +1,61 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
+    <title>Tools</title>
   <meta charset="UTF-8">
-  <title>Tools</title>
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/css/stylesheet.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <!-- <script type="text/javascript" src="static/js/d3.v3.min.js"></script> -->
-  <script src='https://d3js.org/d3.v5.min.js'></script>
-  <script>
-    var d3v5 = window.d3;
-    window.d3 = null;
-  </script>
-  <script src="https://d3js.org/d3.v3.js"></script>
-  <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
 
   </head>
 
 	<body>
-    <nav class="navbar navbar-default navbar-fixed-top nav-style">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/">WebSiteName</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
+    <div class="container">
+  		<nav class="navbar navbar-default nav-style">
+  			<div class="container-fluid">
+  				<div class="navbar-header">
+  					<a class="navbar-brand" href="/">Predict Your Salary</a>
+  				</div>
           <li><a href="/">Home</a></li>
           <li><a href="/predictions">Predictions</a></li>
-          <li><a href="/demographics">Demographics</a></li>
+          <li><a href="/factors">Factors</a></li>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tools
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li class="active"><a href="/tools">Industry Standards</a></li>
-              <li><a href="/audit">Bootcamp Audit</a></li>
+              <li><a class="dropdown-item" href="/tools">Industry Favorites</a></li>
+              <li><a class="dropdown-item" href="/audit">Bootcamp Audit</a></li>
+
+              <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Job Search</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/requirements">Most Common Requirements</a></li>
+                  <li><a class="dropdown-item" href="/wordcloud">Indeed Requirements</a></li>
+                  <li><a class="dropdown-item" href="/wordcloud_nycnj">NJ/NY Requirements</a></li>
+                </ul>
+              </li>
             </ul>
           </li>
+          <li><a href="/development">Development</a></li>
           <li><a href="/team">About Us</a></li>
-        </ul>
       </div>
     </nav>
-    <div class="sidebar">
-      <img src="../static/images/no back.png" onclick="loadFilter(&quot;&quot;)" class="sidebar-icon">
-      <img src="../static/images/data_analyst.png" onclick="loadFilter(&quot;/Data Analyst&quot;)" class="sidebar-icon">
-      <img src="../static/images/data_arch.png" onclick="loadFilter(&quot;/Data Engineer&quot;)" class="sidebar-icon">
-      <img src="../static/images/data_eng.png" onclick="loadFilter(&quot;/Data Scientist&quot;)" class="sidebar-icon">
-      <img src="../static/images/data_scientist.png" onclick="loadFilter(&quot;/Product/Project Manager&quot;)" class="sidebar-icon">
-      <img src="../static/images/database analyst.png" onclick="loadFilter(&quot;/Research Scientist&quot;)" class="sidebar-icon">
-      <img src="../static/images/software_dev.png" onclick="loadFilter(&quot;/Statistician&quot;)" class="sidebar-icon">
+    <div class="view overlay my-4">
+      <img src="../static/images/banners.png" class="img-fluid" alt="">
     </div>
-
-		<div class="container-fluid toolPage main">
-			<div class="row">
-				<div class="col-md-12">
-					<h1>
-						TOOLS OF THE TRADE
-					</h1>
-          <h3>LUX</h3>
-				</div>
-			</div>
+    <hr>
+    <nav class="navbar sticky-top navbar-default nav-style second" id="filterBar">
+      <div class="container-fluid">
+        <img src="../static/images/everyone in the peach.png" onclick="loadFilter(&quot;&quot;)" class="sb-icon">
+        <img src="../static/images/data_analyst.png" onclick="loadFilter(&quot;/Data & Business Analyst&quot;)" class="sb-icon">
+        <img src="../static/images/data_eng.png" onclick="loadFilter(&quot;/DBA & Data Engineer&quot;)" class="sb-icon">
+        <img src="../static/images/software_dev.png" onclick="loadFilter(&quot;/Software Engineer&quot;)" class="sb-icon">
+        <img src="../static/images/project_man.png" onclick="loadFilter(&quot;/Project Manager&quot;)" class="sb-icon">
+        <img src="../static/images/research_scie.png" onclick="loadFilter(&quot;/Research Scientist&quot;)" class="sb-icon">
+        <img src="../static/images/data_scientist.png" onclick="loadFilter(&quot;/Data Scientist&quot;)" class="sb-icon">
+    </div>
+  </nav>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="row">
@@ -67,23 +63,25 @@
 							<h3>
 								Where to start?
 							</h3>
+              <h5><small id="filterWord"></small></h5>
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-12">
-              <div class="wordCloud" id="wordCloud">
+						<div class="col-md-6">
+              <div class="wordCloud centered" id="wordCloud">
               </div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<p>
-								Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
-							</p>
-						</div>
+						<div class="col-md-6 centered">
+              <h4>Most Recommended Languages</h4>
+              <p>Overwhelmingly we found that the most recommended language to start with was Python. To even display this word chart, we had to dramatically scale the responses. Some languages offered as options in the dataset received so few recommendations that we removed them all together from the base chart, such as TypeScript. </p>
+              <p>The popularity of Python is understandable given the wide range of uses it has and variety of libraries to increase its functionality even further, many of which are represented below in the bubble chart demonstration of what is used most often by working professionals. </p>
+              <p>Filtering by job types appears to only change which language takes the runner up prize, notably shifting towards either SQL or R depending on the filter. This is understandable given the different roles and responsibilities of the differing jobs, which may favor certain activities over others, such as the choice between visualizations or analysis where R and MATLAB may win out and database management where SQL would have the edge. </p>
+              <p>Overall though we can confidently say that if you are getting your feet wet in the data professions, almost everyone agrees that Python is where you should start.</p>
+            </div>
 					</div>
 				</div>
 			</div>
+      <hr>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="row">
@@ -91,54 +89,65 @@
 							<h3>
 								Industry Favorites
 							</h3>
+              <h5><small id="filterBubble"></small></h5>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-              <div class="bubble" id="bubble">
+              <div class="bubble centered" id="bubble">
               </div>
+            </div>
+            <div class="legend centered">
+              <span class="a">Languages
+              </span><span class="b">Text Editors/Environments
+              </span><span class="c">Visualization Libraries
+              </span><span class="d">Databases
+              </span><span class="e">Machine Learning Methods
+              </span><span class="f">Learning Platforms</span>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<p>
-								Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="row">
-						<div class="col-md-12">
-							<h3>
-								h3. Lorem ipsum dolor sit amet.
-							</h3>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-
-							<button type="button" class="btn btn-success">
-								Button
-							</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<p>
-								Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
-							</p>
+              <p class="centered" style="text-align:center;">From our dataset we had available the ratings individuals gave on what tools and languages they used on a regular basis. We put this together to see if we could visualize trends in which ones were the most popular overall or by job type and made some interesting discoveries. </p>
+              <p class="centered" style="text-align:center;">Our favorite find was in the category of learning platform, where Coursera was rated as the most popular overall, something that we will all be keeping in mind when we want to go pick up new topics. It also appears that Data and Business Analysts are spending the most time on the various learning platforms, as all seem to have much larger shares when filtering only for those jobs. Explore the filters to see how each job has their own favorite tools and languages.</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-    <!-- <script type="text/javascript" src="static/js/toolbubble.js"></script> -->
+
+
+    <!-- Styling scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- D3 scripts -->
+    <script src='https://d3js.org/d3.v5.min.js'></script>
+    <script>
+      var d3v5 = window.d3;
+      window.d3 = null;
+    </script>
+    <script src="https://d3js.org/d3.v3.js"></script>
+    <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
+    <!-- SVG building scripts-->
     <script type="text/javascript" src="static/js/toolwords.js"></script>
     <script type="text/javascript" src="static/js/toolbubble.js"></script>
     <script type="text/javascript" src="static/js/toolFilter.js"></script>
+    <!-- Dropdown submenu script -->
+    <script>
+      $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+        if (!$(this).next().hasClass('show')) {
+          $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+        }
+        var $subMenu = $(this).next(".dropdown-menu");
+        $subMenu.toggleClass('show');
+        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+          $('.dropdown-submenu .show').removeClass("show");
+        });
+        return false;
+      });
+    </script>
+
 	</body>
 
 </html>

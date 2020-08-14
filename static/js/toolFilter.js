@@ -257,4 +257,10 @@ function loadFilter(filter) {
       showNewWords(myWordCloud);
       });
 
+
+document.getElementById("filterWord").innerHTML = '';
+document.getElementById("filterWord").innerHTML = filter;
+document.getElementById("filterBubble").innerHTML = '';
+document.getElementById("filterBubble").innerHTML = filter;
+
 }
