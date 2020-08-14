@@ -32,7 +32,7 @@ def home():
 def audit():
     return render_template("audit.html")
 
-@app.route("/authors")
+@app.route("/team")
 def authors():
     return render_template("authors.html")
 

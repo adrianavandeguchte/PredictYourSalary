@@ -2,90 +2,57 @@
 <html lang="en-us">
 <head>
   <meta charset="UTF-8">
-  <title>Demographics</title>
+  <title>Effect of Age</title>
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/css/stylesheet.css">
 
-  <!-- Scripts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script>
-    $(document).ready(function(){
-      $('.dropdown-submenu a.test').on("click", function(e){
-        $(this).next('ul').toggle();
-        e.stopPropagation();
-        e.preventDefault();
-      });
-    });
-  </script>
-    <script type="text/javascript"
-	    src="https://public.tableau.com/javascripts/api/tableau-2.5.0.min.js"></script>
-    <script type="text/javascript">
-        function initViz() {
-            var containerDiv = document.getElementById("vizContainer"),
-                url = "https://public.tableau.com/views/TechSalaryAnalysis/Age?:language=en&:display_count=y&publish=yes&:origin=viz_share_link&:showVizHome=no&:embed=y",
-                options = {
-                    hideTabs: true,
-                    onFirstInteractive: function () {
-                        console.log("Run this code when the viz has finished loading.");
-                    }
-                };
-
-            var viz = new tableau.Viz(containerDiv, url, options);
-            // Create a viz object and embed it in the container div.
-        }
-    </script>
 </head>
 
 <body onload="initViz();">
-  <nav class="navbar navbar-default navbar-fixed-top nav-style">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">WebSiteName</a>
-      </div>
-      <ul class="nav navbar-nav navbar-right">
+  <div class="container">
+    <nav class="navbar navbar-default nav-style">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Predict Your Salary</a>
+        </div>
         <li><a href="/">Home</a></li>
         <li><a href="/predictions">Predictions</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Demographics
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/tools">Gender</a></li>
-            <li><a href="/indeed">Age</a></li>
-            <li><a href="/tools">Location</a></li>
-            <li class="dropdown-submenu">
-              <a class="test" tabindex="-1" href="#">Education<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a tabindex="-1" href="#">Background</a></li>
-                <li><a tabindex="-1" href="#">Degree</a></li>
-                <li><a tabindex="-1" href="#">Certificates</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
+        <li><a href="/factors">Factors</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tools
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/tools">Industry Favorites</a></li>
-            <li><a href="/audit">Bootcamp Audit</a></li>
-            <li><a href="/indeed">Job Requirement Analysis</a></li>
+            <li><a class="dropdown-item" href="/tools">Industry Favorites</a></li>
+            <li><a class="dropdown-item" href="/audit">Bootcamp Audit</a></li>
+
+            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Job Search</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/requirements">Most Common Requirements</a></li>
+                <li><a class="dropdown-item" href="/wordcloud">Indeed Requirements</a></li>
+                <li><a class="dropdown-item" href="/wordcloud_nycnj">NJ/NY Requirements</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
+        <li><a href="/development">Development</a></li>
         <li><a href="/team">About Us</a></li>
-      </ul>
     </div>
   </nav>
-  <div class="sidebar">
-    <img src="../static/images/gender.png" onclick="parent.location='/gender'" class="sidebar-icon">
-    <img src="../static/images/age.png" onclick="parent.location='/age'" class="sidebar-icon">
-    <img src="../static/images/location.png" onclick="parent.location='/country'" class="sidebar-icon">
-    <img src="../static/images/cs background.png" onclick="parent.location='/csbackground'" class="sidebar-icon">
-    <img src="../static/images/level of edu.png" onclick="parent.location='/degree'" class="sidebar-icon">
-    <img src="../static/images/certi.png" onclick="parent.location='/certifs'" class="sidebar-icon">
-    <img src="../static/images/certi.png" onclick="parent.location='/certifs'" class="sidebar-icon">
+  <hr>
+  <nav class="navbar sticky-top navbar-default nav-style second" id="filterBar">
+    <div class="container-fluid">
+      <img src="../static/images/gender.png" onclick="parent.location='/gender'" class="sb-icon">
+      <img src="../static/images/age.png" onclick="parent.location='/age'" class="sb-icon">
+      <img src="../static/images/location.png" onclick="parent.location='/country'" class="sb-icon">
+      <img src="../static/images/cs background.png" onclick="parent.location='/csbackground'" class="sb-icon">
+      <img src="../static/images/level of edu.png" onclick="parent.location='/degree'" class="sb-icon">
+      <img src="../static/images/certi.png" onclick="parent.location='/certifs'" class="sb-icon">
+      <img src="../static/images/certi.png" onclick="parent.location='/certifs'" class="sb-icon">
   </div>
+</nav>
   <div class="container-fluid main">
   	<div class="row">
   		<div class="col-md-12">
@@ -103,6 +70,51 @@
   		</div>
   	</div>
   </div>
+</div>
+
+
+    <script type="text/javascript"
+    src="https://public.tableau.com/javascripts/api/tableau-2.5.0.min.js"></script>
+
+
+    <script type="text/javascript">
+    function initViz() {
+      var containerDiv = document.getElementById("vizContainer"),
+      url = "https://public.tableau.com/views/TechSalaryAnalysis/Age?:language=en&:display_count=y&publish=yes&:origin=viz_share_link&:showVizHome=no&:embed=y",
+      options = {
+        hideTabs: true,
+        onFirstInteractive: function () {
+          console.log("Run this code when the viz has finished loading.");
+        }
+      };
+
+      var viz = new tableau.Viz(containerDiv, url, options);
+      // Create a viz object and embed it in the container div.
+    }
+    </script>
+
+  <!-- Styling scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+  <!-- Dropdown submenu script -->
+  <script>
+    $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+      if (!$(this).next().hasClass('show')) {
+        $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+      }
+      var $subMenu = $(this).next(".dropdown-menu");
+      $subMenu.toggleClass('show');
+      $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+        $('.dropdown-submenu .show').removeClass("show");
+      });
+      return false;
+    });
+  </script>
+
 
 </body>
 
