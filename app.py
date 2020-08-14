@@ -23,27 +23,12 @@ salary_data2 = Base.classes.salary_data2
 # Flask Setup
 app = Flask(__name__)
 
-# Flask Routes to render html pages
-@app.route("/")
-def home():
-    return render_template("index.html")
-
-@app.route("/audit")
-def audit():
-    return render_template("audit.html")
-
-@app.route("/team")
-def authors():
-    return render_template("authors.html")
-
-@app.route("/factors")
-def factors():
-    return render_template("demog.html")
+# Flask Routes
 
 @app.route("/gender")
 def gender():
     return render_template("gender.html")
-
+    
 @app.route("/age")
 def age():
     return render_template("age.html")
@@ -64,6 +49,14 @@ def degree():
 def certifs():
     return render_template("certifs.html")
 
+@app.route("/audit")
+def audit():
+    return render_template("audit.html")
+
+@app.route("/factors")
+def demographics():
+    return render_template("demog.html")
+
 @app.route("/development")
 def development():
     return render_template("development.html")
@@ -80,6 +73,9 @@ def recommendations():
 def requirements():
     return render_template("requirements.html")
 
+@app.route("/team")
+def team():
+    return render_template("authors.html")
 
 @app.route("/tools")
 def tools():
@@ -93,13 +89,12 @@ def wordcloud():
 def wordcloud_nycnj():
     return render_template("wordcloud_nycnj.html")
 
-
-# api route to render data in json format
+# tools of the trade page to render tools.html
 @app.route("/tools_data")
 def tools_data():
     session = Session(engine)
 
-    # query to obtain data from database
+    # query to obtain totals of each type within tool category
     course_platform_data = session.query(cast(func.sum(salary_data2.udacity), Integer), cast(func.sum(salary_data2.coursera), Integer), cast(func.sum(salary_data2.edx), Integer),\
             cast(func.sum(salary_data2.datacamp), Integer), cast(func.sum(salary_data2.dataquest), Integer), cast(func.sum(salary_data2.kaggle), Integer),\
             cast(func.sum(salary_data2.fastai), Integer), cast(func.sum(salary_data2.udemy), Integer), cast(func.sum(salary_data2.linkedin), Integer),\
@@ -512,16 +507,14 @@ def tools_data():
         data_list.append(database_none_dict)
         data_list.append(database_other_dict)
 
-    # renders jsonified version of the data
     return jsonify(data_list)
 
 
-# api route to render data in json format
 @app.route("/tools_data/<jobtitle>")
 def tools_data_by_title(jobtitle):
     session = Session(engine)
 
-    # query to obtain data from database
+    # query to obtain totals of each type within tool category
     course_platform_data = session.query(cast(func.sum(salary_data2.udacity), Integer), cast(func.sum(salary_data2.coursera), Integer), cast(func.sum(salary_data2.edx), Integer),\
             cast(func.sum(salary_data2.datacamp), Integer), cast(func.sum(salary_data2.dataquest), Integer), cast(func.sum(salary_data2.kaggle), Integer),\
             cast(func.sum(salary_data2.fastai), Integer), cast(func.sum(salary_data2.udemy), Integer), cast(func.sum(salary_data2.linkedin), Integer),\
@@ -558,7 +551,7 @@ def tools_data_by_title(jobtitle):
 
     session.close()
 
-    # adds data into a dictionaries to be jsonified
+     # adds data into a dictionaries to be jsonified
     data_list = []
     for udacity, coursera, edx, datacamp, dataquest, kaggle, fastai, udemy, linkedin, university, plat_none, plat_other in course_platform_data:
         udacity_dict = {}
@@ -938,21 +931,17 @@ def tools_data_by_title(jobtitle):
         data_list.append(database_none_dict)
         data_list.append(database_other_dict)
 
-    # renders jsonified version of the data
     return jsonify(data_list)
 
 
-# api route to render data in json format
 @app.route("/recommendations_data")
 def recommendations_data():
     session = Session(engine)
 
-    # query to obtain data from database
     recommendation_data = session.query(salary_data2.first_program, cast(func.count(salary_data2.first_program), Integer)).\
         group_by(salary_data2.first_program).all()
     session.close()
 
-    # adds data into a dictionaries to be jsonified
     data_list = []
     for language, count in recommendation_data:
         if (language != "0"):
@@ -961,11 +950,9 @@ def recommendations_data():
             recommendation_dict["count"] = count
             data_list.append(recommendation_dict)
 
-    # renders jsonified version of the data
     return jsonify(data_list)
 
 
-# api route to render data in json format
 @app.route("/recommendations_data/<jobtitle>")
 def recommendations_data_by_title(jobtitle):
     session = Session(engine)
@@ -975,7 +962,6 @@ def recommendations_data_by_title(jobtitle):
         group_by(salary_data2.first_program).all()
     session.close()
 
-    # adds data into a dictionaries to be jsonified
     data_list = []
     for language, count in recommendation_data:
         if (language != "0"):
@@ -984,27 +970,23 @@ def recommendations_data_by_title(jobtitle):
             recommendation_dict["count"] = count
             data_list.append(recommendation_dict)
 
-    # renders jsonified version of the data
     return jsonify(data_list)
 
 
-# api route to render data in json format
-@app.route("/education_data")
+@app.route("/")
 def education_data():
     session = Session(engine)
 
-    # queries to obtain data from database
-    salary_data = session.query(salary_data2.title, cast(func.avg(salary_data2.salary), Integer)).\
-        group_by(salary_data2.title, salary_data2.education).all()
+    salary_data = session.query(salary_data2.title, cast(func.avg(salary_data2.salary), Integer), cast(func.count(salary_data2.title), Integer)).\
+        filter(salary_data2.country == 'United States of America').\
+        group_by(salary_data2.title).all()
     session.close()
 
     education_data = session.query(salary_data2.title, salary_data2.education, cast(func.count(salary_data2.education), Integer)).\
         filter(salary_data2.country == 'United States of America').\
         group_by(salary_data2.title, salary_data2.education).all()
     session.close()
-
-    print(salary_data)
-
+    
     for title, salary, count in salary_data:
         if title == "Data & Business Analyst":
             analyst_salary = "${:,.2f}".format(salary)
@@ -1025,11 +1007,6 @@ def education_data():
             data_scientist_salary = "${:,.2f}".format(salary)
             data_scientist_count = count
 
-    print(analyst_salary)
-    print(analyst_count)
-    print(dba_engineer_salary)
-    print(dba_engineer_count)
-
     data_list = []
     analyst_ed_count_list = []
     dba_engineer_ed_count_list = []
@@ -1038,7 +1015,6 @@ def education_data():
     manager_ed_count_list = []
     data_scientist_ed_count_list = []
 
-    # adds data into a dictionaries to be jsonified
     for title, education, count in education_data:
         if title == "Data & Business Analyst":
             analyst_ed_count_dict = {}
@@ -1094,10 +1070,7 @@ def education_data():
                 "education": data_scientist_ed_count_list,
                 "salary": data_scientist_salary
             }
-
-    print(analyst_dict)
-    print(dba_engineer_dict)
-
+    
     data_list.append(analyst_dict)
     data_list.append(dba_engineer_dict)
     data_list.append(software_engineer_dict)
@@ -1105,20 +1078,16 @@ def education_data():
     data_list.append(manager_dict)
     data_list.append(data_scientist_dict)
 
-    # renders jsonified version of the data
     return render_template('index.html', salary_education_data=data_list)
 
 
-# api route to render data in json format
 @app.route("/country_region_data")
 def salary_visuals_data():
     session = Session(engine)
 
-    # query to obtain data from database
     visuals_data = session.query(salary_data1.country.distinct(), salary_data1.region).all()
     session.close()
 
-    # adds data into a dictionaries to be jsonified
     data_list = []
     for country, region in visuals_data:
         data_list_dict = {}
@@ -1126,13 +1095,12 @@ def salary_visuals_data():
         data_list_dict["region"] = region
         data_list.append(data_list_dict)
 
-    # renders jsonified version of the data
     return jsonify(data_list)
 
 
 # api route to extract the user's response in the form, pre-process it, plug it into the model, and spit out a prediction
 @app.route('/predictions', methods=['GET','POST'])
-def go_to_prediction():
+def prediction():
 
     import joblib
     from sklearn.preprocessing import StandardScaler
@@ -1143,6 +1111,7 @@ def go_to_prediction():
     X_encoded_empty = X_encoded[0:0]
 
     if request.method == 'POST':
+        print("*********** TEST ***********")
 
         # import best machine learning model
         salary_model = joblib.load('notebooks/salary_model_trained.sav')
@@ -1197,7 +1166,7 @@ def go_to_prediction():
         # adds writing in addition to the value
         prediction_array = [
             f'Predicted Salary: ${prediction_formatted}',
-            "Order of importance of the variables in predicting your salary",
+            "Order of importance of the variables in predicting your salary:",
             "1. Country",
             "2. Primary Database",
             "3. Years With This Database",
@@ -1214,7 +1183,8 @@ def go_to_prediction():
         return render_template('predictions.html', salary_prediction=prediction_array)
 
     else:
-        return render_template("predictions.html")
+        print("***TEST2**")
+        return render_template("predictions.html", salary_prediction=[])
 
 if __name__ == "__main__":
     app.run(debug=True)
