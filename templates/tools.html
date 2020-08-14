@@ -11,7 +11,8 @@
 
   <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src='https://d3js.org/d3.v5.min.js'></script>
   <script>
     var d3v5 = window.d3;
@@ -33,21 +34,22 @@
           <li><a href="/predictions">Predictions</a></li>
           <li><a href="/factors">Factors</a></li>
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Industry
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tools
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li class="active"><a href="/tools">Industry Tool Use</a></li>
-              <li><a href="/audit">Bootcamp Audit</a></li>
-              <li class="dropdown-submenu">
-                <a class="test" tabindex="-1" href="#">Job Requirements<span class="caret"></span></a>
+              <li><a class="dropdown-item" href="/tools">Industry Favorites</a></li>
+              <li><a class="dropdown-item" href="/age">Bootcamp Audit</a></li>
+
+              <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Job Search</a>
                 <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="/csbackground">Job Requirements</a></li>
-                  <li><a tabindex="-1" href="/degree">Indeed Terms</a></li>
-                  <li><a tabindex="-1" href="/certifs">NYC/NJ Terms</a></li>
+                  <li><a class="dropdown-item" href="#">Most Common Requirements</a></li>
+                  <li><a class="dropdown-item" href="#">Indeed Requirements</a></li>
+                  <li><a class="dropdown-item" href="#">NJ/NY Requirements</a></li>
                 </ul>
               </li>
             </ul>
           </li>
+          <li><a href="/development">Development</a></li>
           <li><a href="/team">About Us</a></li>
       </div>
     </nav>
@@ -163,6 +165,25 @@
     <script type="text/javascript" src="static/js/toolwords.js"></script>
     <script type="text/javascript" src="static/js/toolbubble.js"></script>
     <script type="text/javascript" src="static/js/toolFilter.js"></script>
+
+<script>
+$('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+  if (!$(this).next().hasClass('show')) {
+    $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+  }
+  var $subMenu = $(this).next(".dropdown-menu");
+  $subMenu.toggleClass('show');
+
+
+  $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+    $('.dropdown-submenu .show').removeClass("show");
+  });
+
+
+  return false;
+});
+  </script>
+
 	</body>
 
 </html>
