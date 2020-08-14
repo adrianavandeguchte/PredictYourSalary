@@ -1182,8 +1182,21 @@ def go_to_prediction():
         prediction_rounded  = round(prediction_untransformed[0], 2)
         # formats the value into currency format
         prediction_formatted = "{:,.2f}".format(prediction_rounded)
-        # adds writing before the value
-        prediction_string = f'Predicted Salary: ${prediction_formatted}'
+        # adds writing in addition to the value
+        prediction_string = (
+            f'Predicted Salary: ${prediction_formatted}'
+            """Order of importance of the variables in predicting your salary:
+            1. Country
+            2. Primary Dtabase
+            3. Years With This Database
+            4. Are You a Manager?
+            5. Is Education is Computer Related?
+            6. Years With This Type of Job
+            7. Amount of Telecommute Days Per Week
+            8. Employment Sector
+            9. Job Title
+            Change the factors around to see how your predicted salary will change!"""
+        )
 
         # returns the whole prediction string value when user submits the form
         return render_template('predictions.html', salary_prediction=prediction_string)
