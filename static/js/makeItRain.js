@@ -23,7 +23,7 @@ $.fn.makeItRain = function(){
 					"-webkit-animation-duration" : randomSpeed + "s"
 				});
 
-				$(bills).prepend('<img src="images/bill.svg" alt="a dollar bill">');
+				$(bills).prepend('<img src="../static/images/bill.svg" alt="a dollar bill">');
 
 
 				$('body').append(bills);
@@ -35,4 +35,4 @@ $.fn.makeItRain = function(){
 	}; //end make it rain fn.
 
 	// thanks to Anisha Varghese from the Noun Project for the SVG!!
-
+$('#makeItRain').makeItRain();
