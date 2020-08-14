@@ -80,9 +80,6 @@ def recommendations():
 def requirements():
     return render_template("requirements.html")
 
-@app.route("/team")
-def team():
-    return render_template("team.html")
 
 @app.route("/tools")
 def tools():
