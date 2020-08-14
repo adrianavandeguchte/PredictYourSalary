@@ -190,3 +190,86 @@ nav#filterBar {
   margin-left: .1rem;
   margin-right: .1rem;
 }
+
+.legend {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+
+}
+
+
+
+span.a {
+  display: inline-block; /* the default for span */
+  width: 175px;
+  height: 20px;
+  border: 1px solid blue;
+  background-color: #3D9970;
+  border-radius: 10px 0px 0px 10px;
+  font-size: smaller;
+  font-style: italic;
+  text-align: center;
+  color: black;
+}
+
+span.b {
+  display: inline-block; /* the default for span */
+  width: 175px;
+  height: 20px;
+  border: 1px solid blue;
+  background-color: #AAAAAA;
+  font-size: smaller;
+  font-style: italic;
+  text-align: center;
+  color: black;
+}
+
+span.c {
+  display: inline-block; /* the default for span */
+  width: 175px;
+  height: 20px;
+  border: 1px solid blue;
+  background-color: #39CCCC;
+  font-size: smaller;
+  font-style: italic;
+  text-align: center;
+  color: black;
+}
+
+span.d {
+  display: inline-block; /* the default for span */
+  width: 175px;
+  height: 20px;
+  border: 1px solid blue;
+  background-color: #8583f8;
+  font-size: smaller;
+  font-style: italic;
+  text-align: center;
+  color: black;
+}
+
+span.e {
+  display: inline-block; /* the default for span */
+  width: 175px;
+  height: 20px;
+  border: 1px solid blue;
+  background-color: #7FDBFF;
+  font-size: smaller;
+  font-style: italic;
+  text-align: center;
+  color: black;
+}
+
+span.f {
+  display: inline-block; /* the default for span */
+  width: 175px;
+  height: 20px;
+  border: 1px solid blue;
+  background-color: #9cb4eb;
+  border-radius: 0px 10px 10px 0px;
+  font-size: smaller;
+  font-style: italic;
+  text-align: center;
+  color: black;
+}
