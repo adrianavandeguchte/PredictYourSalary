@@ -57,9 +57,16 @@
 			<div class="card">
 				<img class="card-img-top" src="../static/images/data_analyst.png" alt="Card image cap">
 				<div class="card-body">
-					<h5 class="card-title">Job Role</h5>
-					<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-						additional content. This content is a little bit longer.</p>
+					<h5 class="card-title">Data/Business Analyst</h5>
+					<p class="card-text">	<strong>Salary:</strong><br>
+									{{ salary_education_data[0]["Data & Business Analyst"]["salary"] }}<br>
+									<strong>Highest Level of Education:</strong><br>
+									Doctoral Degree: {{ salary_education_data[0]["Data & Business Analyst"]["education"][0]["Doctoral degree"] }}<br>
+									Master's Degree: {{ salary_education_data[0]["Data & Business Analyst"]["education"][3]["Master’s degree"] }}<br>
+									Bachelor’s Degree: {{ salary_education_data[0]["Data & Business Analyst"]["education"][4]["Bachelor’s degree"] }}<br>
+									Professional Degree: {{ salary_education_data[0]["Data & Business Analyst"]["education"][2]["Professional degree"] }}<br>
+									Some College: {{ salary_education_data[0]["Data & Business Analyst"]["education"][6]["Some college/university study without earning a bachelor’s degree"] }}<br>								
+									High School: {{ salary_education_data[0]["Data & Business Analyst"]["education"][1]["No formal education past high school"] }}</p>
 				</div>
 			</div>
 			<div class="card">
