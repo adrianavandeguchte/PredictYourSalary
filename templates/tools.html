@@ -31,13 +31,21 @@
   				</div>
           <li><a href="/">Home</a></li>
           <li><a href="/predictions">Predictions</a></li>
-          <li><a href="/demographics">Demographics</a></li>
+          <li><a href="/factors">Factors</a></li>
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tools
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Industry
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li class="active"><a href="/tools">Industry Standards</a></li>
+              <li class="active"><a href="/tools">Industry Tool Use</a></li>
               <li><a href="/audit">Bootcamp Audit</a></li>
+              <li class="dropdown-submenu">
+                <a class="test" tabindex="-1" href="#">Job Requirements<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a tabindex="-1" href="/csbackground">Job Requirements</a></li>
+                  <li><a tabindex="-1" href="/degree">Indeed Terms</a></li>
+                  <li><a tabindex="-1" href="/certifs">NYC/NJ Terms</a></li>
+                </ul>
+              </li>
             </ul>
           </li>
           <li><a href="/team">About Us</a></li>
@@ -50,12 +58,12 @@
     <nav class="navbar sticky-top navbar-default nav-style second" id="filterBar">
       <div class="container-fluid">
         <img src="../static/images/no back.png" onclick="loadFilter(&quot;&quot;)" class="sb-icon">
-        <img src="../static/images/data_analyst.png" onclick="loadFilter(&quot;/Data Analyst&quot;)" class="sb-icon">
-        <img src="../static/images/data_arch.png" onclick="loadFilter(&quot;/Data Engineer&quot;)" class="sb-icon">
-        <img src="../static/images/data_eng.png" onclick="loadFilter(&quot;/Data Scientist&quot;)" class="sb-icon">
-        <img src="../static/images/data_scientist.png" onclick="loadFilter(&quot;/Product/Project Manager&quot;)" class="sb-icon">
+        <img src="../static/images/data_analyst.png" onclick="loadFilter(&quot;/Data & Business Analyst&quot;)" class="sb-icon">
+        <img src="../static/images/data_arch.png" onclick="loadFilter(&quot;/DBA & Data Engineer&quot;)" class="sb-icon">
+        <img src="../static/images/data_eng.png" onclick="loadFilter(&quot;/Software Engineer&quot;)" class="sb-icon">
+        <img src="../static/images/data_scientist.png" onclick="loadFilter(&quot;/Project Manager&quot;)" class="sb-icon">
         <img src="../static/images/database analyst.png" onclick="loadFilter(&quot;/Research Scientist&quot;)" class="sb-icon">
-        <img src="../static/images/software_dev.png" onclick="loadFilter(&quot;/Statistician&quot;)" class="sb-icon">
+        <img src="../static/images/software_dev.png" onclick="loadFilter(&quot;/Data Scientist&quot;)" class="sb-icon">
     </div>
   </nav>
     <!-- <div class="sidebar">
