@@ -147,8 +147,22 @@
 
       <h4>Natural Language Processing </h4>
       <ul>
-        <li>Solito did this </li>
-        <li>Solito did that </li>
+        <li>
+          We decided to look from the employer's point of view by analyzing available data science jobs indeed.com. 
+          In this approach, we scraped job descriptions (Beautiful Soup) for all data science jobs from the site.   
+        </li>
+        <li>
+          We processed those job descriptions through a TSNE Visualizer in order to identify evident clusters within 
+          the dataset and ran a TF-IDF Vectorizer to see the most common words used in each cluster. All job descriptions 
+          were then loaded into a TF-IDF Vectorizer and WordClouds were generated for each cluster. We will attempt to 
+          write a job summary based off most of the words.
+        </li>
+        <li>
+          For amusement, we will attempt to create a job summary utilizing all the job descriptions from the dataset. 
+          We will use ntlk to tokenize the data by applying the CountVectorizer (one-hot encoding) and TF-IDF transformer 
+          (adding weights to the encoding).  We can than fit the data into a PCA (Principal Component Anlysis) model in an 
+          attempt to reduce the dimensionality of the data.
+        </li>
       </ul>
 
       <br>
