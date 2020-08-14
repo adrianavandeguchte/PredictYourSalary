@@ -1,0 +1,13 @@
+,doesn't use,uses
+mysql,5796,2396
+postgres,6508,1684
+sql_lite,6997,1195
+sqlserver,6698,1494
+oracle,7278,914
+micro_acess,7758,434
+aws_data,7715,477
+aws_dynamo,7847,345
+azure_sql,7804,388
+google_sql,7770,422
+database_none,7270,922
+database_other,7964,228
