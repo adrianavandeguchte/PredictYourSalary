@@ -170,6 +170,8 @@
 
 nav#filterBar {
   background-color: white;
+  padding: 10px;
+  margin: 10px;
 }
 
 
@@ -192,9 +194,11 @@ nav#filterBar {
 }
 
 .legend {
+  display: block;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
+  margin-top: -20px;
 
 }
 
@@ -272,4 +276,19 @@ span.f {
   font-style: italic;
   text-align: center;
   color: black;
+}
+
+.centered {
+justify-content: center;
+align-self: center;
+}
+
+#bubbleSVG {
+  display: block;
+  margin: auto;
+}
+
+#wordSVG {
+  display:block;
+  margin: auto;
 }
