@@ -20,7 +20,7 @@
   </head>
 
 	<body>
-    <nav class="navbar navbar-default nav-style">
+    <nav class="navbar navbar-default navbar-fixed-top nav-style">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="/">WebSiteName</a>
@@ -42,21 +42,22 @@
       </div>
     </nav>
     <div class="sidebar">
-      <img src="../static/images/no back.png" onclick="window.open(this.src)" class="sidebar-icon">
-      <img src="../static/images/data_analyst.png" onclick="showNewWords(vis,/recommendation_data)" class="sidebar-icon">
-      <img src="../static/images/data_arch.png" onclick="window.open(this.src)" class="sidebar-icon">
-      <img src="../static/images/data_eng.png" onclick="window.open(this.src)" class="sidebar-icon">
-      <img src="../static/images/data_scientist.png" onclick="window.open(this.src)" class="sidebar-icon">
-      <img src="../static/images/database analyst.png" onclick="window.open(this.src)" class="sidebar-icon">
-      <img src="../static/images/software_dev.png" onclick="window.open(this.src)" class="sidebar-icon">
+      <img src="../static/images/no back.png" onclick="loadFilter(&quot;&quot;)" class="sidebar-icon">
+      <img src="../static/images/data_analyst.png" onclick="loadFilter(&quot;/Data Analyst&quot;)" class="sidebar-icon">
+      <img src="../static/images/data_arch.png" onclick="loadFilter(&quot;/Data Engineer&quot;)" class="sidebar-icon">
+      <img src="../static/images/data_eng.png" onclick="loadFilter(&quot;/Data Scientist&quot;)" class="sidebar-icon">
+      <img src="../static/images/data_scientist.png" onclick="loadFilter(&quot;/Product/Project Manager&quot;)" class="sidebar-icon">
+      <img src="../static/images/database analyst.png" onclick="loadFilter(&quot;/Research Scientist&quot;)" class="sidebar-icon">
+      <img src="../static/images/software_dev.png" onclick="loadFilter(&quot;/Statistician&quot;)" class="sidebar-icon">
     </div>
 
-		<div class="container-fluid toolPage">
+		<div class="container-fluid toolPage main">
 			<div class="row">
 				<div class="col-md-12">
-					<h3>
-						Tools of the Trade
-					</h3>
+					<h1>
+						TOOLS OF THE TRADE
+					</h1>
+          <h3>LUX</h3>
 				</div>
 			</div>
 			<div class="row">
@@ -70,7 +71,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-              <div class="wordCloud">
+              <div class="wordCloud" id="wordCloud">
               </div>
 						</div>
 					</div>
@@ -94,7 +95,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-              <div class="bubble">
+              <div class="bubble" id="bubble">
               </div>
 						</div>
 					</div>
@@ -137,6 +138,7 @@
     <!-- <script type="text/javascript" src="static/js/toolbubble.js"></script> -->
     <script type="text/javascript" src="static/js/toolwords.js"></script>
     <script type="text/javascript" src="static/js/toolbubble.js"></script>
+    <script type="text/javascript" src="static/js/toolFilter.js"></script>
 	</body>
 
 </html>

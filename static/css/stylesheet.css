@@ -1,7 +1,14 @@
+*{
+/* font-family: "Nunito Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+
 /* NavBar Styling */
 .nav-style {
   background-color: #ffdddd;
   border-color: #ddc6c6;
+  /* position: fixed; */
 
 }
 
@@ -46,14 +53,18 @@
 
 .sidebar {
   height: 100%;
-  width: 160px;
+  width: 120px;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: AntiqueWhite;
   overflow-x: hidden;
-  padding-top: 16px;
+  padding-top: 5px;
+  margin-top: 51px;
+  border-right-color: #efdabf;
+  border-right-style: solid;
+  border-right-width: thin;
 }
 
 /* Style sidebar links */
@@ -72,22 +83,27 @@
 
 /* Styling for image icons */
 .sidebar-icon {
-  width: 140px;
-  height: 140px;
+  width: 110px;
+  height: 110px;
   display: block;
-  padding: 6px 8px 6px 16px;
+  padding: 0px 5px 0px 5px;
   margin-left: auto;
   margin-right: auto;
   transition: transform .2s; /* Animation */
 }
 
+.active-icon {
+
+}
+
 .sidebar-icon:hover {
-  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 /* Style the main content */
 .main {
-  margin-left: 160px; /* Same as the width of the sidenav */
+  margin-left: 120px; /* Same as the width of the sidenav */
+  margin-top: 55px;
   padding: 0px 10px;
 }
 
@@ -97,7 +113,7 @@
   .sidebar a {font-size: 18px;}
 }
 
-.collapsible {
+/* .collapsible {
   background-color: #777;
   color: white;
   cursor: pointer;
@@ -107,23 +123,33 @@
   text-align: left;
   outline: none;
   font-size: 15px;
-}
+} */
 
-.active, .collapsible:hover {
+/* .active, .collapsible:hover {
   background-color: #555;
-}
+} */
 
-.collapsible:after {
+/* .collapsible:after {
   content: '\002B';
   color: white;
   font-weight: bold;
   float: right;
   margin-left: 5px;
+} */
+
+/* .active:after {
+  content: "\2212";
+} */
+
+/* Tableau embedding styles */
+.tabvis {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+
 }
 
-.active:after {
-  content: "\2212";
-}
 
 /* Style the collapsible content. Note: hidden by default */
 .content {

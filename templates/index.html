@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Home</title>
     <!-- <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -37,8 +38,9 @@
     	<div class="row">
     		<div class="col-md-12">
     			<h3>
-    				Welcome to the World of Data Professionals
-    			</h3>
+					Welcome to the World of Data Professionals
+				</h3>
+
     			<p>
     				Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
     			</p>
@@ -54,8 +56,17 @@
     							<img src="../static/images/data_analyst.png" class="card-image">
     						</h5>
     						<div class="card-body">
-    							<p class="card-text">
-    								Add stats here using jinja
+								<h3>Data/Business Analyst</h3>
+								<p class="card-text">
+									<strong>Salary:</strong><br>
+									{{ salary_education_data[0]["Data & Business Analyst"]["salary"] }}<br>
+									<strong>Highest Level of Education:</strong><br>
+									Doctoral Degree: {{ salary_education_data[0]["Data & Business Analyst"]["education"][0]["Doctoral degree"] }}<br>
+									Master's Degree: {{ salary_education_data[0]["Data & Business Analyst"]["education"][3]["Master’s degree"] }}<br>
+									Bachelor’s Degree: {{ salary_education_data[0]["Data & Business Analyst"]["education"][4]["Bachelor’s degree"] }}<br>
+									Professional Degree: {{ salary_education_data[0]["Data & Business Analyst"]["education"][2]["Professional degree"] }}<br>
+									Some College: {{ salary_education_data[0]["Data & Business Analyst"]["education"][6]["Some college/university study without earning a bachelor’s degree"] }}<br>								
+									High School: {{ salary_education_data[0]["Data & Business Analyst"]["education"][1]["No formal education past high school"] }}
     							</p>
     						</div>
     						<div class="card-footer">
@@ -69,8 +80,17 @@
     							<img src="../static/images/data_arch.png" class="card-image">
     						</h5>
     						<div class="card-body">
+    							<h3>Database Administrator/Data Engineer</h3>
     							<p class="card-text">
-    								Add stats here using jinja
+									<strong>Salary:</strong><br>
+									{{ salary_education_data[1]["DBA & Data Engineer"]["salary"] }}<br>
+									<strong>Highest Level of Education:</strong><br>
+									Doctoral Degree: {{ salary_education_data[1]["DBA & Data Engineer"]["education"][5]["Doctoral degree"] }}<br>
+									Master's Degree: {{ salary_education_data[1]["DBA & Data Engineer"]["education"][2]["Master’s degree"] }}<br>
+									Bachelor’s Degree: {{ salary_education_data[1]["DBA & Data Engineer"]["education"][4]["Bachelor’s degree"] }}<br>
+									Professional Degree: {{ salary_education_data[1]["DBA & Data Engineer"]["education"][1]["Professional degree"] }}<br>
+									Some College: {{ salary_education_data[1]["DBA & Data Engineer"]["education"][3]["Some college/university study without earning a bachelor’s degree"] }}<br>								
+									High School: 0%
     							</p>
     						</div>
     						<div class="card-footer">
@@ -84,8 +104,17 @@
     							<img src="../static/images/data_eng.png" class="card-image">
     						</h5>
     						<div class="card-body">
+    							<h3>Software Engineer</h3>
     							<p class="card-text">
-    								Add stats here using jinja
+									<strong>Salary:</strong><br>
+									{{ salary_education_data[2]["Software Engineer"]["salary"] }}<br>
+									<strong>Highest Level of Education:</strong><br>
+									Doctoral Degree: {{ salary_education_data[2]["Software Engineer"]["education"][5]["Doctoral degree"] }}<br>
+									Master's Degree: {{ salary_education_data[2]["Software Engineer"]["education"][6]["Master’s degree"] }}<br>
+									Bachelor’s Degree: {{ salary_education_data[2]["Software Engineer"]["education"][0]["Bachelor’s degree"] }}<br>
+									Professional Degree: {{ salary_education_data[2]["Software Engineer"]["education"][3]["Professional degree"] }}<br>
+									Some College: {{ salary_education_data[2]["Software Engineer"]["education"][1]["Some college/university study without earning a bachelor’s degree"] }}<br>							
+									High School: {{ salary_education_data[2]["Software Engineer"]["education"][2]["No formal education past high school"] }}
     							</p>
     						</div>
     						<div class="card-footer">
@@ -101,9 +130,18 @@
                   <img src="../static/images/data_scientist.png" class="card-image">
                 </h5>
                 <div class="card-body">
-                  <p class="card-text">
-                    Add stats here using jinja
-                  </p>
+					<h3>Research Scientist</h3>
+					<p class="card-text">
+						<strong>Salary:</strong><br>
+						{{ salary_education_data[3]["Research Scientist"]["salary"] }}<br>
+						<strong>Highest Level of Education:</strong><br>
+						Doctoral Degree: {{ salary_education_data[3]["Research Scientist"]["education"][0]["Doctoral degree"] }}<br>
+						Master's Degree: {{ salary_education_data[3]["Research Scientist"]["education"][2]["Master’s degree"] }}<br>
+						Bachelor’s Degree: {{ salary_education_data[3]["Research Scientist"]["education"][4]["Bachelor’s degree"] }}<br>
+						Professional Degree: {{ salary_education_data[3]["Research Scientist"]["education"][3]["Professional degree"] }}<br>
+						Some College: {{ salary_education_data[3]["Research Scientist"]["education"][1]["Some college/university study without earning a bachelor’s degree"] }}<br>								
+						High School: 0%
+					</p>
                 </div>
                 <div class="card-footer">
                   Link to indeed?
@@ -116,9 +154,18 @@
                   <img src="../static/images/database analyst.png" class="card-image">
                 </h5>
                 <div class="card-body">
-                  <p class="card-text">
-                    Add stats here using jinja
-                  </p>
+					<h3>Product/Project Manager</h3>
+					<p class="card-text">
+						<strong>Salary:</strong><br>
+						{{ salary_education_data[4]["Project Manager"]["salary"] }}<br>
+						<strong>Highest Level of Education:</strong><br>
+						Doctoral Degree: {{ salary_education_data[4]["Project Manager"]["education"][5]["Doctoral degree"] }}<br>
+						Master's Degree: {{ salary_education_data[4]["Project Manager"]["education"][2]["Master’s degree"] }}<br>
+						Bachelor’s Degree: {{ salary_education_data[4]["Project Manager"]["education"][3]["Bachelor’s degree"] }}<br>
+						Professional Degree: 0%<br>
+						Some College: {{ salary_education_data[4]["Project Manager"]["education"][0]["Some college/university study without earning a bachelor’s degree"] }}<br>						
+						High School: {{ salary_education_data[4]["Project Manager"]["education"][4]["No formal education past high school"] }}
+					</p>
                 </div>
                 <div class="card-footer">
                   Link to indeed?
@@ -131,9 +178,18 @@
                   <img src="../static/images/software_dev.png" class="card-image">
                 </h5>
                 <div class="card-body">
-                  <p class="card-text">
-                    Add stats here using jinja
-                  </p>
+					<h3>Data Scientist</h3>
+					<p class="card-text">
+						<strong>Salary:</strong><br>
+						{{ salary_education_data[5]["Data Scientist"]["salary"] }}<br>
+						<strong>Highest Level of Education:</strong><br>
+						Doctoral Degree: {{ salary_education_data[5]["Data Scientist"]["education"][4]["Doctoral degree"] }}<br>
+						Master's Degree: {{ salary_education_data[5]["Data Scientist"]["education"][3]["Master’s degree"] }}<br>
+						Bachelor’s Degree: {{ salary_education_data[5]["Data Scientist"]["education"][2]["Bachelor’s degree"] }}<br>
+						Professional Degree: {{ salary_education_data[5]["Data Scientist"]["education"][5]["Professional degree"] }}<br>
+						Some College: {{ salary_education_data[5]["Data Scientist"]["education"][1]["Some college/university study without earning a bachelor’s degree"] }}<br>							
+						High School: 0%
+					</p>
                 </div>
                 <div class="card-footer">
                   Link to indeed?
@@ -215,7 +271,16 @@
     			</div>
     		</div>
     	</div>
-    </div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
   </body>
 
 </html>

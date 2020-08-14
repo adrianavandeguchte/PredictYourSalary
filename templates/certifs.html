@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <title>Demographics</title>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/stylesheet.css">
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.dropdown-submenu a.test').on("click", function(e){
+        $(this).next('ul').toggle();
+        e.stopPropagation();
+        e.preventDefault();
+      });
+    });
+  </script>
+    <script type="text/javascript"
+	    src="https://public.tableau.com/javascripts/api/tableau-2.5.0.min.js"></script>
+    <script type="text/javascript">
+        function initViz() {
+            var containerDiv = document.getElementById("vizContainer"),
+                url = "https://public.tableau.com/views/TechSalaryAnalysis/Certification?:language=en&:display_count=y&:origin=viz_share_link&:showVizHome=no&:embed=y",
+                options = {
+                    hideTabs: true,
+                    onFirstInteractive: function () {
+                        console.log("Run this code when the viz has finished loading.");
+                    }
+                };
+
+            var viz = new tableau.Viz(containerDiv, url, options);
+            // Create a viz object and embed it in the container div.
+        }
+    </script>
+</head>
+
+<body onload="initViz();">
+  <nav class="navbar navbar-default navbar-fixed-top nav-style">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">WebSiteName</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Home</a></li>
+        <li><a href="/predictions">Predictions</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="">Demographics
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/gender">Gender</a></li>
+            <li><a href="/age">Age</a></li>
+            <li><a href="/country">Location</a></li>
+            <li class="dropdown-submenu">
+              <a class="test" tabindex="-1" href="#">Education<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="/csbackground">Background</a></li>
+                <li><a tabindex="-1" href="/degree">Degree</a></li>
+                <li><a tabindex="-1" href="/certifs">Certificates</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tools
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/tools">Industry Favorites</a></li>
+            <li><a href="/audit">Bootcamp Audit</a></li>
+            <li><a href="/indeed">Job Requirement Analysis</a></li>
+          </ul>
+        </li>
+        <li><a href="/team">About Us</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="sidebar">
+    <img src="../static/images/gender.png" onclick="parent.location='/gender'" class="sidebar-icon">
+    <img src="../static/images/age.png" onclick="parent.location='/age'" class="sidebar-icon">
+    <img src="../static/images/location.png" onclick="parent.location='/country'" class="sidebar-icon">
+    <img src="../static/images/cs background.png" onclick="parent.location='/background'" class="sidebar-icon">
+    <img src="../static/images/level of edu.png" onclick="parent.location='/degree'" class="sidebar-icon">
+    <img src="../static/images/certi.png" onclick="parent.location='/certifs'" class="sidebar-icon">
+    <img src="../static/images/certi.png" onclick="parent.location='/certifs'" class="sidebar-icon">
+  </div>
+  <div class="container-fluid main">
+  	<div class="row">
+  		<div class="col-md-12">
+        <div class="container-fluid tabvis">
+          <div id="vizContainer"></div>
+    		</div>
+      </div>
+    </div>
+    <div class="row">
+  		<div class="col-md-12">
+        <p>Analysis here</p>
+  			<p>
+  				Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
+  			</p>
+  		</div>
+  	</div>
+  </div>
+
+</body>
+
+
+</html>
