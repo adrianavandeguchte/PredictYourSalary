@@ -13,29 +13,34 @@
 <body>
 
   <div class="container">
-
-
     <nav class="navbar navbar-default nav-style">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="/">Predict Your Salary</a>
         </div>
-        <!-- <ul class="nav navbar-nav navbar-right"> -->
         <li><a href="/">Home</a></li>
-        <li class="active"><a href="/predictions">Predictions</a></li>
-        <li><a href="/demographics">Demographics</a></li>
+        <li><a href="/predictions">Predictions</a></li>
+        <li><a href="/factors">Factors</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tools
-            <span class="caret"></span></a>
+          <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/tools">Industry Standards</a></li>
-            <li><a href="/audit">Bootcamp Audit</a></li>
+            <li><a class="dropdown-item" href="/tools">Industry Favorites</a></li>
+            <li><a class="dropdown-item" href="/audit">Bootcamp Audit</a></li>
+
+            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Job Search</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/requirements">Most Common Requirements</a></li>
+                <li><a class="dropdown-item" href="/wordcloud">Indeed Requirements</a></li>
+                <li><a class="dropdown-item" href="/wordcloud_nycnj">NJ/NY Requirements</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
+        <li><a href="/development">Development</a></li>
         <li><a href="/team">About Us</a></li>
-        </ul>
-      </div>
-    </nav>
+    </div>
+  </nav>
 
     <div class="view overlay my-4">
       <img src="../images/project contributor.png" class="img-fluid" alt="">
