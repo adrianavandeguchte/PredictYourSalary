@@ -1,15 +1,15 @@
-*{
+/* { */
 /* font-family: "Nunito Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
+  /* font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+} */
 
 
 /* NavBar Styling */
-.nav-style {
+/* .nav-style {
   background-color: #ffdddd;
   border-color: #ddc6c6;
   /* position: fixed; */
-
+/*
 }
 
 .active {
@@ -32,7 +32,7 @@
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
     color: #555;
     background-color: #ffc6c6;
-}
+}  */
 
 /* Index page styling */
 .card-image {
@@ -46,11 +46,14 @@
 
 /* Tools page styling */
 /* Style the sidebar - fixed full height */
-.toolPage {
+/* .toolPage {
   padding-left: 180px;
-}
+} */
 
-
+/* .second {
+  margin-top: 56px;
+} */
+/*
 .sidebar {
   height: 100%;
   width: 120px;
@@ -65,7 +68,7 @@
   border-right-color: #efdabf;
   border-right-style: solid;
   border-right-width: thin;
-}
+} */
 
 /* Style sidebar links */
 .sidebar a {
@@ -77,14 +80,15 @@
 }
 
 /* Style links on mouse-over */
-.sidebar a:hover {
+/* .second a:hover {
   color: #f1f1f1;
-}
+} */
+
 
 /* Styling for image icons */
-.sidebar-icon {
-  width: 110px;
-  height: 110px;
+.sb-icon {
+  width: 120px;
+  height: 120px;
   display: block;
   padding: 0px 5px 0px 5px;
   margin-left: auto;
@@ -93,16 +97,17 @@
 }
 
 .active-icon {
-
+  width: 140px;
+  height: 140px;
 }
 
-.sidebar-icon:hover {
-  transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+.sb-icon:hover {
+  transform: scale(1.3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 /* Style the main content */
 .main {
-  margin-left: 120px; /* Same as the width of the sidenav */
+  /* margin-left: 120px; /* Same as the width of the sidenav */
   margin-top: 55px;
   padding: 0px 10px;
 }
@@ -161,3 +166,8 @@
 }
 .card mb-3  {
   font-family: 'Merriweather', serif, !important;
+}
+
+nav#filterBar {
+  background-color: white;
+}
