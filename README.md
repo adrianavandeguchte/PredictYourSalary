@@ -17,7 +17,7 @@ At the end of the Data Science Bootcamp, our group wanted to create a tool to se
 ### Local: 
 * Make sure all the requirements from requirements.txt are up to date:
 * Run app.py 
-* Access at http://localhost:8000/
+* Access at local host: http://127.0.0.1:5000/
 
 ### Remote Access
 * [Heroku](https://predictyoursalaryy.herokuapp.com/)
