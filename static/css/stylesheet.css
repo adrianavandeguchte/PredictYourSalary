@@ -34,6 +34,10 @@
     background-color: #ffc6c6;
 }  */
 
+.predIcon {
+  max-height:75px;
+}
+
 /* Index page styling */
 .card-image {
   width: 200px;

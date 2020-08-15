@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Course Audit</title>
+  <!-- Site Icon -->
+  <link rel="icon" href="../static/images/flavicon_3.png" type="image/x-icon" sizes="16x16">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -12,38 +14,18 @@
 	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/css/stylesheet.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 </head>
 
-<!-- Scripts -->
-<script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.5.0.min.js"></script>
-<script type="text/javascript">
-  function initViz() {
-    var containerDiv = document.getElementById("vizContainer"),
-      url = "https://public.tableau.com/views/bootcamp_comparison/comparison?:language=en&:display_count=y&publish=yes&:origin=viz_share_link&:embed=y",
-      options = {
-        hideTabs: true,
-        onFirstInteractive: function () {
-          console.log("Run this code when the viz has finished loading.");
-        }
-      };
-
-    var viz = new tableau.Viz(containerDiv, url, options);
-    // Create a viz object and embed it in the container div.
-  }
-</script>
 
 <body onload="initViz();">
 
   <div class="container">
-
     <nav class="navbar navbar-default nav-style">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/">Predict Your Salary</a>
+          <a class="navbar-brand" href="/"><img src="../static/images/site title icon.png" style="height:75px;" alt="Predict Your Salary"></a>
         </div>
         <li><a href="/">Home</a></li>
         <li><a href="/predictions">Predictions</a></li>
@@ -80,20 +62,30 @@
   </div>
 
 
-  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script> -->
-    
+
+
     <!-- Styling scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Tableau embedding -->
+    <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.5.0.min.js"></script>
+    <script type="text/javascript">
+    function initViz() {
+      var containerDiv = document.getElementById("vizContainer"),
+      url = "https://public.tableau.com/views/bootcamp_comparison/comparison?:language=en&:display_count=y&publish=yes&:origin=viz_share_link&:embed=y",
+      options = {
+        hideTabs: true,
+        onFirstInteractive: function () {
+          console.log("Run this code when the viz has finished loading.");
+        }
+      };
+
+      var viz = new tableau.Viz(containerDiv, url, options);
+      // Create a viz object and embed it in the container div.
+    }
+    </script>
 
     <!-- Dropdown submenu script -->
     <script>
@@ -109,6 +101,7 @@
         return false;
       });
     </script>
+
 
 
 

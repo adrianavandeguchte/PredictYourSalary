@@ -5,6 +5,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Author's</title>
+  <!-- Site Icon -->
+  <link rel="icon" href="../static/images/flavicon_3.png" type="image/x-icon" sizes="16x16">
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
@@ -16,7 +19,7 @@
     <nav class="navbar navbar-default nav-style">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/">Predict Your Salary</a>
+          <a class="navbar-brand" href="/"><img src="../static/images/site title icon.png" style="height:75px;" alt="Predict Your Salary"></a>
         </div>
         <li><a href="/">Home</a></li>
         <li><a href="/predictions">Predictions</a></li>
@@ -42,9 +45,10 @@
     </div>
   </nav>
 
-    <div class="view overlay my-4">
-      <img src="../images/project contributor.png" class="img-fluid" alt="">
-    </div>
+  <div class="view overlay my-4">
+    <img src="../static/images/project contributor.png" class="img-fluid" alt="">
+  </div>
+
 
     <div class="card mb-3" style="max-width: 1000px;">
       <div class="row no-gutters">
@@ -154,8 +158,8 @@
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">Shrilekha Vijayakanthan</h5>
-            <p class="card-text">Shri is a B Tech Industrial Biotech Graduate from Anna University , India . 
-              After graduating, she joined  TCS, an Indian IT consulting firm  as an ETL developer . 
+            <p class="card-text">Shri is a B Tech Industrial Biotech Graduate from Anna University , India .
+              After graduating, she joined  TCS, an Indian IT consulting firm  as an ETL developer .
               After working there for 7 years she to moved to US and pursed her IT career as Data analyst .
               At work she use various database tools to pull and analyse large volume of data and do basic reporting to help the Business partners with sales forecasting & Analysis but she wants to gear her career towards Advanced analytics and Automated Sales forecasting using machine learning models which led her enrolling to this data science boot camp.
             </p>
@@ -173,7 +177,7 @@
 
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -181,7 +185,27 @@
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
+
+    <!-- Styling scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Dropdown submenu script -->
+    <script>
+      $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+        if (!$(this).next().hasClass('show')) {
+          $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+        }
+        var $subMenu = $(this).next(".dropdown-menu");
+        $subMenu.toggleClass('show');
+        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+          $('.dropdown-submenu .show').removeClass("show");
+        });
+        return false;
+      });
+    </script>
 
 </body>
 
