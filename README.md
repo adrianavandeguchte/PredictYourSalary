@@ -1,29 +1,26 @@
-# Bootcamp Review: Are you ready for the data professional world? 
+# Predict Your Salary in the Data Professional World 
 
 ## Summary: 
 As most of the Bootcamp graduates will be looking for a new job, our group developed an app to explore the data professional world job market. Through our app, you can see a salary prediction based on your region, years of experience and primary tools used in a specific job title. We also explore the different tools used in the field and the expectations that each of these data jobs possess. By using our page, you can estimate how much you can expect to earn with the current skills you have as well as compare your expertise to those in the field. For a more detailed development description, please visit our Development link on the webpage. 
 
 ### Group: 
-* [Sandra Froonjian](https://www.linkedin.com/in/sandy/) !!!!!!!!!!!!!!
+* [Sandra Froonjian](https://www.linkedin.com/in/sandrafroonjian/) 
 * [Katarzyna (Kasia) Kalemba](https://www.linkedin.com/in/katarzynakalemba/)
-* [Solito Reyes III](https://www.linkedin.com/in/solito/) !!!!!!
-* [Adriana van de Guchte](https://www.linkedin.com/in/adriana/) !!!!!!!
-* [Shrilekha Vijayakanthan](https://www.linkedin.com/in/shri/) !!!!!!!!!!!!
+* [Solito Reyes III](https://www.linkedin.com/in/solitoreyesiii/) 
+* [Adriana van de Guchte](https://www.linkedin.com/in/adriana-van-de-guchte-6096791a3/) 
+* [Shrilekha Vijayakanthan](https://www.linkedin.com/in/shrilekha-vijayakanthan-1986601b/) 
 
 ## Motivation: 
-At the end of the Data Science Bootcamp, our group wanted to create a tool to see how our newly acquired skills compare to the current industry standard. Looking at the job titles, skills, years of experience, programming languages, databases and many other factors valued in the data professional world, we explored the potential salaries within this field and the expectations of skills. We created visuals that further explored the differences in job titles, gender pay gaps, age differences, looking at data from all over the world. Finally, by using industry data, we creating a machine learning model that would predict how much money we can expect to make based on the selected factors. 
+At the end of the Data Science Bootcamp, our group wanted to create a tool to see how our newly acquired skills compare to the current industry standard. By using industry data, we creating a machine learning model that would predict how much money we can expect to make based on the selected factors. Looking at the job titles, skills, years of experience, programming languages, databases and many other factors valued in the data professional world, we explored the potential salaries within this field and the expectations of knowing certain skills. We created visuals that further explored the differences in job titles, gender pay gaps, age differences, looking at data from all over the world. 
 
 ## Usage 
-### If running locally: 
-* Make sure all the requirements below are up to date:
+### Local: 
+* Make sure all the requirements from requirements.txt are up to date:
 * Run app.py 
 * Access at http://localhost:8000/
 
 ### Remote Access
 * [Heroku](https://predictyoursalaryy.herokuapp.com/)
-
-## Installations 
-Please install the requirements.txt file
 
 ## Data 
 ### Dataset 1: Kaggle Survey: 
@@ -35,7 +32,7 @@ This dataset was used to develop our machine learning model for the salary predi
 [Brent Ozar](https://www.brentozar.com/archive/2019/01/the-2019-data-professional-salary-survey-results/)
 
 
-## Detailed Development Steps 
+## Overview of Development Steps 
 ### Data Preparation
 #### Cleaning Dataset 1 Kaggle Survey: 
 * The original CSV file was loaded in Jupyter Notebook and consisted of 246 columns and 19718 rows and was narrowed down to 109 columns and 19718 rows. 
@@ -54,7 +51,7 @@ This dataset was used to develop our machine learning model for the salary predi
 * The final dashboard was published in Tableau Public and finally embedded into our html page.
 
 #### D3 
-* Word cloud of the recommended first language to learn was built using a d3 version 3 base code and expanded upon to filter out values and repopulate only on changing inputs. Bubble chart of tool/language use in industry was built using d3 version 5 and d3.force was used to build movement animation.
+* Word cloud of the recommended first language to learn was built using a d3 version 3 base code and expanded upon to filter out values and repopulate only on changing inputs. Bubble chart of tool and language use in industry was built using d3 version 5 and d3.force was used to build movement animation.
 
 ### Machine Learning 
 * Our Scikit-Learn Model machine learning model involved using a RandomForestClassifier and feature importance to narrow down the features for our model. We selected 10 features for our model, which are, in order: country, primary database, years with this database, region, manage staff, education is computer related, years with this type of job, telecommute days per week, employment sector, and job title. Because most of these features are categorical, and the model needs them to be numerical, pd.get_dummies was then used to convert categories to binary.
