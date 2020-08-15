@@ -53,15 +53,13 @@
       <br>
 
       <h1>Brief introduction:</h1>
-      <p>As most of the Bootcamp graduates will be looking for a new job, our group developed a tool to explore the
-        different tools used in the field and the expectations that different data professional job titles possess.
-        Through our app, you can see a salary prediction based on your region, years of experience and primary tools
-        used in a specific job title. By using our tool, you can estimate how much you can expect to earn with the
+      <p>As most of the Bootcamp graduates will be looking for a new job, our group developed an app to explore the data professional world job market. Through our app, you can see a salary prediction based on your region, years of experience and primary tools used in a specific job title. We also explore the
+        different tools used in the field and the expectations that each of these data jobs possess.
+        By using our page, you can estimate how much you can expect to earn with the
         current skills you have as well as compare your expertise to those in the field. </p>
 
 
-      <p> We used the skills we learned in the Rutgers Bootcamp Course in order to accomplish this task. See below for a
-        set by step guide behind our though process behind our developement!</p>
+      <p> We used the skills that we learned in the Rutgers Bootcamp Course in order to accomplish this task. Below, you will find a step by step guide behind our developement process!</p>
 
       <p><i>All version control handled using GitHub.</i></p>
 
@@ -148,7 +146,9 @@
       </ul>
 
       <h4>Natural Language Processing </h4>
-      <ul>
+      <p>To see if we have the skills employers are looking for in the data science profession, we decided to look from the employer vantage point by analyzing the data science jobs available on <a data-from-md  title='http://indeed.com' href='http://indeed.com' type=''>indeed.com</a>. In this approach, we scraped job descriptions (Beautiful Soup) for all data science jobs available on <a data-from-md  title='http://indeed.com' href='http://indeed.com' type=''>indeed.com</a>.  We processed those job descriptions through a TSNE Visualizer in order to identify evident clusters within the dataset and ran a TF-IDF Vectorizer to see the most common words used in each cluster.</p>
+
+            <ul>
         <li>
           We decided to look from the employer's point of view by analyzing available data science jobs indeed.com.
           In this approach, we scraped job descriptions (Beautiful Soup) for all data science jobs from the site.
@@ -166,6 +166,10 @@
           attempt to reduce the dimensionality of the data.
         </li>
       </ul>
+
+
+
+
 
       <br>
 
@@ -222,6 +226,7 @@
           certificates and computer science background were all analyzed for how they played a role in the salary
           amount.
         </li>
+        <li>Another visualization compares what we learned in the bootcamp compared to the expectations of the field. </li>
         <li>The final dashboards were published in Tableau Public and finally embedded into our html page using the
           Tableau JavaScript API.</li>
       </ul>
@@ -249,8 +254,8 @@
         Our goal was to create a clean, modern, creative and a user friendly page. For this part, we used formatting
         provided by the Bootstrap library, direct CSS styling, and the Canva platform to create our graphics. Animations were built using CSS and JS.</p>
 
-      <h4>AWS Deployment</h4>
-      <p> Deployment to AWS was the final step to make the webpage accessible by a link for the user. </p>
+      <h4>App Deployment</h4>
+      <p>We deployed our application on Heroku with AWS RDS as the backend database instead of using Heroku postgres DB which has limitation of 10K records. Intially, we tried to deploy using the AWS EC2 Server Apache2 web service but there were challenges as it keep defaulting to Python 2.7 which doesnt have SQL Alchemy packages used in our project.</p>
 
       <br>
       <img src="../static/images/tools_used.png" class="img-fluid" alt="">
