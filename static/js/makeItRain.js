@@ -1,6 +1,6 @@
 $.fn.makeItRain = function(){
 
-		$(this).on('click',function(){
+		$(this).on('onclick',function(){
 
 			var maxBills = 50;
 
