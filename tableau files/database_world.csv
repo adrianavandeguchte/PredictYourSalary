@@ -1,0 +1,13 @@
+,No Use,Use
+MySQL,5796,2396
+Postgres,6508,1684
+SQLite,6997,1195
+SQLserver,6698,1494
+Oracle,7278,914
+Microsoft Access,7758,434
+AWS Data,7715,477
+AWS Dynamo,7847,345
+Azure SQL,7804,388
+Google SQL,7770,422
+None,7270,922
+Other,7964,228
