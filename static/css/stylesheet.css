@@ -34,45 +34,30 @@
     background-color: #ffc6c6;
 }  */
 
-.predIcon {
-  max-height:75px;
+
+.card {
+  margin-top:20px;
+  margin-bottom: 10px;
+  border-style: double;
+  border-color:#bbb1b1;
 }
 
 /* Index page styling */
 .card-image {
-  width: 200px;
-  height: 200px;
+  width: 210px;
+  height: 210px;
   display: block;
   padding: 6px 8px 6px 16px;
   margin-left: auto;
   margin-right: auto;
+  background-color: #f1eaea;
+
 }
 
-/* Tools page styling */
-/* Style the sidebar - fixed full height */
-/* .toolPage {
-  padding-left: 180px;
-} */
+.card-footer {
+    background-color: #f1eaea;
+}
 
-/* .second {
-  margin-top: 56px;
-} */
-/*
-.sidebar {
-  height: 100%;
-  width: 120px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: AntiqueWhite;
-  overflow-x: hidden;
-  padding-top: 5px;
-  margin-top: 51px;
-  border-right-color: #efdabf;
-  border-right-style: solid;
-  border-right-width: thin;
-} */
 
 /* Style sidebar links */
 .sidebar a {
